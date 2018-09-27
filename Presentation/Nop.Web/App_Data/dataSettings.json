@@ -1,0 +1,5 @@
+﻿{
+  "DataProvider": "sqlserver",
+  "DataConnectionString": "Data Source=localhost;Initial Catalog=magicbait;Integrated Security=False;Persist Security Info=False;User ID=magicbait;Password=HackyS@ck1995",
+  "RawDataSettings": {}
+}

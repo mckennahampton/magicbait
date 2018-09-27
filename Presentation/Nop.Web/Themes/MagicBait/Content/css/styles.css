@@ -1,0 +1,14 @@
+/* SASS imports */
+@import url(global/bootstrap.min.css);
+.dropdown::before {
+  border-style: solid;
+  height: 0;
+  width: 0;
+  border-color: transparent transparent #000000;
+  border-width: 0 1rem 1rem;
+  content: ""; }
+
+p {
+  font-family: "Verdana", "Geneva", sans-serif; }
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,6 @@
+﻿.dropdown {
+    &::before {
+        @include triangle("up", 2rem, 1rem, #000000);
+        content: "";
+    }
+}

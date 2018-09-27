@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Administration/Views/Shared/_AdminPopupLayout.cshtml";
+}
+@model ShippingFreeOrdersOverModel
+@using CLF.Plugin.Shipping.FreeShipping.Models;
+@using (Html.BeginForm())
+{
+    <div class="section-header">
+        <div class="title">
+            <img src="@Url.Content("~/Administration/Content/images/ico-configuration.png")" alt="" />
+            @T("Admin.Common.Edit")
+        </div>
+        <div class="options">
+            <input type="submit" name="save" class="t-button" value="@T("Admin.Common.Save")" />
+        </div>
+    </div>
+    @Html.Partial("CLF.Plugin.Shipping.FreeShipping.Views.FreeShipping._CreateOrUpdate", Model)
+}

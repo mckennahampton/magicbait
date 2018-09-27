@@ -1,0 +1,8 @@
+﻿Group: Shipping rate computation
+FriendlyName: Free Shipping
+SystemName: Shipping.FreeShipping
+Version: 0.5
+SupportedVersions: 3.00
+Author: Gus Lopez
+DisplayOrder: 1
+FileName: CLF.Plugin.Shipping.FreeShipping.dll
