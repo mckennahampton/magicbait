@@ -57,6 +57,7 @@
     <!-- We copy the \Logs directory -->
     <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
     <None Remove="Themes\MagicBait\Content\scss\content\_buttons.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\content\_components.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_fonts.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_links.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_lists.scss" />
@@ -83,10 +84,26 @@
     <Folder Include="Plugins\" />
     <Folder Include="Themes\MagicBait\Content\js\" />
     <Folder Include="Themes\MagicBait\Content\img\" />
+    <Folder Include="Themes\MagicBait\Content\scss\content\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\FlyoutShoppingCart\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\Footer\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Shared\Components\HeaderLinks\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\Logo\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\_Root.Head.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\_Header.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

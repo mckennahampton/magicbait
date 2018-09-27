@@ -1,2 +1,20 @@
-﻿body {
+﻿@font-face {
+    font-family: 'Verdana';
+    src: url('fonts/Verdana.eot'); /* IE9 Compat Modes */
+    src: url('fonts/Verdana.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('fonts/Verdana.woff2') format('woff2'), /* Super Modern Browsers */
+    url('fonts/Verdana.woff') format('woff'), /* Pretty Modern Browsers */
+    url('fonts/Verdana.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('fonts/Verdana.svg#Verdana') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+    font-family: 'Geoslab';
+    src: url('fonts/geoslab703-xbd-bt-extra-bold1.eot'); /* IE9 Compat Modes */
+    src: url('fonts/geoslab703-xbd-bt-extra-bold1?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('fonts/geoslab703-xbd-bt-extra-bold1.woff2') format('woff2'), /* Super Modern Browsers */
+    url('fonts/geoslab703-xbd-bt-extra-bold1.woff') format('woff'), /* Pretty Modern Browsers */
+    url('fonts/geoslab703-xbd-bt-extra-bold1.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('fonts/geoslab703-xbd-bt-extra-bold1.otf') format('opentype'), /* Firefox */
+    url('fonts/geoslab703-xbd-bt-extra-bold1.svg#GeometricSlab703BT-XtraBold') format('svg'); /* Legacy iOS */
 }

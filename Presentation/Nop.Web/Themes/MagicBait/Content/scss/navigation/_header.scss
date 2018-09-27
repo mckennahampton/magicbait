@@ -1,2 +1,208 @@
-﻿body {
+﻿.admin-header-links {
+    background: #000;
+    text-align: center;
+    
+    .administration {
+        display: inline-block;
+        text-decoration: none;
+        padding: 5px 10px;
+        margin: 10px 0px;
+        color: #fff;
+        background: $color2;
+        border: 2px solid #fff;
+        font-family: $font-stack-verdana;
+    }
+}
+
+.header-lower {
+    width: 100%;
+    overflow: auto;
+    display: table;
+    text-align: right;
+    position: relative;
+}
+
+.header-logo {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: table-cell;
+
+    @include media-breakpoint-up(xl) {
+        width: 400px;
+        height: auto;
+        margin-left: 30px;
+        float: left;
+    }
+
+    @include media-breakpoint-between(lg, xl) {
+        width: 300px;
+        height: auto;
+        margin-left: 30px;
+        float: left;
+    }
+
+    @include media-breakpoint-between(md, lg) {
+        width: 300px;
+        height: auto;
+        margin-left: 30px;
+        float: left;
+    }
+
+    @include media-breakpoint-between(sm, md) {
+        width: 200px;
+        height: auto;
+        margin-left: 30px;
+        float: left;
+    }
+
+    @include media-breakpoint-between(xs, sm) {
+        width: 200px;
+        height: auto;
+        margin-left: 30px;
+        float: left;
+    }
+
+    @include media-breakpoint-down(xs) {
+        width: 90%;
+        height: auto;
+        margin-left: auto;
+        margin0right: auto;
+    }
+}
+
+.top-nav-spacer {
+    display: table-cell;
+    width: auto;
+}
+
+.top-nav-block{
+    position: relative;
+    text-align: right;
+    display: table-cell;
+    vertical-align: bottom;
+    overflow: auto;
+    width: auto;
+}
+
+.search-box, .main-nav {
+    display: inline-block;
+}
+
+.main-nav {
+
+    ul{
+        list-style: none;
+    
+        li {
+            float: left;
+
+            &:not(:first-child) {
+                border-left: 2px solid $color2;
+            }
+
+            a{
+                color: $color2;
+                text-decoration: none;
+                font-family: $font-stack-verdana;
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+.header-links {
+    float: right;
+    position: relative;
+    margin-right: 50px;
+}
+
+.header-links {
+    display: inline-block;
+    vertical-align: middle;
+
+    ul {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0;
+
+        li {
+            list-style: none;
+            display: block;
+            float: left;
+
+            a {
+                font-family: $font-stack-verdana;
+                font-weight: bold;
+                color: $color1;
+                font-size: 12;
+                text-decoration: none;
+                padding: 0px 10px;
+                position: relative;
+                top: 0;
+                @include transition(all,0.3s,ease-out);
+            }
+
+            &:not(#topcartlink):hover a {
+                background: $color1;
+                color: #fff;
+                top: 15px;
+                padding: 15px 10px 10px;
+                border-radius: 0px 0px 5px 5px;
+            }
+        }
+    }
+
+    .topcartlink-active a {
+        background: $color1;
+        color: #fff;
+        top: 15px;
+        padding: 15px 10px 10px;
+    }
+
+    .flyout-cart {
+        display: none;
+        position: absolute;
+        margin-top: 21px;
+        width: 95%;
+        right: 0;
+        border-radius: 5px 0px 5px 5px;
+        border: 2px solid $color1;
+        padding: 15px;
+
+        .row > .col-* {
+            text-align: center;
+        }
+
+        .item {
+            width: 100%;
+        }
+
+        .items > *{
+            display: inline-block;
+            text-align: center;
+        }
+
+        .buttons {
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .product {
+            font-size: 15px;
+        }
+
+        .count {
+            font-size: 15px;
+        }
+
+        .count, .totals {
+            text-align: center;
+
+            a {
+                color: $color1;
+            }
+        }
+
+    }
 }
