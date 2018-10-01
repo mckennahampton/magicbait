@@ -100,7 +100,16 @@
     <Content Update="Themes\MagicBait\Views\Shared\Components\Logo\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Themes\MagicBait\Views\Shared\Components\_Root.Head.cshtml">
+    <Content Update="Themes\MagicBait\Views\Shared\Components\SearchBox\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\TopMenu\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\_CategoryLine.TopMenu.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\_Root.Head.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Shared\_Header.cshtml">

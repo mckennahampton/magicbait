@@ -32,3 +32,24 @@ input[type="button"] {
 .checkout-button {
     background: $color2;
 }
+
+.close-button {
+    color: $color5;
+    border: 1px solid $color4;
+    border-radius: 5px;
+    background: #fff;
+    padding: 5px 8px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:after {
+        display: inline-block;
+        content: "\00d7"; /* This will render the 'X' */
+    }
+
+    &:focus {
+        outline: 0;
+    }
+}

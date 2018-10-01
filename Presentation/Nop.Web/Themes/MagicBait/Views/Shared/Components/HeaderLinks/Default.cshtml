@@ -57,14 +57,26 @@
     {
         <script asp-location="Footer">
             $(document).ready(function () {
-                $('.header').on('mouseenter', '#topcartlink', function () {
+
+                $('#topcartlink').mouseenter(function (e) {
                     $('#topcartlink').addClass('topcartlink-active');
                     $('#flyout-cart').slideDown();
                 });
-                $('.header-links').on('mouseleave', function () {
-                    $('#topcartlink').removeClass('topcartlink-active');
+
+                $('#flyout-cart-close').click(function () {
                     $('#flyout-cart').slideUp();
+                    $('#topcartlink').removeClass('topcartlink-active');
                 });
+
+                $('html').click(function (e) {
+                    //if clicked element is not your element and parents aren't your div
+                    if (e.target.id != 'flyout-cart-close' && $(e.target).parents('#flyout-cart-close').length == 0) {
+                        //do stuff
+                        $('#flyout-cart').slideUp();
+                        $('#topcartlink').removeClass('topcartlink-active');
+                    }
+                });
+
             });
         </script>
     }

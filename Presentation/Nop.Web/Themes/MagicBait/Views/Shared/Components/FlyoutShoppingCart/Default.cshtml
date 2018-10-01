@@ -3,10 +3,10 @@
     <div class="mini-shopping-cart">
         <div class="row align-items-center">
             <div class="col-xs-12 col-sm-5">
+                <button type="button" class="close-button hvr-grow" id="flyout-cart-close"></button>
                 @if (Model.TotalProducts > 0)
                 {
                     <div class="items">
-                        <div class="light-hr"></div>
                         @for (var i = 0; i < 1; i++)
                         {
                             var item = Model.Items[i];
@@ -30,16 +30,17 @@
                                             @Html.Raw(item.AttributeInfo)
                                         </div>
                                     }
-                                    <div>@T("ShoppingCart.Mini.UnitPrice"): <span  class="price">@item.UnitPrice</span></div>
+                                    <div>@T("ShoppingCart.Mini.UnitPrice"): <span class="price">@item.UnitPrice</span></div>
                                     <div class="quantity">Cart @T("ShoppingCart.Mini.Quantity"): <span>@item.Quantity</span></div>
                                 </div>
                             </div>
                         }
-                        <div class="light-hr"></div>
                     </div>
                 }
-            </div><!--
-            --><div class="col-xs-12 col-sm-7">
+            </div>
+            <!--
+        -->
+            <div class="col-xs-12 col-sm-7">
                 <div class="count">
                     @if (Model.TotalProducts == 0)
                     {
