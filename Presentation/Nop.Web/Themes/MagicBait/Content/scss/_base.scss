@@ -1,6 +1,6 @@
 ﻿/* SASS imports */
 
-@import "global/normalize";
+@import "global/normalize/import-now";
 @import "bourbon/bourbon";
 @import "content/fonts";
 @import "global/mixins";
@@ -104,6 +104,12 @@
 @import "navigation/breadcrumbs";
 @import "navigation/footer";
 @import "navigation/header";
+@import "navigation/desktop-menu";
+@import "navigation/mobile-menu";
+@import "navigation/flyout-cart";
+@import "navigation/_fixed-menu.scss";
 
 @import "sections/footer";
 @import "sections/header";
+
+@import "https://use.fontawesome.com/releases/v5.3.1/css/all.css";

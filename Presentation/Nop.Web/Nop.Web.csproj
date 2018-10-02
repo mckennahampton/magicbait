@@ -56,6 +56,7 @@
 
     <!-- We copy the \Logs directory -->
     <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
+    <None Remove="Themes\MagicBait\Content\css\scrollbar.css" />
     <None Remove="Themes\MagicBait\Content\scss\content\_buttons.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_components.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_fonts.scss" />
@@ -70,8 +71,12 @@
     <None Remove="Themes\MagicBait\Content\scss\global\_typography.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_variables.scss" />
     <None Remove="Themes\MagicBait\Content\scss\navigation\_breadcrumbs.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\navigation\_desktop-menu.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\navigation\_fixed-menu.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\navigation\_flyout-cart.scss" />
     <None Remove="Themes\MagicBait\Content\scss\navigation\_footer.scss" />
     <None Remove="Themes\MagicBait\Content\scss\navigation\_header.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\navigation\_mobile-menu.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_footer.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_header.scss" />
 
@@ -107,6 +112,9 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Shared\_CategoryLine.TopMenu.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\_Root.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Shared\_Root.Head.cshtml">

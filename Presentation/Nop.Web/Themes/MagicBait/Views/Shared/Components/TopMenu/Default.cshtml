@@ -16,47 +16,14 @@
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMenuAfter })
 </ul>
 
-@*
+<script asp-location="Footer">
+    $(document).ready(function () {
 
-    MOBILE MENU ARE
-    It was becoming a nightmare to try to make this work, so I thought it best to just remove the mobile category menu entirely.
-    Removing the comments will bring back the html, but it's not styled.
-    
-    @{
-    var rootCategoriesResponsive = Model.Categories.ToList();
-    //name it "Categories" if we have only categories. Otherwise, "Menu"
-    var responsiveMenuTitle = Model.HasOnlyCategories ? T("Categories") : T("Menu");
-
-    <div class="collapse" id="mobileMenu">
-        <ul class="top-menu mobile">
-            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.MobHeaderMenuBefore })
-            @foreach (var category in rootCategoriesResponsive)
-            {
-                var categoryLineModel = new TopMenuModel.CategoryLineModel
-                {
-                    Category = category,
-                    ResponsiveMobileMenu = true
-                };
-                @await Html.PartialAsync("_CategoryLine.TopMenu", categoryLineModel)
-            }
-            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.MobHeaderMenuAfter })
-        </ul>
-    </div>
-    <nav class="mobile-menu-button">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
-            See Product Categories <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
-    *@
-
-
-    <script asp-location="Footer">
-        $(document).ready(function () {
-            $('.menu-toggle').on('click', function () {
-                $(this).siblings('.top-menu.mobile').slideToggle('slow');
-            });
-            $('.top-menu.mobile .sublist-toggle').on('click', function () {
-                $(this).siblings('.sublist').slideToggle('slow');
-            });
+        $('.menu-toggle').on('click', function () {
+            $(this).siblings('.top-menu.mobile').slideToggle('slow');
         });
-    </script>
+        $('.top-menu.mobile .sublist-toggle').on('click', function () {
+            $(this).siblings('.sublist').slideToggle('slow');
+        });
+    });
+</script>

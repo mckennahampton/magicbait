@@ -1,0 +1,148 @@
+﻿.header-links {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+
+
+    @include media-breakpoint-down(md) {
+        padding-right: 0px;
+        border-bottom: 2px solid black;
+        border-left: 2px solid black;
+        width: 100%;
+    }
+}
+
+.header-links {
+    display: inline-block;
+    vertical-align: middle;
+
+    .desktop-buttons {
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f3f3f3+0,ffffff+100 */
+        background: rgb(243,243,243); /* Old browsers */
+        background: -moz-linear-gradient(top, rgba(243,243,243,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(243,243,243,1) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(243,243,243,1) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+        border-radius: 0px 0px 0px 8px;
+        border-left: 1px solid $color1;
+        border-bottom: 1px solid $color1;
+        padding-right: 30px;
+
+        ul {
+            display: inline-block;
+            vertical-align: middle;
+            margin-bottom: 0;
+            padding-left: 0;
+
+            li {
+                list-style: none;
+                display: block;
+                float: left;
+                padding: 10px 0px;
+
+                &:not(:first-child) {
+                    border-left: 1px solid $color1;
+                }
+
+                a {
+                    font-family: $font-stack-verdana;
+                    font-weight: bold;
+                    color: $color1;
+                    font-size: 12;
+                    text-decoration: none;
+                    padding: 0px 10px;
+                    position: relative;
+                    top: 0;
+                    @include shift(all,0.2s,ease-out);
+                }
+
+                &:hover a {
+                    background: $color1;
+                    color: #fff;
+                    top: 15px;
+                    padding: 30px 10px 10px;
+                    border-radius: 0px 0px 5px 5px;
+                }
+
+                .topcartlink-active a {
+                    background: $color1;
+                    color: #fff;
+                    top: 15px;
+                    padding: 30px 10px 9px;
+                }
+            }
+        }
+    }
+
+    .mobile-buttons {
+
+        @include media-breakpoint-up(md) {
+            display: none;
+        }
+
+        @include media-breakpoint-down(md) {
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+
+            li {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 15px;
+            }
+
+            .sidebar-open-button {
+                background: $color1;
+                text-indent: 0px;
+                text-align: center;
+                @include shift(all,0.2s,ease);
+
+                &:hover {
+                    background: #fff;
+                    cursor: pointer;
+                    text-indent: 30px;
+
+                    i {
+                        margin-right: 15px;
+                    }
+                }
+
+                a {
+                    color: #fff;
+                    @include shift(all,0.2s,ease);
+                }
+
+                &:hover a {
+                    color: $color1;
+                }
+            }
+
+            .top-fixed-totals {
+                padding: 13px 20px 12px;
+            }
+
+            .checkout-button {
+                width: auto;
+                padding: 9px 30px;
+                font-size: 20px;
+                font-family: Geoslab;
+                color: #fff;
+                border-left: 1px solid $color2;
+                border-top: none;
+                vorder-right: none;
+                border-bottom: none;
+                box-shadow: none;
+                @include shift(all, 0.2s, ease);
+
+                &:hover {
+                    color: $color2;
+                    background: #fff;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

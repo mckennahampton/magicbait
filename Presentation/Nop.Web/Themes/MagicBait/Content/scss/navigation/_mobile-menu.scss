@@ -1,0 +1,181 @@
+﻿body {
+    overflow-x: hidden;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    margin-right: -250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    text-align: center;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -255px;
+    overflow-y: auto;
+    border-right: 5px solid black;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#130684+1,0808af+8 */
+    background: rgb(19,6,132); /* Old browsers */
+    background: -moz-linear-gradient(left, rgba(19,6,132,1) 1%, rgba(8,8,175,1) 8%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(19,6,132,1) 1%,rgba(8,8,175,1) 8%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(19,6,132,1) 1%,rgba(8,8,175,1) 8%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#130684', endColorstr='#0808af',GradientType=1 ); /* IE6-9 */
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.sidebar-wrapper-toggled {
+    box-shadow: 0px 0px calc(100vw - 250px) calc(50vw - 250px) #0d0d0d;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -255px;
+}
+
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    color: #fff;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-logo {
+    width: 80%;
+    max-width: 230px;
+    margin: 0 auto;
+    padding: 20px 0px;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.sidebar-nav li {
+
+    &:not(:first-child) {
+        text-indent: 20px;
+    }
+
+    line-height: 40px;
+    @include shift(all, ease, 0.2s);
+
+    a {
+        display: block;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    &:not(:last-child) {
+        border-bottom: 1px solid white;
+    }
+
+    &:not(:first-child):hover {
+        background: white;
+
+        &:not(:first-child) {
+            text-indent: 50px;
+        }
+
+        a {
+            color: $color2;
+        }
+    }
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 0;
+    }
+
+    #wrapper.toggled {
+        padding-left: 245px;
+    }
+
+    #sidebar-wrapper {
+        width: 0;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #page-content-wrapper {
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+.back-button {
+    width: 100%;
+    background: $color1;
+    border-bottom: 2px solid white;
+    padding: 10px 0px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    text-indent: 0px;
+    text-align: center;
+    padding: 20px 0px;
+    @include shift(all,0.2s,ease);
+
+    &:hover {
+        background: #fff;
+        border-bottom: 2px solid $color1;
+        cursor: pointer;
+        text-indent: 30px;
+    }
+
+    span {
+        color: #fff;
+        @include shift(all,0.2s,ease);
+        display: inline-block;
+        vertical-align: middle;
+        
+        i {
+            margin-left: 15px;
+        }
+    }
+
+    &:hover span{
+        color: $color1;
+    }
+}

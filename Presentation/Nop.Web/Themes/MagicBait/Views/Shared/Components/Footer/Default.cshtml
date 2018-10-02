@@ -127,7 +127,8 @@
     </div>
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.Footer })
 </div>
-@await Component.InvokeAsync("HeaderLinks")
+@await Component.InvokeAsync("HeaderLinks");
+
 <script asp-location="Footer">
     $(document).ready(function () {
         $('.footer-block .title').on('click', function () {

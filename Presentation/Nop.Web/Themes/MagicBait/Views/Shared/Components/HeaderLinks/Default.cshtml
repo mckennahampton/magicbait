@@ -1,48 +1,68 @@
 ﻿@model HeaderLinksModel
 @using System.Text.Encodings.Web
 @using Nop.Web.Framework.Infrastructure
+
 <div class="header-links">
-    <ul>
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderLinksBefore })
-        @if (Model.IsAuthenticated)
-        {
-            <li><a href="@Url.RouteUrl("CustomerInfo")" class="ico-account">@T("Account.MyAccount")@*@Model.CustomerName*@</a></li>
-            <li><a href="@Url.RouteUrl("Logout")" class="ico-logout">@T("Account.Logout")</a></li>
-        }
-        else
-        {
-            <li><a href="@Url.RouteUrl("Register")" class="ico-register">@T("Account.Register")</a></li>
-            <li><a href="@Url.RouteUrl("Login")" class="ico-login">@T("Account.Login")</a></li>
-        }
-        @if (Model.AllowPrivateMessages)
-        {
+        <div class="mobile-buttons">
+            <li class="sidebar-open-button">
+                <a href="#menu-toggle" id="menu-toggle"><i class="fas fa-arrow-left"></i> Menu</a>
+            </li>
             <li>
-                <a href="@Url.RouteUrl("PrivateMessages", new { tab = "" })" class="ico-inbox">
-                    <span class="inbox-label">@T("PrivateMessages.Inbox")</span>
-                    <span class="inbox-unread">@Model.UnreadPrivateMessages</span>
-                </a>
+                <a href="/shop" alt="Go to Shop">Shop</a>
             </li>
-        }
-        @if (Model.WishlistEnabled)
-        {
+            <li id="moble-search-fixed">
+                @await Component.InvokeAsync("SearchBox")
+            </li>
+            <li class="top-fixed-totals">
+                Cart Total: <strong class="price"></strong>
+            </li>
             <li>
-                <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
-                    <span class="wishlist-label">@T("Wishlist")</span>
-                    <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
-                </a>
+                <input type="button" value="Checkout" class="button-1 checkout-button" onclick="setLocation('/checkout')" />
             </li>
-        }
-        @if (Model.ShoppingCartEnabled)
-        {
-            <li id="topcartlink">
-                <a href="@Url.RouteUrl("ShoppingCart")" class="ico-cart">
-                    <span class="cart-label">@T("ShoppingCart")</span>
-                    <span class="cart-qty">@T("ShoppingCart.HeaderQuantity", Model.ShoppingCartItems)</span>
-                </a>
-            </li>
-        }
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderLinksAfter })
-    </ul>
+        </div>
+        <div class="desktop-buttons">
+            <ul>
+                @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderLinksBefore })
+                @if (Model.IsAuthenticated)
+                {
+                    <li><a href="@Url.RouteUrl("CustomerInfo")" class="ico-account">@T("Account.MyAccount")@*@Model.CustomerName*@</a></li>
+                    <li><a href="@Url.RouteUrl("Logout")" class="ico-logout">@T("Account.Logout")</a></li>
+                }
+                else
+                {
+                    <li><a href="@Url.RouteUrl("Register")" class="ico-register">@T("Account.Register")</a></li>
+                    <li><a href="@Url.RouteUrl("Login")" class="ico-login">@T("Account.Login")</a></li>
+                }
+                @if (Model.AllowPrivateMessages)
+                {
+                    <li>
+                        <a href="@Url.RouteUrl("PrivateMessages", new { tab = "" })" class="ico-inbox">
+                            <span class="inbox-label">@T("PrivateMessages.Inbox")</span>
+                            <span class="inbox-unread">@Model.UnreadPrivateMessages</span>
+                        </a>
+                    </li>
+                }
+                @if (Model.WishlistEnabled)
+                {
+                    <li>
+                        <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
+                            <span class="wishlist-label">@T("Wishlist")</span>
+                            <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
+                        </a>
+                    </li>
+                }
+                @if (Model.ShoppingCartEnabled)
+                {
+                    <li id="topcartlink">
+                        <a href="@Url.RouteUrl("ShoppingCart")" class="ico-cart">
+                            <span class="cart-label">@T("ShoppingCart")</span>
+                            <span class="cart-qty">@T("ShoppingCart.HeaderQuantity", Model.ShoppingCartItems)</span>
+                        </a>
+                    </li>
+                }
+                @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderLinksAfter })
+            </ul>
+        </div>
     @await Component.InvokeAsync("FlyoutShoppingCart")
     @if (Model.AllowPrivateMessages && !string.IsNullOrEmpty(Model.AlertMessage))
     {
@@ -57,6 +77,8 @@
     {
         <script asp-location="Footer">
             $(document).ready(function () {
+
+                $('.top-fixed-totals .price').append(cartPrice);
 
                 $('#topcartlink').mouseenter(function (e) {
                     $('#topcartlink').addClass('topcartlink-active');
@@ -77,6 +99,16 @@
                     }
                 });
 
+            });
+
+            //adjust for the fixed mobile header
+            $(window).on("load resize", function (e) {
+                if ($(window).width() < 1030) {
+                    var stickyPadding = $('.header-links').outerHeight();
+                    $('#page-content-wrapper').css({ 'margin-top': stickyPadding + 'px' });
+                } else {
+                    $('#page-content-wrapper').css({ 'margin-top': '0px' });
+                }
             });
         </script>
     }

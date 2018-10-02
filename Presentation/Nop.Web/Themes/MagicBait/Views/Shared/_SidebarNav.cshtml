@@ -1,0 +1,63 @@
+﻿@using Nop.Web.Framework.Infrastructure
+
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+    <div class="back-button" id="closeSidebar" alt="Close Sidebar">
+        <span>Back<i class="fas fa-arrow-right"></i></span>
+    </div>
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <div class="sidebar-logo">
+                @await Component.InvokeAsync("Logo")
+            </div>
+        </li>
+        <li>
+            <a href="#">Dashboard</a>
+        </li>
+        <li>
+            <a href="#">Shortcuts</a>
+        </li>
+        <li>
+            <a href="#">Overview</a>
+        </li>
+        <li>
+            <a href="#">Events</a>
+        </li>
+        <li>
+            <a href="#">About</a>
+        </li>
+        <li>
+            <a href="#">Services</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+    </ul>
+</div>
+<div class="overlay"></div>
+<!-- /#sidebar-wrapper -->
+
+<script asp-location="Footer">
+    $(document).ready(function () {
+
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").addClass("toggled");
+            $("#sidebar-wrapper").addClass('sidebar-wrapper-toggled');
+        });
+
+        $('#closeSidebar').click(function () {
+            $("#wrapper").removeClass("toggled");
+            $("#sidebar-wrapper").removeClass('sidebar-wrapper-toggled');
+        });
+
+    });
+
+    //Check on resize if we need to close the sidebar menu out
+    $(window).resize(function () {
+        if ($(window).width() > 1030) {
+            $("#wrapper").removeClass("toggled");
+            $("#sidebar-wrapper").removeClass('sidebar-wrapper-toggled');
+        }
+    });
+</script>

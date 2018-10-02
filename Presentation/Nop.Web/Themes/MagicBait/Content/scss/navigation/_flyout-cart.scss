@@ -1,0 +1,47 @@
+﻿.flyout-cart {
+    display: none;
+    position: absolute;
+    margin-top: 10px;
+    width: 95%;
+    right: 0;
+    border-radius: 5px 0px 5px 5px;
+    border: 2px solid $color1;
+    padding: 15px;
+    z-index: 99999;
+    background: #fff;
+
+    .row > .col-* {
+        text-align: center;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .items > * {
+        display: inline-block;
+        text-align: center;
+    }
+
+    .buttons {
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .product {
+        font-size: 15px;
+    }
+
+    .count {
+        font-size: 15px;
+    }
+
+    .count, .totals {
+        text-align: center;
+
+        a {
+            color: $color1;
+        }
+    }
+}
