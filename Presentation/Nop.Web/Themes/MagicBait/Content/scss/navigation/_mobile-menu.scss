@@ -19,6 +19,7 @@
     position: fixed;
     text-align: center;
     left: 250px;
+    top: 0;
     width: 0;
     height: 100%;
     margin-left: -255px;
@@ -37,7 +38,7 @@
 }
 
 .sidebar-wrapper-toggled {
-    box-shadow: 0px 0px calc(100vw - 250px) calc(50vw - 250px) #0d0d0d;
+    box-shadow: 0px 0px calc(100vw - 250px) calc(100vw) rgba(0,0,0,0.8);
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -57,16 +58,24 @@
 
 /* Sidebar Styles */
 
+.sidebar-brand {
+    border-bottom: 1px solid black;
+}
+
 .sidebar-nav {
     position: relative;
     display: inline-block;
     text-align: left;
     color: #fff;
     top: 0;
-    width: 250px;
+    width: 245px;
     margin: 0;
     padding: 0;
     list-style: none;
+
+    .price {
+        font-weight: bold;
+    }
 }
 
 .sidebar-logo {
@@ -81,36 +90,50 @@
     }
 }
 
+.sidebar-nav {
+    ul {
+        margin-left: 0;
+        padding-left: 0;
+
+        li {
+            list-style: none;
+        }
+    }
+}
+
+.sidebar-nav ul {
+    margin-bottom: 50px;
+}
+
 .sidebar-nav li {
 
-    &:not(:first-child) {
+    &.sidebar-shop-link {
+        border-top: 1px solid black;
+    }
+
+    &.sidebar-user-link, &.sidebar-site-link {
         text-indent: 20px;
-    }
+        border-bottom: 1px solid black;
+        background: none;
 
-    line-height: 40px;
-    @include shift(all, ease, 0.2s);
-
-    a {
-        display: block;
-        text-decoration: none;
-        color: #fff;
-    }
-
-    &:not(:last-child) {
-        border-bottom: 1px solid white;
-    }
-
-    &:not(:first-child):hover {
-        background: white;
-
-        &:not(:first-child) {
+        &:hover {
+            background: #fff;
             text-indent: 50px;
         }
 
         a {
-            color: $color2;
+            display: block;
+            text-decoration: none;
+            color: #fff;
+
+            &:hover {
+                color: $color2;
+            }
         }
     }
+
+    line-height: 40px;
+    @include shift(all, ease, 0.2s);
 }
 
 .sidebar-nav li a:active, .sidebar-nav li a:focus {

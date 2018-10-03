@@ -6,7 +6,6 @@
 }
 
 .desktop-main-button {
-    box-shadow: 4px 4px 3px 1px #f2f2f2;
     color: #fff;
     border: 2px solid #fff;
     padding: 8px;
@@ -23,6 +22,7 @@
 
 .cart-button, .checkout-button {
     width: 90%;
+    box-shadow: 4px 4px 3px 1px rgba(0,0,0,0.5);
 }
 
 .cart-button {

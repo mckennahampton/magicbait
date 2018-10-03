@@ -7,7 +7,6 @@
     @include media-breakpoint-down(md) {
         padding-right: 0px;
         border-bottom: 2px solid black;
-        border-left: 2px solid black;
         width: 100%;
     }
 }
@@ -21,15 +20,12 @@
             display: none;
         }
         /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f3f3f3+0,ffffff+100 */
-        background: rgb(243,243,243); /* Old browsers */
-        background: -moz-linear-gradient(top, rgba(243,243,243,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(top, rgba(243,243,243,1) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to bottom, rgba(243,243,243,1) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+        background: $color1;
         border-radius: 0px 0px 0px 8px;
-        border-left: 1px solid $color1;
-        border-bottom: 1px solid $color1;
+        border-left: 1px solid #000;
+        border-bottom: 1px solid #000;
         padding-right: 30px;
+        box-shadow: 0px 0px 8px 0.5px rgba(0,0,0,0.5);
 
         ul {
             display: inline-block;
@@ -42,71 +38,129 @@
                 display: block;
                 float: left;
                 padding: 10px 0px;
+                border-right: 1px solid #fff;
 
-                &:not(:first-child) {
-                    border-left: 1px solid $color1;
+                &.sidebar-open-button {
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    a {
+                        padding-right: 10px;
+                    }
+
+                    i {
+                        padding-right: 0px;
+                        padding-left: 10px;
+                        @include shift(all,0.2s,ease);
+                    }
+
+                    &:hover {
+                        background: #fff;
+                        cursor: pointer;
+
+                        i {
+                            padding-right: 10px;
+                            padding-left: 0px;
+                        }
+                    }
                 }
 
                 a {
                     font-family: $font-stack-verdana;
-                    font-weight: bold;
-                    color: $color1;
+                    color: #fff;
                     font-size: 12;
                     text-decoration: none;
                     padding: 0px 10px;
                     position: relative;
+                    border-bottom: 1px solid $color1;
+                    border-right: 1px solid $color1;
+                    border-left: 1px solid $color1;
                     top: 0;
                     @include shift(all,0.2s,ease-out);
                 }
 
                 &:hover a {
-                    background: $color1;
-                    color: #fff;
+                    background: #fff;
+                    color: $color1;
                     top: 15px;
                     padding: 30px 10px 10px;
                     border-radius: 0px 0px 5px 5px;
+                    border-bottom: 1px solid black;
+                    border-right: 1px solid black;
+                    border-left: 1px solid black;
                 }
 
-                .topcartlink-active a {
-                    background: $color1;
-                    color: #fff;
+                &.topcartlink-active a {
+                    background: #fff;
+                    color: $color1;
                     top: 15px;
                     padding: 30px 10px 9px;
+                    border-radius: 0px 0px 5px 5px;
+                    border-bottom: 1px solid black;
+                    border-right: 1px solid black;
+                    border-left: 1px solid black;
                 }
             }
         }
     }
 
     .mobile-buttons {
+        background: #fff;
 
         @include media-breakpoint-up(md) {
             display: none;
         }
 
         @include media-breakpoint-down(md) {
-            display: inline-block;
+            display: table;
             text-align: center;
             width: 100%;
 
             li {
-                display: inline-block;
+                display: table-cell;
                 vertical-align: middle;
                 font-size: 15px;
+
+                &.sidebar-open-button {
+                    width: 100px;
+                }
+
+                &#mobile-search-fixed {
+                    @include media-breakpoint-down(sm) {
+                        display: none;
+                    }
+                }
+
+                #small-searchterms {
+                    width: 70%;
+                }
             }
 
             .sidebar-open-button {
                 background: $color1;
                 text-indent: 0px;
                 text-align: center;
+                border-right: 1px solid $color1;
                 @include shift(all,0.2s,ease);
+
+                a {
+                    padding-right: 10px;
+                }
+
+                i {
+                    padding-right: 0px;
+                    padding-left: 10px;
+                    @include shift(all,0.2s,ease);
+                }
 
                 &:hover {
                     background: #fff;
                     cursor: pointer;
-                    text-indent: 30px;
 
                     i {
-                        margin-right: 15px;
+                        padding-right: 10px;
+                        padding-left: 0px;
                     }
                 }
 
@@ -117,30 +171,40 @@
 
                 &:hover a {
                     color: $color1;
+                    text-decoration: none;
                 }
             }
 
             .top-fixed-totals {
-                padding: 13px 20px 12px;
+                @include media-breakpoint-between(sm, md) {
+                    border-left: 1px solid black;
+                }
             }
 
-            .checkout-button {
-                width: auto;
-                padding: 9px 30px;
-                font-size: 20px;
-                font-family: Geoslab;
-                color: #fff;
-                border-left: 1px solid $color2;
-                border-top: none;
-                vorder-right: none;
-                border-bottom: none;
-                box-shadow: none;
-                @include shift(all, 0.2s, ease);
+            #fixed-checkout {
 
-                &:hover {
-                    color: $color2;
-                    background: #fff;
-                    cursor: pointer;
+                @include media-breakpoint-down(sm) {
+                    width: 100px;
+                }
+
+                .checkout-button {
+                    width: 100%;
+                    padding: 9px 15px;
+                    font-size: 20px;
+                    font-family: Geoslab;
+                    color: #fff;
+                    border-left: 1px solid $color2;
+                    border-top: none;
+                    border-right: none;
+                    border-bottom: none;
+                    box-shadow: none;
+                    @include shift(all, 0.2s, ease);
+
+                    &:hover {
+                        color: $color2;
+                        background: #fff;
+                        cursor: pointer;
+                    }
                 }
             }
         }

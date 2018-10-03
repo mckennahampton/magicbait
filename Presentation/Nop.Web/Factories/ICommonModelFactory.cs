@@ -39,6 +39,12 @@ namespace Nop.Web.Factories
         HeaderLinksModel PrepareHeaderLinksModel();
 
         /// <summary>
+        /// Prepare the header links model
+        /// </summary>
+        /// <returns>Header links model</returns>
+        SidebarUserLinksModel PrepareSidebarUserLinksModel();
+
+        /// <summary>
         /// Prepare the admin header links model
         /// </summary>
         /// <returns>Admin header links model</returns>

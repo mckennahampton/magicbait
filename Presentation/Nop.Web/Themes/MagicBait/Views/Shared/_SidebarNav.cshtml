@@ -1,5 +1,5 @@
 ﻿@using Nop.Web.Framework.Infrastructure
-
+@using Nop.Services.Catalog
 <!-- Sidebar -->
 <div id="sidebar-wrapper">
     <div class="back-button" id="closeSidebar" alt="Close Sidebar">
@@ -11,26 +11,17 @@
                 @await Component.InvokeAsync("Logo")
             </div>
         </li>
-        <li>
-            <a href="#">Dashboard</a>
+        <ul>
+         @await Component.InvokeAsync("SidebarUserLinks")
+        </ul>
+        <li class="sidebar-site-link sidebar-shop-link">
+            <a href="/shop">Shop</a>
         </li>
-        <li>
-            <a href="#">Shortcuts</a>
+        <li class="sidebar-site-link">
+            <a href="/about">About</a>
         </li>
-        <li>
-            <a href="#">Overview</a>
-        </li>
-        <li>
-            <a href="#">Events</a>
-        </li>
-        <li>
-            <a href="#">About</a>
-        </li>
-        <li>
-            <a href="#">Services</a>
-        </li>
-        <li>
-            <a href="#">Contact</a>
+        <li class="sidebar-site-link">
+            <a href="/contact">Contact</a>
         </li>
     </ul>
 </div>
@@ -40,7 +31,9 @@
 <script asp-location="Footer">
     $(document).ready(function () {
 
-        $("#menu-toggle").click(function (e) {
+        $('#sidebar-price').append(cartPrice);
+
+        $("#menu-toggle, #menu-toggle-desktop").click(function (e) {
             e.preventDefault();
             $("#wrapper").addClass("toggled");
             $("#sidebar-wrapper").addClass('sidebar-wrapper-toggled');

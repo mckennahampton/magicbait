@@ -20884,8 +20884,6 @@ a.text-dark:hover, a.text-dark:focus {
   content: ""; }
 
 .desktop-main-button {
-  -webkit-box-shadow: 4px 4px 3px 1px #f2f2f2;
-  box-shadow: 4px 4px 3px 1px #f2f2f2;
   color: #fff;
   border: 2px solid #fff;
   padding: 8px;
@@ -20898,7 +20896,9 @@ a.text-dark:hover, a.text-dark:focus {
     cursor: pointer; }
 
 .cart-button, .checkout-button {
-  width: 90%; }
+  width: 90%;
+  -webkit-box-shadow: 4px 4px 3px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 3px 1px rgba(0, 0, 0, 0.5); }
 
 .cart-button {
   background: #EC1C24; }
@@ -20925,6 +20925,11 @@ a.text-dark:hover, a.text-dark:focus {
   width: 90%;
   margin: 10px auto;
   border-top: 1px solid #ccc; }
+
+.white-hr {
+  width: 90%;
+  margin: 10px auto;
+  border-top: 1px solid #fff; }
 
 .admin-header-links {
   background: #000;
@@ -20971,7 +20976,7 @@ a.text-dark:hover, a.text-dark:focus {
       float: left; } }
   @media (max-width: 1029.98px) {
     .header-logo {
-      width: 90;
+      width: 90%;
       max-width: 400px;
       height: auto;
       float: none;
@@ -21081,6 +21086,8 @@ a.text-dark:hover, a.text-dark:focus {
         padding: 0px;
         background: #fff;
         border-radius: 0px 0px 8px 8px;
+        -webkit-box-shadow: 0px 5px 8px 1px rgba(0, 0, 0, 0.8);
+        box-shadow: 0px 5px 8px 1px rgba(0, 0, 0, 0.8);
         border: 2px solid #fff;
         left: 50%;
         top: 125%;
@@ -21154,6 +21161,7 @@ body {
   position: fixed;
   text-align: center;
   left: 250px;
+  top: 0;
   width: 0;
   height: 100%;
   margin-left: -255px;
@@ -21178,8 +21186,8 @@ body {
   transition: all 0.5s ease; }
 
 .sidebar-wrapper-toggled {
-  -webkit-box-shadow: 0px 0px calc(100vw - 250px) calc(50vw - 250px) #0d0d0d;
-  box-shadow: 0px 0px calc(100vw - 250px) calc(50vw - 250px) #0d0d0d; }
+  -webkit-box-shadow: 0px 0px calc(100vw - 250px) calc(100vw) rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px calc(100vw - 250px) calc(100vw) rgba(0, 0, 0, 0.8); }
 
 #wrapper.toggled #sidebar-wrapper {
   width: 250px; }
@@ -21193,16 +21201,21 @@ body {
   margin-right: -255px; }
 
 /* Sidebar Styles */
+.sidebar-brand {
+  border-bottom: 1px solid black; }
+
 .sidebar-nav {
   position: relative;
   display: inline-block;
   text-align: left;
   color: #fff;
   top: 0;
-  width: 250px;
+  width: 245px;
   margin: 0;
   padding: 0;
   list-style: none; }
+  .sidebar-nav .price {
+    font-weight: bold; }
 
 .sidebar-logo {
   width: 80%;
@@ -21213,26 +21226,36 @@ body {
     width: 100%;
     height: auto; }
 
+.sidebar-nav ul {
+  margin-left: 0;
+  padding-left: 0; }
+  .sidebar-nav ul li {
+    list-style: none; }
+
+.sidebar-nav ul {
+  margin-bottom: 50px; }
+
 .sidebar-nav li {
   line-height: 40px;
   -webkit-transition: all ease 0.2s;
   -moz-transition: all ease 0.2s;
   -o-transition: all ease 0.2s;
   transition: all ease 0.2s; }
-  .sidebar-nav li:not(:first-child) {
-    text-indent: 20px; }
-  .sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #fff; }
-  .sidebar-nav li:not(:last-child) {
-    border-bottom: 1px solid white; }
-  .sidebar-nav li:not(:first-child):hover {
-    background: white; }
-    .sidebar-nav li:not(:first-child):hover:not(:first-child) {
+  .sidebar-nav li.sidebar-shop-link {
+    border-top: 1px solid black; }
+  .sidebar-nav li.sidebar-user-link, .sidebar-nav li.sidebar-site-link {
+    text-indent: 20px;
+    border-bottom: 1px solid black;
+    background: none; }
+    .sidebar-nav li.sidebar-user-link:hover, .sidebar-nav li.sidebar-site-link:hover {
+      background: #fff;
       text-indent: 50px; }
-    .sidebar-nav li:not(:first-child):hover a {
-      color: #0808AF; }
+    .sidebar-nav li.sidebar-user-link a, .sidebar-nav li.sidebar-site-link a {
+      display: block;
+      text-decoration: none;
+      color: #fff; }
+      .sidebar-nav li.sidebar-user-link a:hover, .sidebar-nav li.sidebar-site-link a:hover {
+        color: #0808AF; }
 
 .sidebar-nav li a:active, .sidebar-nav li a:focus {
   text-decoration: none; }
@@ -21288,7 +21311,7 @@ body {
 .flyout-cart {
   display: none;
   position: absolute;
-  margin-top: 10px;
+  margin-top: 13px;
   width: 95%;
   right: 0;
   border-radius: 5px 0px 5px 5px;
@@ -21324,7 +21347,6 @@ body {
     .header-links {
       padding-right: 0px;
       border-bottom: 2px solid black;
-      border-left: 2px solid black;
       width: 100%; } }
 
 .header-links {
@@ -21332,22 +21354,13 @@ body {
   vertical-align: middle; }
   .header-links .desktop-buttons {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f3f3f3+0,ffffff+100 */
-    background: #f3f3f3;
-    /* Old browsers */
-    background: -moz-linear-gradient(top, #f3f3f3 0%, white 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #f3f3f3 0%, white 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(white));
-    background: -o-linear-gradient(top, #f3f3f3 0%, white 100%);
-    background: linear-gradient(to bottom, #f3f3f3 0%, white 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', endColorstr='#ffffff',GradientType=0 );
-    /* IE6-9 */
+    background: #EC1C24;
     border-radius: 0px 0px 0px 8px;
-    border-left: 1px solid #EC1C24;
-    border-bottom: 1px solid #EC1C24;
-    padding-right: 30px; }
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding-right: 30px;
+    -webkit-box-shadow: 0px 0px 8px 0.5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 8px 0.5px rgba(0, 0, 0, 0.5); }
     @media (max-width: 1029.98px) {
       .header-links .desktop-buttons {
         display: none; } }
@@ -21360,86 +21373,206 @@ body {
         list-style: none;
         display: block;
         float: left;
-        padding: 10px 0px; }
-        .header-links .desktop-buttons ul li:not(:first-child) {
-          border-left: 1px solid #EC1C24; }
+        padding: 10px 0px;
+        border-right: 1px solid #fff; }
+        .header-links .desktop-buttons ul li.sidebar-open-button:hover {
+          cursor: pointer; }
+        .header-links .desktop-buttons ul li.sidebar-open-button a {
+          padding-right: 10px; }
+        .header-links .desktop-buttons ul li.sidebar-open-button i {
+          padding-right: 0px;
+          padding-left: 10px;
+          -webkit-transition: all 0.2s ease;
+          -moz-transition: all 0.2s ease;
+          -o-transition: all 0.2s ease;
+          transition: all 0.2s ease; }
+        .header-links .desktop-buttons ul li.sidebar-open-button:hover {
+          background: #fff;
+          cursor: pointer; }
+          .header-links .desktop-buttons ul li.sidebar-open-button:hover i {
+            padding-right: 10px;
+            padding-left: 0px; }
         .header-links .desktop-buttons ul li a {
           font-family: "Verdana", "Geneva", sans-serif;
-          font-weight: bold;
-          color: #EC1C24;
+          color: #fff;
           font-size: 12;
           text-decoration: none;
           padding: 0px 10px;
           position: relative;
+          border-bottom: 1px solid #EC1C24;
+          border-right: 1px solid #EC1C24;
+          border-left: 1px solid #EC1C24;
           top: 0;
           -webkit-transition: all 0.2s ease-out;
           -moz-transition: all 0.2s ease-out;
           -o-transition: all 0.2s ease-out;
           transition: all 0.2s ease-out; }
         .header-links .desktop-buttons ul li:hover a {
-          background: #EC1C24;
-          color: #fff;
+          background: #fff;
+          color: #EC1C24;
           top: 15px;
           padding: 30px 10px 10px;
-          border-radius: 0px 0px 5px 5px; }
-        .header-links .desktop-buttons ul li .topcartlink-active a {
-          background: #EC1C24;
-          color: #fff;
-          top: 15px;
-          padding: 30px 10px 9px; }
-  @media (min-width: 768px) {
-    .header-links .mobile-buttons {
-      display: none; } }
-  @media (max-width: 1029.98px) {
-    .header-links .mobile-buttons {
-      display: inline-block;
-      text-align: center;
-      width: 100%; }
-      .header-links .mobile-buttons li {
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 15px; }
-      .header-links .mobile-buttons .sidebar-open-button {
-        background: #EC1C24;
-        text-indent: 0px;
-        text-align: center;
-        -webkit-transition: all 0.2s ease;
-        -moz-transition: all 0.2s ease;
-        -o-transition: all 0.2s ease;
-        transition: all 0.2s ease; }
-        .header-links .mobile-buttons .sidebar-open-button:hover {
+          border-radius: 0px 0px 5px 5px;
+          border-bottom: 1px solid black;
+          border-right: 1px solid black;
+          border-left: 1px solid black; }
+        .header-links .desktop-buttons ul li.topcartlink-active a {
           background: #fff;
-          cursor: pointer;
-          text-indent: 30px; }
-          .header-links .mobile-buttons .sidebar-open-button:hover i {
-            margin-right: 15px; }
-        .header-links .mobile-buttons .sidebar-open-button a {
-          color: #fff;
+          color: #EC1C24;
+          top: 15px;
+          padding: 30px 10px 9px;
+          border-radius: 0px 0px 5px 5px;
+          border-bottom: 1px solid black;
+          border-right: 1px solid black;
+          border-left: 1px solid black; }
+  .header-links .mobile-buttons {
+    background: #fff; }
+    @media (min-width: 768px) {
+      .header-links .mobile-buttons {
+        display: none; } }
+    @media (max-width: 1029.98px) {
+      .header-links .mobile-buttons {
+        display: table;
+        text-align: center;
+        width: 100%; }
+        .header-links .mobile-buttons li {
+          display: table-cell;
+          vertical-align: middle;
+          font-size: 15px; }
+          .header-links .mobile-buttons li.sidebar-open-button {
+            width: 100px; } }
+    @media (max-width: 1029.98px) and (max-width: 767.98px) {
+      .header-links .mobile-buttons li#mobile-search-fixed {
+        display: none; } }
+    @media (max-width: 1029.98px) {
+          .header-links .mobile-buttons li #small-searchterms {
+            width: 70%; }
+        .header-links .mobile-buttons .sidebar-open-button {
+          background: #EC1C24;
+          text-indent: 0px;
+          text-align: center;
+          border-right: 1px solid #EC1C24;
           -webkit-transition: all 0.2s ease;
           -moz-transition: all 0.2s ease;
           -o-transition: all 0.2s ease;
           transition: all 0.2s ease; }
-        .header-links .mobile-buttons .sidebar-open-button:hover a {
-          color: #EC1C24; }
-      .header-links .mobile-buttons .top-fixed-totals {
-        padding: 13px 20px 12px; }
-      .header-links .mobile-buttons .checkout-button {
-        width: auto;
-        padding: 9px 30px;
-        font-size: 20px;
-        font-family: Geoslab;
+          .header-links .mobile-buttons .sidebar-open-button a {
+            padding-right: 10px; }
+          .header-links .mobile-buttons .sidebar-open-button i {
+            padding-right: 0px;
+            padding-left: 10px;
+            -webkit-transition: all 0.2s ease;
+            -moz-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            transition: all 0.2s ease; }
+          .header-links .mobile-buttons .sidebar-open-button:hover {
+            background: #fff;
+            cursor: pointer; }
+            .header-links .mobile-buttons .sidebar-open-button:hover i {
+              padding-right: 10px;
+              padding-left: 0px; }
+          .header-links .mobile-buttons .sidebar-open-button a {
+            color: #fff;
+            -webkit-transition: all 0.2s ease;
+            -moz-transition: all 0.2s ease;
+            -o-transition: all 0.2s ease;
+            transition: all 0.2s ease; }
+          .header-links .mobile-buttons .sidebar-open-button:hover a {
+            color: #EC1C24;
+            text-decoration: none; } }
+  @media (max-width: 1029.98px) and (min-width: 576px) and (max-width: 1029.98px) {
+    .header-links .mobile-buttons .top-fixed-totals {
+      border-left: 1px solid black; } }
+  @media (max-width: 1029.98px) and (max-width: 767.98px) {
+    .header-links .mobile-buttons #fixed-checkout {
+      width: 100px; } }
+    @media (max-width: 1029.98px) {
+        .header-links .mobile-buttons #fixed-checkout .checkout-button {
+          width: 100%;
+          padding: 9px 15px;
+          font-size: 20px;
+          font-family: Geoslab;
+          color: #fff;
+          border-left: 1px solid #0808AF;
+          border-top: none;
+          border-right: none;
+          border-bottom: none;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+          -webkit-transition: all 0.2s ease;
+          -moz-transition: all 0.2s ease;
+          -o-transition: all 0.2s ease;
+          transition: all 0.2s ease; }
+          .header-links .mobile-buttons #fixed-checkout .checkout-button:hover {
+            color: #0808AF;
+            background: #fff;
+            cursor: pointer; } }
+
+.footer {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#130684+1,0808af+79 */
+  background: #130684;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #130684 1%, #0808af 79%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #130684 1%, #0808af 79%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #130684), color-stop(79%, #0808af));
+  background: -o-linear-gradient(top, #130684 1%, #0808af 79%);
+  background: linear-gradient(to bottom, #130684 1%, #0808af 79%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#130684', endColorstr='#0808af',GradientType=0 );
+  /* IE6-9 */ }
+  .footer .footer-block .title {
+    color: #fff; }
+  .footer .footer-block ul {
+    list-style: none; }
+    .footer .footer-block ul li {
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      -o-transition: all 0.2s ease;
+      transition: all 0.2s ease; }
+      .footer .footer-block ul li a {
         color: #fff;
-        border-left: 1px solid #0808AF;
-        border-top: none;
-        vorder-right: none;
-        border-bottom: none;
-        -webkit-box-shadow: none;
-        box-shadow: none;
+        width: 100%;
+        display: block;
+        padding-left: 0px;
+        margin-top: 5px;
         -webkit-transition: all 0.2s ease;
         -moz-transition: all 0.2s ease;
         -o-transition: all 0.2s ease;
         transition: all 0.2s ease; }
-        .header-links .mobile-buttons .checkout-button:hover {
-          color: #0808AF;
-          background: #fff;
-          cursor: pointer; } }
+        .footer .footer-block ul li a:hover {
+          text-decoration: none; }
+      .footer .footer-block ul li:hover {
+        border-left: 2px solid #fff; }
+        .footer .footer-block ul li:hover a {
+          padding-left: 15px; }
+  .footer .newsletter-con {
+    max-width: 500px; }
+    .footer .newsletter-con .title {
+      color: #fff; }
+    .footer .newsletter-con .newsletter {
+      text-align: center; }
+      .footer .newsletter-con .newsletter .newsletter-email .search-box-button, .footer .newsletter-con .newsletter .newsletter-email #small-searchterms {
+        display: inline-block;
+        color: #212529; }
+      .footer .newsletter-con .newsletter .newsletter-email #newsletter-email {
+        border-left: 1px solid #bbbbbb;
+        border-bottom: 1px solid #bbbbbb;
+        border-top: 1px solid #bbbbbb;
+        border-right: none;
+        font: "Verdana", "Geneva", sans-serif;
+        font-weight: 100;
+        padding-left: 10px; }
+      .footer .newsletter-con .newsletter .newsletter-email #newsletter-subscribe-button {
+        width: 100%;
+        background: #EC1C24; }
+      .footer .newsletter-con .newsletter .newsletter-email #emailHelp {
+        color: #fff; }
+      .footer .newsletter-con .newsletter .newsletter-email .form-check-label {
+        color: #fff; }
+  .footer .footer-info {
+    text-align: center; }
+    .footer .footer-info .footer-disclaimer {
+      color: #fff;
+      display: inline-block; }

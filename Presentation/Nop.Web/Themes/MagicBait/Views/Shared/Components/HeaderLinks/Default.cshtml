@@ -4,24 +4,24 @@
 
 <div class="header-links">
         <div class="mobile-buttons">
-            <li class="sidebar-open-button">
-                <a href="#menu-toggle" id="menu-toggle"><i class="fas fa-arrow-left"></i> Menu</a>
-            </li>
-            <li>
-                <a href="/shop" alt="Go to Shop">Shop</a>
-            </li>
-            <li id="moble-search-fixed">
+            <li class="sidebar-open-button" id="menu-toggle">
+                <a><i class="fas fa-arrow-left"></i> Menu</a>
+            </li><!--
+            --><li id="mobile-search-fixed" class="search-box">
                 @await Component.InvokeAsync("SearchBox")
-            </li>
-            <li class="top-fixed-totals">
-                Cart Total: <strong class="price"></strong>
-            </li>
-            <li>
+            </li><!--
+            --><li class="top-fixed-totals">
+                Cart Total:<br /><strong class="price"></strong>
+            </li><!--
+            --><li id="fixed-checkout">
                 <input type="button" value="Checkout" class="button-1 checkout-button" onclick="setLocation('/checkout')" />
             </li>
         </div>
         <div class="desktop-buttons">
             <ul>
+                <li class="sidebar-open-button" id="menu-toggle-desktop">
+                    <a><i class="fas fa-arrow-left"></i> Menu</a>
+                </li>
                 @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderLinksBefore })
                 @if (Model.IsAuthenticated)
                 {
@@ -47,7 +47,6 @@
                     <li>
                         <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
                             <span class="wishlist-label">@T("Wishlist")</span>
-                            <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
                         </a>
                     </li>
                 }
@@ -55,8 +54,7 @@
                 {
                     <li id="topcartlink">
                         <a href="@Url.RouteUrl("ShoppingCart")" class="ico-cart">
-                            <span class="cart-label">@T("ShoppingCart")</span>
-                            <span class="cart-qty">@T("ShoppingCart.HeaderQuantity", Model.ShoppingCartItems)</span>
+                            <span class="cart-label">@T("ShoppingCart")</span> <i class="fas fa-arrow-down"></i>
                         </a>
                     </li>
                 }

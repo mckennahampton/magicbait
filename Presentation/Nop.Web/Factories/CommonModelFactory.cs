@@ -361,6 +361,57 @@ namespace Nop.Web.Factories
             return model;
         }
 
+
+        /// <summary>
+        /// Prepare the header links model
+        /// </summary>
+        /// <returns>Header links model</returns>
+        public virtual SidebarUserLinksModel PrepareSidebarUserLinksModel()
+        {
+            var customer = _workContext.CurrentCustomer;
+
+            var unreadMessageCount = GetUnreadPrivateMessages();
+            var unreadMessage = string.Empty;
+            var alertMessage = string.Empty;
+            if (unreadMessageCount > 0)
+            {
+                unreadMessage = string.Format(_localizationService.GetResource("PrivateMessages.TotalUnread"), unreadMessageCount);
+
+                //notifications here
+                if (_forumSettings.ShowAlertForPM &&
+                    !_genericAttributeService.GetAttribute<bool>(customer, NopCustomerDefaults.NotifiedAboutNewPrivateMessagesAttribute, _storeContext.CurrentStore.Id))
+                {
+                    _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.NotifiedAboutNewPrivateMessagesAttribute, true, _storeContext.CurrentStore.Id);
+                    alertMessage = string.Format(_localizationService.GetResource("PrivateMessages.YouHaveUnreadPM"), unreadMessageCount);
+                }
+            }
+
+            var model = new SidebarUserLinksModel
+            {
+                IsAuthenticated = customer.IsRegistered(),
+                CustomerName = customer.IsRegistered() ? _customerService.FormatUserName(customer) : "",
+                ShoppingCartEnabled = _permissionService.Authorize(StandardPermissionProvider.EnableShoppingCart),
+                WishlistEnabled = _permissionService.Authorize(StandardPermissionProvider.EnableWishlist),
+                AllowPrivateMessages = customer.IsRegistered() && _forumSettings.AllowPrivateMessages,
+                UnreadPrivateMessages = unreadMessage,
+                AlertMessage = alertMessage,
+            };
+            //performance optimization (use "HasShoppingCartItems" property)
+            if (customer.HasShoppingCartItems)
+            {
+                model.ShoppingCartItems = customer.ShoppingCartItems
+                    .Where(sci => sci.ShoppingCartType == ShoppingCartType.ShoppingCart)
+                    .LimitPerStore(_storeContext.CurrentStore.Id)
+                    .Sum(item => item.Quantity);
+                model.WishlistItems = customer.ShoppingCartItems
+                    .Where(sci => sci.ShoppingCartType == ShoppingCartType.Wishlist)
+                    .LimitPerStore(_storeContext.CurrentStore.Id)
+                    .Sum(item => item.Quantity);
+            }
+
+            return model;
+        }
+
         /// <summary>
         /// Prepare the admin header links model
         /// </summary>

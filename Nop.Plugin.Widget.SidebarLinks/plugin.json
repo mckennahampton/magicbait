@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Widgets",
+  "FriendlyName": "Sidebar Menu Links",
+  "SystemName": "Widget.SidebarLinks",
+  "Version": "1.0",
+  "SupportedVersions": [ "4.10" ],
+  "Author": "McKenna Hampton",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Widget.SidebarLinks.dll",
+  "Description": "This plugin adds models & components for extended functionality"
+}

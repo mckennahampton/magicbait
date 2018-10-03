@@ -54,7 +54,7 @@
     }
 
     @include media-breakpoint-down(md) {
-        width: 90;
+        width: 90%;
         max-width: 400px;
         height: auto;
         float: none;

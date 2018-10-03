@@ -1,2 +1,95 @@
-﻿body {
+﻿.footer {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#130684+1,0808af+79 */
+    background: rgb(19,6,132); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(19,6,132,1) 1%, rgba(8,8,175,1) 79%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(19,6,132,1) 1%,rgba(8,8,175,1) 79%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(19,6,132,1) 1%,rgba(8,8,175,1) 79%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#130684', endColorstr='#0808af',GradientType=0 ); /* IE6-9 */
+    .footer-block {
+        .title {
+            color: #fff;
+        }
+
+        ul {
+            list-style: none;
+
+            li {
+
+                @include shift(all, 0.2s, ease);
+
+                a {
+                    color: #fff;
+                    width: 100%;
+                    display: block;
+                    padding-left: 0px;
+                    margin-top: 5px;
+                    @include shift(all, 0.2s, ease);
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                &:hover {
+                    border-left: 2px solid #fff;
+
+                    a {
+                        padding-left: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    .newsletter-con {
+        max-width: 500px;
+
+        .title {
+            color: #fff;
+        }
+
+        .newsletter {
+            text-align: center;
+
+            .newsletter-email {
+
+                .search-box-button, #small-searchterms {
+                    display: inline-block;
+                    color: $color5;
+                }
+
+                #newsletter-email {
+                    border-left: 1px solid $color4;
+                    border-bottom: 1px solid $color4;
+                    border-top: 1px solid $color4;
+                    border-right: none;
+                    font: $font-stack-verdana;
+                    font-weight: 100;
+                    padding-left: 10px;
+                }
+
+                #newsletter-subscribe-button {
+                    width: 100%;
+                    background: $color1;
+                }
+
+                #emailHelp {
+                    color: #fff;
+                }
+
+                .form-check-label {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .footer-info {
+        text-align: center;
+
+        .footer-disclaimer {
+            color: #fff;
+            display: inline-block;
+        }
+    }
 }
