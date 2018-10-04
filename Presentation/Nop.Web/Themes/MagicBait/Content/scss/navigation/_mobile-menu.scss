@@ -116,17 +116,17 @@
         border-bottom: 1px solid black;
         background: none;
 
-        &:hover {
-            background: #fff;
-            text-indent: 50px;
-        }
-
         a {
             display: block;
             text-decoration: none;
             color: #fff;
+        }
 
-            &:hover {
+        &:hover {
+            background: #fff;
+            text-indent: 50px;
+
+            a {
                 color: $color2;
             }
         }

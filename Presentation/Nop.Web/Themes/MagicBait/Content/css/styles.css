@@ -8,6 +8,7 @@
      *    IE on Windows Phone and in iOS.
      */
 @import "https://use.fontawesome.com/releases/v5.3.1/css/all.css";
+@import url(layerslider.css);
 html {
   line-height: 1.15;
   /* 1 */
@@ -21046,7 +21047,6 @@ a.text-dark:hover, a.text-dark:focus {
 .header-menu {
   background: #0808AF;
   padding: 8px;
-  float: left;
   width: 100%; }
   @media (max-width: 1029.98px) {
     .header-menu {
@@ -21127,13 +21127,11 @@ a.text-dark:hover, a.text-dark:focus {
             background: #fff;
             color: #0808AF;
             text-decoration: none; }
-      .header-menu .top-menu li:focus ul,
-      .header-menu .top-menu li:focus-within ul,
-      .header-menu .top-menu li:hover ul {
+      .header-menu .top-menu li:focus ul, .header-menu .top-menu li:focus-within ul, .header-menu .top-menu li:hover ul {
         visibility: visible;
         /* shows sub-menu */
         opacity: 1;
-        z-index: 1;
+        z-index: 10000;
         left: 50%;
         -webkit-transform: translate(-50%, 0%);
         -ms-transform: translate(-50%, 0%);
@@ -21247,14 +21245,14 @@ body {
     text-indent: 20px;
     border-bottom: 1px solid black;
     background: none; }
-    .sidebar-nav li.sidebar-user-link:hover, .sidebar-nav li.sidebar-site-link:hover {
-      background: #fff;
-      text-indent: 50px; }
     .sidebar-nav li.sidebar-user-link a, .sidebar-nav li.sidebar-site-link a {
       display: block;
       text-decoration: none;
       color: #fff; }
-      .sidebar-nav li.sidebar-user-link a:hover, .sidebar-nav li.sidebar-site-link a:hover {
+    .sidebar-nav li.sidebar-user-link:hover, .sidebar-nav li.sidebar-site-link:hover {
+      background: #fff;
+      text-indent: 50px; }
+      .sidebar-nav li.sidebar-user-link:hover a, .sidebar-nav li.sidebar-site-link:hover a {
         color: #0808AF; }
 
 .sidebar-nav li a:active, .sidebar-nav li a:focus {

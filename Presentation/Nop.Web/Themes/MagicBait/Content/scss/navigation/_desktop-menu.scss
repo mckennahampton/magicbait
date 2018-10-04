@@ -62,7 +62,6 @@
 .header-menu {
     background: $color2;
     padding: 8px;
-    float: left;
     width: 100%;
 
     @include media-breakpoint-down(md) {
@@ -75,7 +74,7 @@
 
     .top-menu {
         text-align: center;
-        margin:0;
+        margin: 0;
         padding: 0;
 
         li {
@@ -155,15 +154,18 @@
                 }
             }
 
-            &:focus ul,
-            &:focus-within ul,
-            &:hover ul {
-                visibility: visible; /* shows sub-menu */
-                opacity: 1;
-                z-index: 1;
-                left: 50%;
-                transform: translate(-50%,0%);
-                transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+            &:focus,
+            &:focus-within,
+            &:hover {
+
+                ul {
+                    visibility: visible; /* shows sub-menu */
+                    opacity: 1;
+                    z-index: 10000;
+                    left: 50%;
+                    transform: translate(-50%,0%);
+                    transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+                }
             }
         }
     }

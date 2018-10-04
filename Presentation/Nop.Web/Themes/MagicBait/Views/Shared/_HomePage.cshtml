@@ -1,0 +1,55 @@
+﻿@using Nop.Web.Framework.Infrastructure
+
+<div class="layerslider-container-outer"
+     style="
+     width: 100%;
+     background: url('/images/layerslider/2.png');
+            ">
+    <div class="layerslider-container-inner" style="max-width: 800px; width: 100%; margin: 0 auto;">
+        <div id="hp-ls" style="width: 700px; height: 700px;">
+            <div class="ls-slide">
+
+                <!--Logo Image-->
+                <div class="ls-l" style="width: 90%; height: auto; top: 30%; left: 50%;">
+                    <img src="/images/layerslider/1.png" alt="Main Slider Image" style="width: 100%; height: auto;" />
+                </div>
+
+                <!--Link Image-->
+                <div class="ls-l"
+                     style="
+                        width: 60%;
+                        height: auto;
+                        top: 70%;
+                        left: 50%;
+                     "
+
+                     data-ls="
+                     hover:true;
+                     hoveroffsety:-2sh;
+                     "
+                >
+                    <a href="/shop" alt="Link to Shop">
+                        <img src="/images/layerslider/3.png" style="width: 100%; height: auto;" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 offset-md-2">
+        <img src="~/images/us-map.png" style=" width: 90%; height: auto; max-width: 600px; margin: auto;" />
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 offset-md-2">
+    </div>
+</div>
+
+<script asp-location="Footer">
+    $(document).ready(function () {
+
+        $('#hp-ls').layerSlider({
+            type: 'responsive',
+            showCircleTimer: false
+        });
+    });
+</script>

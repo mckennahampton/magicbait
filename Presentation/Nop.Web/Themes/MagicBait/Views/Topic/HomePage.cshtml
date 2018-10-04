@@ -20,7 +20,7 @@
 
     if (seoSettings.CanonicalUrlsEnabled)
     {
-        var topicUrl = Url.RouteUrl("Topic", new { SeName = Model.SeName }, webHelper.CurrentRequestProtocol).ToLowerInvariant();
+        var topicUrl = Url.RouteUrl("Topic", new { SeName = "HomePage" }, webHelper.CurrentRequestProtocol).ToLowerInvariant();
         Html.AddCanonicalUrlParts(topicUrl, seoSettings.QueryStringInCanonicalUrlsEnabled);
     }
 
@@ -79,8 +79,8 @@
                 @T("Topic.EnterPassword")
             </div>
             <div class="enter-password-form">
-                <input name="password" id="password" type="password"/>
-                <input type="submit" id="button-password" value="@T("Topic.Button")" class="button-1 topic-password-button"/>
+                <input name="password" id="password" type="password" />
+                <input type="submit" id="button-password" value="@T("Topic.Button")" class="button-1 topic-password-button" />
             </div>
             <div class="password-error" id="password-error" style="display: none;"></div>
         </form>
@@ -89,9 +89,10 @@
 <div class="page topic-page" id="ph-topic">
     <div class="page-title" id="ph-title">
         <h1>@Model.Title</h1>
+        <span>test test test</span>
     </div>
     <div class="page-body">
-        @*Html.Raw(Model.Body)*@
-        test
+        <h1>This is the new template</h1>
+        @Html.Raw(Model.Body)
     </div>
 </div>

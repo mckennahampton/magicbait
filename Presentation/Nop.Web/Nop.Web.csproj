@@ -56,10 +56,13 @@
 
     <!-- We copy the \Logs directory -->
     <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
+    <Compile Remove="Themes\MagicBait\Views\Shared\_HomePage.cshtml.cs" />
+    <Compile Remove="Themes\MagicBait\Views\Topic\HomePage.cshtml.cs" />
     <None Remove="Themes\MagicBait\Content\css\scrollbar.css" />
     <None Remove="Themes\MagicBait\Content\scss\content\_buttons.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_components.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_fonts.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\content\_layerslider.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_links.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_lists.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_product-block.scss" />
@@ -93,6 +96,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Themes\MagicBait\Views\Home\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Shared\Components\FlyoutShoppingCart\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -117,6 +123,9 @@
     <Content Update="Themes\MagicBait\Views\Shared\Components\SearchBox\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\TopicBlock\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Shared\Components\TopMenu\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -130,6 +139,9 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Shared\_Header.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Topic\TopicDetails.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Shared\Components\SidebarUserLinks\Default.cshtml">
