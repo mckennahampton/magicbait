@@ -9,6 +9,10 @@
      */
 @import "https://use.fontawesome.com/releases/v5.3.1/css/all.css";
 @import url(layerslider.css);
+@import url(my-instagram-gallery.css);
+@import url(fancybox.min.css);
+@import url(featherlight.css);
+@import url(featherlight.gallery.css);
 html {
   line-height: 1.15;
   /* 1 */
@@ -444,7 +448,8 @@ template {
 /*grey for lines*/
 /*grey for text*/
 h1, h2, h3, h4, p, div {
-  font-family: "Verdana", "Geneva", sans-serif; }
+  font-family: "Verdana", "Geneva", sans-serif;
+  color: #000; }
 
 .price {
   color: #008B09; }
@@ -20922,6 +20927,23 @@ a.text-dark:hover, a.text-dark:focus {
   .close-button:focus {
     outline: 0; }
 
+.secondary-button {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #0808AF;
+  margin: 10px 0px;
+  font-family: Verdana;
+  padding: 5px 12px;
+  color: #0808AF;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+  .secondary-button:hover {
+    color: #fff;
+    background: #0808AF;
+    cursor: pointer; }
+
 .light-hr {
   width: 90%;
   margin: 10px auto;
@@ -20954,7 +20976,8 @@ a.text-dark:hover, a.text-dark:focus {
   padding: 0px 30px; }
   @media (max-width: 1029.98px) {
     .header-lower {
-      text-align: center; } }
+      text-align: center;
+      border-bottom: 2px solid #000; } }
 
 .header-logo {
   margin-top: 15px;
@@ -21574,3 +21597,24 @@ body {
     .footer .footer-info .footer-disclaimer {
       color: #fff;
       display: inline-block; }
+
+#eu-cookie-bar-notification {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  width: 100%;
+  border-top: 2px solid black; }
+
+.date-of-birth .register-date {
+  width: 30%;
+  float: left; }
+  @media (max-width: 575.98px) {
+    .date-of-birth .register-date {
+      width: 90%;
+      margin: 15px auto;
+      float: none; } }
+  .date-of-birth .register-date:first-child {
+    margin-right: 5%; }
+  .date-of-birth .register-date:last-child {
+    margin-left: 5%; }

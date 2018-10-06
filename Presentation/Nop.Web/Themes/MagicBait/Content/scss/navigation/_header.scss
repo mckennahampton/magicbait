@@ -27,6 +27,7 @@
 
     @include media-breakpoint-down(md) {
         text-align: center;
+        border-bottom: 2px solid #000;
     }
 }
 

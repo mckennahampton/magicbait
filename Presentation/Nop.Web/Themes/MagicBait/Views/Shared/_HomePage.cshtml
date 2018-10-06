@@ -36,20 +36,55 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 offset-md-2">
+<div class="row p-5 align-items-center justify-content-center">
+    <div class="col-xs-12 col-sm-4">
         <img src="~/images/us-map.png" style=" width: 90%; height: auto; max-width: 600px; margin: auto;" />
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 offset-md-2">
+    <div class="col-xs-12 col-sm-4">
+        <h1>Made in America</h1>
+        <div class="light-hr"></div>
+        <p>
+        Family owned & operated since 1970, we at Magic Bait have been dedicated to making the highest quality of products with the finest ingredients.
+        <br /><br />
+        Our mission is to stay true to our humble beginnings, remembering the days when our founder, Paul Hampton, started testing formulas in his wife's kitchen.
+        <br /><br />
+        Since the beginning, we've produced premium fishing products made with <strong>100% natural ingredients.</strong>
+        <br /><br />
+        We think family is the most important thing in life, second only to God. It's more important than ever to spend quality time together.
+        <br /><br />
+        So grab your gear, get some bait, and round 'em up for some fishin'. It's time to make some memories.
+        </p>
+    </div>
+</div>
+<div class="row p-5 align-items-center justify-content-center">
+    <div class="col-xs-12">
+        <h2 class="text-center">Our Instagram</h2>
+        <div id="instagram"></div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
     </div>
 </div>
 
-<script asp-location="Footer">
-    $(document).ready(function () {
+    <script asp-location="Footer">
+        $(document).ready(function () {
 
-        $('#hp-ls').layerSlider({
-            type: 'responsive',
-            showCircleTimer: false
+            $('#hp-ls').layerSlider({
+                type: 'responsive',
+                showCircleTimer: false
+            });
+
+            $("#instagram").myig(
+                ins_id = 1681294420, // your user_id
+                ins_count = 9, // Count of media to return
+                ins_token = '1681294420.12ed2b4.c4ac9d9ac7784bb0b1f6c478f320d4ec' // your token
+            );
+
+            $(".user_gallery a").featherlightGallery({
+                previousIcon: '«',
+                nextIcon: '»',
+                galleryFadeIn: 300,
+                openSpeed: 300
+            });;
+
         });
-    });
-</script>
+    </script>

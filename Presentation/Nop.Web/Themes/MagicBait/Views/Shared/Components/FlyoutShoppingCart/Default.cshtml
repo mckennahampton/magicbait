@@ -1,9 +1,9 @@
 ﻿@model MiniShoppingCartModel
 <div id="flyout-cart" class="flyout-cart">
     <div class="mini-shopping-cart">
+        <button type="button" class="close-button hvr-grow" id="flyout-cart-close"></button>
         <div class="row align-items-center">
-            <div class="col-xs-12 col-sm-5">
-                <button type="button" class="close-button hvr-grow" id="flyout-cart-close"></button>
+            <div class="col-xs-12 col-sm-5 remove-if-empty">
                 @if (Model.TotalProducts > 0)
                 {
                     <div class="items">
@@ -40,7 +40,7 @@
             </div>
             <!--
         -->
-            <div class="col-xs-12 col-sm-7">
+            <div class="col-xs-12 col-sm-7 change-class-if-empty">
                 <div class="count">
                     @if (Model.TotalProducts == 0)
                     {
@@ -80,4 +80,12 @@
 
 <script asp-location="Footer">
     var cartPrice = $('.totals .price').text();
+
+    if (cartPrice === '') {
+        cartPrice = '$0.00';
+        $('.totals').text(cartPrice).addClass('price');
+        $('#flyout-cart').css('width', '300px');
+        $('.remove-if-empty').css('display', 'none');
+        $('.change-class-if-empty').removeClass('col-sm-7');
+    };
 </script>

@@ -1,0 +1,23 @@
+﻿.date-of-birth {
+
+    .register-date {
+        @include media-breakpoint-down(xs) {
+            width: 90%;
+            margin: 15px auto;
+            float: none;
+        }
+
+        @include media-breakpoint-up(xs) {
+            width: 30%;
+            float: left;
+
+            &:first-child {
+                margin-right: 5%;
+            }
+
+            &:last-child {
+                margin-left: 5%;
+            }
+        }
+    }
+}

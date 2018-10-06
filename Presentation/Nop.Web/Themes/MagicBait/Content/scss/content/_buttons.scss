@@ -53,3 +53,20 @@
         outline: 0;
     }
 }
+
+.secondary-button {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid $color2;
+    margin: 10px 0px;
+    font-family: Verdana;
+    padding: 5px 12px;
+    color: $color2;
+    @include shift (all,0.2s, ease);
+
+    &:hover {
+        color: #fff;
+        background: $color2;
+        cursor: pointer;
+    }
+}
