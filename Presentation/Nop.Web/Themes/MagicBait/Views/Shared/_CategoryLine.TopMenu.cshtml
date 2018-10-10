@@ -1,5 +1,5 @@
 ﻿@model TopMenuModel.CategoryLineModel
-<li id="@Model.Category.Name">
+<li>
     <a href="@Url.RouteUrl("Category", new { SeName = Model.Category.SeName })">@Model.Category.Name
     </a>
     @{

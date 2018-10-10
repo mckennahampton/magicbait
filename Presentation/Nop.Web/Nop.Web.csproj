@@ -56,8 +56,11 @@
 
     <!-- We copy the \Logs directory -->
     <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
+    <Compile Remove="Themes\MagicBait\Views\Shared\Components\_ChildCategories.cshtml.cs" />
     <Compile Remove="Themes\MagicBait\Views\Shared\_HomePage.cshtml.cs" />
     <Compile Remove="Themes\MagicBait\Views\Topic\HomePage.cshtml.cs" />
+    <Compile Remove="Themes\MagicBait\Views\Topic\Shop.cshtml.cs" />
+    <Compile Remove="Themes\MagicBait\Views\Topic\_ChildCategories.cshtml.cs" />
     <None Remove="Themes\MagicBait\Content\css\fancybox.min.css" />
     <None Remove="Themes\MagicBait\Content\css\scrollbar.css" />
     <None Remove="Themes\MagicBait\Content\scss\content\_buttons.scss" />
@@ -98,6 +101,39 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Themes\MagicBait\Views\Catalog\CategoryTemplate.ProductsInGridOrLines.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Catalog\ManufacturerAll.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Catalog\ManufacturerTemplate.ProductsInGridOrLines.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Catalog\ProductsByTag.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Catalog\ProductTagsAll.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Catalog\Search.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Catalog\Vendor.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Catalog\VendorAll.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Catalog\_CatalogSelectors.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Catalog\_FilterPriceBox.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Catalog\_FilterSpecsBox.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Customer\AccountActivation.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -194,6 +230,9 @@
     <Content Update="Themes\MagicBait\Views\Shared\Components\TopMenu\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\_ChildCategories.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Shared\_CategoryLine.TopMenu.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -204,6 +243,21 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Shared\_Header.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\ShoppingCart\Cart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\ShoppingCart\EmailWishlist.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\ShoppingCart\Wishlist.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\ShoppingCart\_EstimateShippingResult.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\ShoppingCart\_GiftCardBox.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Topic\TopicDetails.cshtml">

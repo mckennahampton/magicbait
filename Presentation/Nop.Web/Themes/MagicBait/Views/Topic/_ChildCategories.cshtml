@@ -1,0 +1,6 @@
+﻿@{
+
+    var categoryService = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Nop.Services.Catalog.ICategoryService>();
+    var categoriesList = categoryService.GetAllCategoriesByParentCategoryId(Model.Id, false);
+
+}
