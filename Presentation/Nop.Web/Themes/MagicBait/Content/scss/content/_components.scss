@@ -1,13 +1,20 @@
-﻿.light-hr {
+﻿[class*="-hr"] {
     width: 90%;
     margin: 10px auto;
-    border-top: 1px solid #ccc;
+}
+
+.light-hr {
+    border-top: 1px solid $color4;
 }
 
 .white-hr {
-    width: 90%;
-    margin: 10px auto;
     border-top: 1px solid #fff;
 }
 
+.red-hr {
+    border-top: 1px solid $color1;
+}
 
+.blue-hr {
+    border-top: 1px solid $color2;
+}

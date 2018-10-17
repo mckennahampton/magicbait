@@ -1,4 +1,5 @@
 ﻿@model PopularProductTagsModel
+@using Nop.Web.Framework.Infrastructure
 @{
     Layout = "_ColumnsTwo";
 
@@ -19,7 +20,8 @@
                 {
                     <li>
                         <a href="@Url.RouteUrl("ProductsByTag", new { item.SeName })" class="producttag" style="font-size:@(Model.GetFontSize(item))%;">
-                        @item.Name</a>
+                            @item.Name
+                        </a>
                     </li>
                 }
             </ul>

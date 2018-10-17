@@ -1,4 +1,9 @@
-﻿h1, h2, h3, h4, p, div {
+﻿h1, h2, h3, h4 {
+    font-family: Geoslab!important;
+    color: #000!important;
+}
+
+p, div {
     font-family: $font-stack-verdana;
     color: #000;
 }

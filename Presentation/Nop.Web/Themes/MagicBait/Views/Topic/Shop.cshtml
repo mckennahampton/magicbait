@@ -89,47 +89,125 @@
 }
 <div class="page topic-page" id="ph-topic">
     <div class="page-title" id="ph-title">
-        <div class="row py-2 px-3 justify-content-center">
-            <div class="col-xs-12 col-sm-4 text-left">
-                <h1>@Model.Title</h1>
+        <div class="row pt-5 pb-3 px-3 justify-content-center">
+            <div class="col-xs-12">
+                <h1>Our Products</h1>
             </div>
         </div>
     </div>
     <div class="light-hr"></div>
     <div class="page-body">
-        <div class="row px-3 justify-content-center">
-            <div class="col-xs-12 col-sm-8 text-left">
-                @{
-                    //Load category service
-                    var categoryService = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Nop.Services.Catalog.ICategoryService>();
+        <div class="row justify-content-center">
+            <div class="col-xs-12 col-sm-8">
+                <div class="row justify-content-around px-5">
+            
+                    @{
+                        //Load category service
+                        var categoryService = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Nop.Services.Catalog.ICategoryService>();
 
-                    //Load picture service
-                    var pictureService = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Nop.Services.Media.IPictureService>();
+                        //Load picture service
+                        var pictureService = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Nop.Services.Media.IPictureService>();
 
-                    //Load categories
-                    var categoriesList = categoryService.GetAllCategories(0, false, true);
+                        //Load URL Service
+                        var urlRecordService = Nop.Core.Infrastructure.EngineContext.Current.Resolve <Nop.Services.Seo.IUrlRecordService>();
 
-                    //Loop through them
-                    for (int i = 0; i < categoriesList.Count; i++)
+                        //Load categories
+                        var categoriesList = categoryService.GetAllCategories(0, false, true);
 
-                    {
-                        //make sure the category is a parent
-                        if (categoriesList[i].ParentCategoryId == 0)
+                        //Loop through them
+                        for (int i = 0; i < categoriesList.Count; i++)
+
                         {
+                            //make sure the category is a parent
+                            if (categoriesList[i].ParentCategoryId == 0)
+                            {
 
-                            <div class="shop-parent-category">
-                                @categoriesList[i].Name
+                        <div class="my-4 col-xs-12 col-md-5">
 
-                                <img src="@pictureService.GetPictureUrl(categoriesList[i].PictureId)"/>
+                            <h2 alt="Category Name">@categoriesList[i].Name</h2>
 
-                                @await Html.PartialAsync("_ChildCategories", categoriesList[i])
+                            <div class="shop-parent-category text-center">
+
+                                <div class="scrolling-inner">
+
+                                    <div class="scrolling-top">
+                                        <img alt="@categoriesList[i].MetaTitle" src="@pictureService.GetPictureUrl(categoriesList[i].PictureId)" />
+
+                                        <div class="light-hr my-3"></div>
+
+                                        <div class="cat-desc-box text-center align-middle px-5">
+
+                                            @Html.Raw(categoriesList[i].Description)
+
+                                        </div>
+
+                                        <div class="cat-button-box p-4 align-bottom">
+
+                                            @{ 
+                                                //get the seo friendly url for this category
+                                                var categoryObject = categoryService.GetCategoryById(categoriesList[i].Id);
+                                                var seoUrl = urlRecordService.GetSeName(categoryObject);
+                                            }
+
+                                            <a href="/@seoUrl" class="desktop-main-button shop-button hvr-grow cat-shop-all" alt="Shop all @categoriesList[i].Name products.">
+                                                Shop @categoriesList[i].Name
+                                            </a>
+
+                                            @{
+                                                //check if this category has children
+                                                var thisChildren = categoryService.GetAllCategoriesByParentCategoryId(categoriesList[i].Id, false);
+                                                int thisChildrenCount = thisChildren.Count;
+                                                if (thisChildrenCount > 0)
+                                                {
+
+                                                    //this category has children
+                                                    <div class="light-hr"></div>
+                                                    <button type="button" class="sub-cat-button desktop-main-button hvr-grow" id="cat-@categoriesList[i].Id">Show Sub-categories</button>
+
+                                                }
+                                            }
+
+                                        </div>
+
+                                    </div>
+
+                                    @await Html.PartialAsync("_ChildCategories", categoriesList[i])
+
+                                </div>
                             </div>
-
+                        </div>
+                            }
                         }
                     }
-                }
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<script asp-location="Footer">
+    $(document).ready(function () {
+
+        $('.sub-cat-button').click(function () {
+
+            $(this).parents().eq(2).addClass('scrolled-up');
+
+        });
+
+        $('.sub-cat-close-button').click(function () {
+
+            $(this).parents().eq(3).removeClass('scrolled-up');
+
+        });
+
+        $('html').click(function (e) {
+            //if clicked element is not your element and parents aren't your div
+            if (e.target.id != 'flyout-cart-close' && $(e.target).parents('#flyout-cart-close').length == 0) {
+                //do stuff
+                $('#flyout-cart').slideUp();
+                $('#topcartlink').removeClass('topcartlink-active');
+            }
+        });
+
+    });
+</script>

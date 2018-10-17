@@ -75,6 +75,7 @@
     <None Remove="Themes\MagicBait\Content\scss\global\_base.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_mixins.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_normalize.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\global\_simplebar.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_typography.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_variables.scss" />
     <None Remove="Themes\MagicBait\Content\scss\navigation\_breadcrumbs.scss" />
@@ -87,6 +88,7 @@
     <None Remove="Themes\MagicBait\Content\scss\sections\_footer.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_header.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_register.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\sections\_shop.scss" />
 
     <None Update="Areas\Admin\sitemap.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
