@@ -5,6 +5,7 @@
     position: relative;
     height: 500px;
     overflow: hidden;
+    background: #fff;
 
     .scrolling-inner {
         height: 1000px;
@@ -85,6 +86,101 @@
                     max-width: 250px;
                 }
             }
+        }
+    }
+}
+
+
+.side-2 {
+    background: #fff;
+
+    .block-category-navigation {
+        padding: 0px 20px;
+
+        .list {
+            padding-left: 0px;
+            margin-left: 0px;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+
+            li {
+                text-indent: 20px;
+                background: none;
+                list-style: none;
+                border-left: 0px;
+                padding: 5px 10px;
+                @include shift(all, 0.2s, ease);
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color4;
+                }
+
+                a {
+                    display: block;
+                    text-decoration: none;
+                    color: $gray-800;
+                    font-size: 15px;
+                }
+
+                &:hover, &.active {
+                    border-left: 4px solid $color2;
+                    text-indent: 40px;
+                    font-weight: bold;
+                }
+
+                &.inactive {
+                    font-weight: normal;
+                }
+
+                ul {
+                    padding-left: 10px;
+
+                    li {
+
+                        text-indent: 0px;
+                        
+                        &:hover {
+                            text-indent: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.center-2 {
+    background: #fff;
+
+    @include media-breakpoint-up(xs) {
+        border-left: 2px solid black;
+    }
+
+    .product-selectors {
+
+        .form-group {
+
+            display: inline-block;
+            
+            > * {
+                display: inline-block;
+                padding: 0px 10px;
+                vertical-align: middle;
+            }
+
+            select {
+                width: auto;
+                overflow: auto;
+            }
+        }
+    }
+
+    .item-box {
+        img {
+            width: 95%;
+            max-width: 400px;
+            margin: 0 auto;
         }
     }
 }

@@ -19,17 +19,17 @@
     @*sorting*@
     @if (Model.AllowProductSorting)
     {
-        <div class="product-sorting">
-            <span>@T("Catalog.OrderBy")</span>
-            @Html.DropDownList("products-orderby", Model.AvailableSortOptions, new { onchange = "setLocation(this.value);", aria_label = T("Catalog.OrderBy.Label") })
+        <div class="product-sorting form-group">
+            <label for="products-orderby">@T("Catalog.OrderBy")</label>
+            @Html.DropDownList("products-orderby", Model.AvailableSortOptions,  new { onchange = "setLocation(this.value);", aria_label = T("Catalog.OrderBy.Label"), @class = "form-control" })
         </div>
     }
     @*page size*@
     @if (Model.AllowCustomersToSelectPageSize)
     {
-        <div class="product-page-size">
-            <span>@T("Catalog.PageSize")</span>
-            @Html.DropDownList("products-pagesize", Model.PageSizeOptions, new { onchange = "setLocation(this.value);", aria_label = T("Catalog.PageSize.Label") })
+        <div class="product-page-size form-group">
+            <label for="products-pagesize">@T("Catalog.PageSize")</label>
+            @Html.DropDownList("products-pagesize", Model.PageSizeOptions, new { onchange = "setLocation(this.value);", aria_label = T("Catalog.PageSize.Label"), @class = "form-control" })
             <span>@T("Catalog.PageSize.PerPage")</span>
         </div>
     }

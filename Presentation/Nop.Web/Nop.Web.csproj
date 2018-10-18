@@ -73,6 +73,7 @@
     <None Remove="Themes\MagicBait\Content\scss\forms\_checkout.scss" />
     <None Remove="Themes\MagicBait\Content\scss\forms\_item-quantity.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_base.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\global\_global-page-styles.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_mixins.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_normalize.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_simplebar.scss" />
@@ -199,6 +200,102 @@
     <Content Update="Themes\MagicBait\Views\Home\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Themes\MagicBait\Views\Product\CompareProducts.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\CustomerProductReviews.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\NewProducts.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\ProductEmailAFriend.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\ProductReviews.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\ProductTemplate.Grouped.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\ProductTemplate.Simple.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\RecentlyViewedProducts.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_AddToCart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_AddToWishlist.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_Availability.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_BackInStockSubscription.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_CompareProductsButton.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_DeliveryInfo.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_Discontinued.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_DownloadSample.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_GiftCardInfo.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ProductAttributes.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ProductBreadcrumb.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ProductDetailsPictures.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ProductEmailAFriendButton.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ProductManufacturers.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ProductPrice.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ProductReviewHelpfulness.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ProductReviewOverview.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ProductSpecifications.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ProductTags.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ProductTierPrices.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_RentalInfo.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_ShareButton.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Product\_SKU_Man_GTIN_Ven.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\CategoryNavigation\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Shared\Components\EuCookieLaw\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -235,7 +332,19 @@
     <Content Update="Themes\MagicBait\Views\Shared\Components\_ChildCategories.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\_ColumnsTwo.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\_CategoryLine.Navigation.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Shared\_CategoryLine.TopMenu.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\_ColumnsTwo.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\_ProductBox.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Shared\_Root.cshtml">

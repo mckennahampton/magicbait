@@ -1,0 +1,31 @@
+﻿@model CategoryNavigationModel
+@if (Model.Categories.Count > 0)
+{
+    <div class="block mb-3 block-category-navigation">
+        <div class="title text-center p-3">
+            <h3>Shop by Category</h3>
+        </div>
+        <div class="listbox">
+            <ul class="list">
+                @foreach (var category in Model.Categories)
+                {
+                    var categoryLineModel = new CategoryNavigationModel.CategoryLineModel
+                    {
+                        CurrentCategoryId = Model.CurrentCategoryId,
+                        Category = category
+                    };
+                    @await Html.PartialAsync("_CategoryLine.Navigation", categoryLineModel)
+                }
+            </ul>
+        </div>
+    </div>
+
+    <script asp-location="Footer">
+        $(document).ready(function () {
+
+            $(".block-category-navigation").stick_in_parent();
+
+        });
+
+    </script>
+}

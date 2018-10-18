@@ -24,11 +24,14 @@ var AjaxCart = {
     },
 
     //add a product to the cart/wishlist from the catalog pages
-    addproducttocart_catalog: function (urladd) {
+    addproducttocart_catalog: function (urladd, id) {
         if (this.loadWaiting != false) {
             return;
         }
         this.setLoadWaiting(true);
+
+        var quantityToCart = $("#qty" + id).val();
+        urladd = urladd.replace("9999", quantityToCart); 
 
         $.ajax({
             cache: false,
