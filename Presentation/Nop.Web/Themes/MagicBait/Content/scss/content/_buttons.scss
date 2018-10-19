@@ -1,4 +1,8 @@
-﻿.dropdown {
+﻿a:focus, button:focus {
+    outline: 0;
+}
+
+.dropdown {
     &::before {
         @include triangle("up", 2rem, 1rem, #000000);
         content: "";

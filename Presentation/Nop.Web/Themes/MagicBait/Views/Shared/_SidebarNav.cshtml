@@ -36,11 +36,27 @@
         $("#menu-toggle, #menu-toggle-desktop").click(function (e) {
             e.preventDefault();
             $("#wrapper").addClass("toggled");
+            $(".overlay").addClass("active");
+            $('body').addClass('stop-scrolling');
+            $('body').bind('touchmove', function (e) { e.preventDefault() });
             $("#sidebar-wrapper").addClass('sidebar-wrapper-toggled');
+ 
         });
 
         $('#closeSidebar').click(function () {
             $("#wrapper").removeClass("toggled");
+            $(".overlay").removeClass("active");
+            $('body').unbind('touchmove');
+            $('body').removeClass('stop-scrolling');
+            $("#sidebar-wrapper").removeClass('sidebar-wrapper-toggled');
+        });
+
+        $('.overlay').click(function (e) {
+            //if clicked element is not your element and parents aren't your div
+            $("#wrapper").removeClass("toggled");
+            $(".overlay").removeClass("active");
+            $('body').unbind('touchmove');
+            $('body').removeClass('stop-scrolling');
             $("#sidebar-wrapper").removeClass('sidebar-wrapper-toggled');
         });
 
@@ -50,6 +66,9 @@
     $(window).resize(function () {
         if ($(window).width() > 1030) {
             $("#wrapper").removeClass("toggled");
+            $(".overlay").removeClass("active");
+            $('body').unbind('touchmove');
+            $('body').removeClass('stop-scrolling');
             $("#sidebar-wrapper").removeClass('sidebar-wrapper-toggled');
         }
     });

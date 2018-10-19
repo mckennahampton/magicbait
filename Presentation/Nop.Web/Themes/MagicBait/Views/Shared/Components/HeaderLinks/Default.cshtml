@@ -83,10 +83,20 @@
                     $('#flyout-cart').slideDown();
                 });
 
-                $('#flyout-cart-close').click(function () {
+                function flyoutCartSlideup() {
                     $('#flyout-cart').slideUp();
                     $('#topcartlink').removeClass('topcartlink-active');
+                }
+
+                $('#flyout-cart-close').click(function () {
+                    flyoutCartSlideup();
                 });
+
+                // This will fire when document is ready:
+                $(window).resize(function () {
+                    // This will fire each time the window is resized:
+                    flyoutCartSlideup();
+                }).resize();
 
                 $('html').click(function (e) {
                     //if clicked element is not your element and parents aren't your div

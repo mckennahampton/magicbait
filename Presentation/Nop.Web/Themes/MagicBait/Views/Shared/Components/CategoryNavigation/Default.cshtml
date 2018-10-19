@@ -1,7 +1,8 @@
 ﻿@model CategoryNavigationModel
 @if (Model.Categories.Count > 0)
 {
-    <div class="block mb-3 block-category-navigation">
+    <button class="secondary-button" type="button" id="categoryNavigationButton" data-toggle="collapse" data-target="#categoryNavigation" aria-expanded="false" aria-controls="categoryNavigation">Shop by Category</button>
+    <div class="block mb-3 block-category-navigation collapse multi-collapse" id="categoryNavigation">
         <div class="title text-center p-3">
             <h3>Shop by Category</h3>
         </div>
@@ -21,9 +22,29 @@
     </div>
 
     <script asp-location="Footer">
+
         $(document).ready(function () {
 
-            $(".block-category-navigation").stick_in_parent();
+            function categoryNavigationInit() {
+                $categoryNavigation = $('#categoryNavigation');
+
+                // This will fire each time the window is resized:
+                if ($(window).width() >= 1024) {
+                    // if larger or equal
+                    $categoryNavigation.removeClass('collapse multi-collapse');
+
+                } else {
+                    $categoryNavigation.addClass('collapse multi-collapse');
+                }
+            }
+
+            // This will fire when document is ready:
+            $(window).resize(function () {
+
+                categoryNavigationInit();
+
+            }); // This will simulate a resize to trigger the initial run.
+
 
         });
 

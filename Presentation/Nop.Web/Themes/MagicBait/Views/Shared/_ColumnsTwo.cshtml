@@ -36,8 +36,8 @@
         @RenderSection("Breadcrumb")
     }
 }
-<div class="row">
-    <div class="side-2 col-xs-12 col-md-2">
+<div class="stick-to-this" style="background: #fff;">
+    <div class="side-2">
         @if (IsSectionDefined("left"))
         {
             @RenderSection("left")
@@ -55,9 +55,38 @@
             @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.LeftSideColumnAfter })
         }
     </div>
-    <div class="center-2 p-5 col-xs-12 col-md-10">
+    <div class="center-2 px-5 pb-5 pt-3">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.MainColumnBefore })
         @RenderBody()
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.MainColumnAfter })
     </div>
 </div>
+
+<script asp-location="Footer">
+    $(document).ready(function () {
+
+        // This will fire when document is ready:
+        $(window).resize(function () {
+
+            var $sticky = $('.side-2');
+
+            // This will fire each time the window is resized:
+            if ($(window).width() >= 1024) {
+                // if larger or equal
+                $sticky.hcSticky({
+                    stickTo: '.stick-to-this',
+                });
+
+                $sticky.hcSticky('update', {
+                    disable: false
+                });
+            } else {
+                $sticky.hcSticky('update', {
+                    disable: true
+                });
+            }
+        }).resize(); // This will simulate a resize to trigger the initial run.
+
+
+    });
+</script>
