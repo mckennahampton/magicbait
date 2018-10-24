@@ -279,6 +279,10 @@
     }
 
     .item-box {
+
+        border-bottom: 1px solid $gray-900;
+        border-right: 1px solid $gray-900;
+
         a {
             text-align: center;
             display: block;
@@ -314,6 +318,7 @@
             h2 {
                 margin-bottom: 0px;
                 font-size: 20px;
+                height: 50px;
             }
         }
 
@@ -321,6 +326,7 @@
             color: #fff;
             width: 100%;
             height: 100%;
+            border: 2px solid #000;
             @include shift(all, 0.2s, ease);
 
             &:hover {
@@ -329,24 +335,24 @@
         }
 
         .btn-minus {
-            background: $color1;
-            border: 2px solid $color1;
+            background: #fff;
+            color: $color1;
             border-radius: 8px 0px 0px 8px;
 
             &:hover {
-                background: #fff;
-                color: $color1;
+                background: $color1;
+                color: #fff;
             }
         }
 
         .btn-plus {
-            background: $color2;
-            border: 2px solid $color2;
+            background: #fff;
+            color: $color2;
             border-radius: 0px 8px 8px 0px;
 
             &:hover {
-                background: #fff;
-                color: $color2;
+                background: $color2;
+                color: #fff;
             }
         }
 
@@ -354,8 +360,8 @@
             width: 100%;
             text-align: center;
             border-radius: 0px;
-            border-top: 1px solid $color5;
-            border-bottom: 1px solid $color5;
+            border-top: 2px solid $color5;
+            border-bottom: 2px solid $color5;
             border-right: 0px;
             border-left: 0px;
             padding: 5px 0px;
