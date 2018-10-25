@@ -176,14 +176,39 @@
         $('.input-number').val('1');
 
         // Enables popover
-        $(".product-quickview").popover({
+        $(".product-item").popover({
             html: true,
             boundary: 'window',
             content: function () {
-                return $(this).next('.product-popover-html').html();
+                return $(this).find('.product-popover-html').html();
             },
             fallbackPlacement: 'clockwise'
-        }).on('shown.bs.popover', function () {
+        }).on('show.bs.popover', function () {
+
+            //for the close button inside the popover
+            var $popup = $(this);
+
+            //Hide all other popovers
+            $(".product-item").not(this).popover("hide");
+
+            }).on('shown.bs.popover', function () {
+
+                //for the close button inside the popover
+                var $popup = $(this);
+
+
+            $(this).find('.close-button').click(function (e) {
+                $popup.popover('hide');
+            });
+
+            $('html').click(function (e) {
+                //if clicked element is not your element and parents aren't your div
+                if ($(e.target).closest('.popover.show').length === 0 && !$(e.target).is('.product-quickview')) {
+
+                    //do stuff
+                    $popup.popover('hide');
+                }
+            });
 
             $('.btn-number').click(function (e) {
                 e.preventDefault();
@@ -256,6 +281,10 @@
                 }
                 });
             });
+        });
+
+        $('.product-quickview').click(function () {
+            $(this).parent('.product-item').popover('show');
         });
 
     });
