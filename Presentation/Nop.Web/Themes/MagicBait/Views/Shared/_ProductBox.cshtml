@@ -41,8 +41,10 @@
             <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" />
         </a>
     </div>
-    <div class="light-hr"></div>
-    <a class="product-quickview" href="JavaScript:Void(0);">Quick View</a>
+    <h3 class="product-title truncate">
+        <a href="@Url.RouteUrl("Product", new {SeName = Model.SeName})">@Model.Name</a>
+    </h3>
+    <div class="product-quickview"><span class="price actual-price">@Model.ProductPrice.Price</span><a href="JavaScript:Void(0);">Quick View</a></div>
     <div class="product-popover-html" style="display: none;">
         <div class="details product-popover-@Model.Id">
             <div class="row align-items-center">
@@ -132,7 +134,23 @@
                         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductBoxAddinfoAfter, additionalData = Model })
                     </div>
                 </div>
+                <!--Popover Short Description-->
+                <div class="col-xs-12 p-3">
+                    <p>
+                        @Html.Raw(Model.FullDescription)
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script asp-location="Footer">
+
+    $(document).ready(function () {
+        $('.truncate').succinct({
+            size: 120
+        });
+    }):
+
+</script>
