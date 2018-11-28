@@ -428,6 +428,13 @@ template {
   src: url("fonts/geoslab703-xbd-bt-extra-bold1?#iefix") format("embedded-opentype"), url("fonts/geoslab703-xbd-bt-extra-bold1.woff2") format("woff2"), url("fonts/geoslab703-xbd-bt-extra-bold1.woff") format("woff"), url("fonts/geoslab703-xbd-bt-extra-bold1.ttf") format("truetype"), url("fonts/geoslab703-xbd-bt-extra-bold1.otf") format("opentype"), url("fonts/geoslab703-xbd-bt-extra-bold1.svg#GeometricSlab703BT-XtraBold") format("svg");
   /* Legacy iOS */ }
 
+@font-face {
+  font-family: "OpenSans Regular";
+  src: url("fonts/OpenSans-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("fonts/OpenSans-Regular?#iefix") format("embedded-opentype"), url("fonts/OpenSans-Regular.woff2") format("woff2"), url("fonts/OpenSans-Regular.woff") format("woff"), url("fonts/OpenSans-Regular.ttf") format("truetype"), url("fonts/OpenSans-Regular.otf") format("opentype"), url("fonts/OpenSans-Regular.svg#OpenSans-Regular") format("svg");
+  /* Legacy iOS */ }
+
 /*
     Usage
 
@@ -453,7 +460,7 @@ h1, h2, h3, h4 {
   color: #000 !important; }
 
 p, div {
-  font-family: "Verdana", "Geneva", sans-serif;
+  font-family: 'OpenSans Regular';
   color: #000; }
 
 .price {
@@ -16292,24 +16299,6 @@ a:focus, button:focus {
   background: #fff;
   width: 100%; }
 
-.two-line-fade {
-  position: relative;
-  height: 3.6em;
-  /* exactly three lines */ }
-
-.two-line-fade:after {
-  content: "";
-  text-align: right;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 70%;
-  height: 1.2em;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(50%, white));
-  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0), white 50%);
-  background: -o-linear-gradient(left, rgba(255, 255, 255, 0), white 50%);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%); }
-
 .breadcrumb {
   background: #fff;
   background: #fff;
@@ -17216,21 +17205,90 @@ body.stop-scrolling {
   @media (min-width: 1600px) {
     .center-2 .item-box:nth-child(4n+1):nth-last-child(-n+4), .center-2 .item-box:nth-child(4n+1):nth-last-child(-n+4) ~ .item-box {
       border-bottom: 0px; } }
-  .center-2 .item-box a {
-    text-align: center;
-    display: block; }
-    .center-2 .item-box a img {
-      width: 95%;
-      max-width: 300px;
-      display: inline-block; }
-  .center-2 .item-box .product-quickview {
+  .center-2 .item-box {
     text-align: center; }
-    .center-2 .item-box .product-quickview > * {
-      display: inline-block; }
-    .center-2 .item-box .product-quickview span:after {
-      content: " | ";
-      color: black;
-      padding: 0px 8px; }
+    .center-2 .item-box .product-item {
+      display: inline-block;
+      max-width: 250px; }
+    .center-2 .item-box .product-title {
+      height: 2.4em; }
+    .center-2 .item-box a {
+      text-align: center;
+      display: block; }
+      .center-2 .item-box a img {
+        width: 95%;
+        max-width: 300px;
+        display: inline-block; }
+    .center-2 .item-box .btn-minus, .center-2 .item-box .btn-plus, .center-2 .item-box .input-number {
+      font-size: 15px; }
+    .center-2 .item-box .btn-minus, .center-2 .item-box .btn-plus {
+      color: #fff;
+      width: 100%;
+      height: 100%;
+      border: 2px solid #000;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      -o-transition: all 0.2s ease;
+      transition: all 0.2s ease; }
+      .center-2 .item-box .btn-minus:hover, .center-2 .item-box .btn-plus:hover {
+        cursor: pointer; }
+    .center-2 .item-box .btn-minus {
+      background: #fff;
+      color: #EC1C24;
+      border-radius: 8px 0px 0px 8px; }
+      .center-2 .item-box .btn-minus:hover {
+        background: #EC1C24;
+        color: #fff; }
+    .center-2 .item-box .btn-plus {
+      background: #fff;
+      color: #0808AF;
+      border-radius: 0px 8px 8px 0px; }
+      .center-2 .item-box .btn-plus:hover {
+        background: #0808AF;
+        color: #fff; }
+    .center-2 .item-box .input-number {
+      width: 100%;
+      text-align: center;
+      border-radius: 0px;
+      border-top: 2px solid #212529;
+      border-bottom: 2px solid #212529;
+      border-right: 0px;
+      border-left: 0px; }
+    .center-2 .item-box .product-box-add-to-cart-button, .center-2 .item-box .add-to-wishlist-button {
+      width: 100%;
+      padding: 5px 0px;
+      border-radius: 8px;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      -o-transition: all 0.2s ease;
+      transition: all 0.2s ease; }
+      .center-2 .item-box .product-box-add-to-cart-button:hover, .center-2 .item-box .add-to-wishlist-button:hover {
+        cursor: pointer; }
+    .center-2 .item-box .product-box-add-to-cart-button {
+      background: #fff;
+      color: #0808AF;
+      font-size: 25px;
+      border: 2px solid black;
+      font-family: Geoslab; }
+      .center-2 .item-box .product-box-add-to-cart-button:hover {
+        background: #0808AF;
+        color: #fff; }
+    .center-2 .item-box .add-to-wishlist-button {
+      background: #EC1C24;
+      color: #fff;
+      border: 2px solid #EC1C24;
+      border-radius: 8px; }
+      .center-2 .item-box .add-to-wishlist-button:hover {
+        color: #EC1C24;
+        background: #fff; }
+    .center-2 .item-box .product-quickview {
+      text-align: center; }
+      .center-2 .item-box .product-quickview > * {
+        display: inline-block; }
+      .center-2 .item-box .product-quickview span:after {
+        content: " | ";
+        color: black;
+        padding: 0px 8px; }
   .center-2 .popover {
     -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
@@ -17268,68 +17326,6 @@ body.stop-scrolling {
       .center-2 .popover .details h2 {
         margin-bottom: 0px;
         font-size: 20px; }
-    .center-2 .popover .btn-minus, .center-2 .popover .btn-plus {
-      color: #fff;
-      width: 100%;
-      height: 100%;
-      border: 2px solid #000;
-      -webkit-transition: all 0.2s ease;
-      -moz-transition: all 0.2s ease;
-      -o-transition: all 0.2s ease;
-      transition: all 0.2s ease; }
-      .center-2 .popover .btn-minus:hover, .center-2 .popover .btn-plus:hover {
-        cursor: pointer; }
-    .center-2 .popover .btn-minus {
-      background: #fff;
-      color: #EC1C24;
-      border-radius: 8px 0px 0px 8px; }
-      .center-2 .popover .btn-minus:hover {
-        background: #EC1C24;
-        color: #fff; }
-    .center-2 .popover .btn-plus {
-      background: #fff;
-      color: #0808AF;
-      border-radius: 0px 8px 8px 0px; }
-      .center-2 .popover .btn-plus:hover {
-        background: #0808AF;
-        color: #fff; }
-    .center-2 .popover .input-number {
-      width: 100%;
-      text-align: center;
-      border-radius: 0px;
-      border-top: 2px solid #212529;
-      border-bottom: 2px solid #212529;
-      border-right: 0px;
-      border-left: 0px;
-      padding: 5px 0px;
-      font-size: 20px; }
-    .center-2 .popover .product-box-add-to-cart-button, .center-2 .popover .add-to-wishlist-button {
-      width: 100%;
-      padding: 5px 0px;
-      border-radius: 8px;
-      -webkit-transition: all 0.2s ease;
-      -moz-transition: all 0.2s ease;
-      -o-transition: all 0.2s ease;
-      transition: all 0.2s ease; }
-      .center-2 .popover .product-box-add-to-cart-button:hover, .center-2 .popover .add-to-wishlist-button:hover {
-        cursor: pointer; }
-    .center-2 .popover .product-box-add-to-cart-button {
-      background: #0808AF;
-      color: #fff;
-      font-size: 25px;
-      border: 2px solid #0808AF;
-      font-family: Geoslab; }
-      .center-2 .popover .product-box-add-to-cart-button:hover {
-        background: #fff;
-        color: #0808AF; }
-    .center-2 .popover .add-to-wishlist-button {
-      background: #EC1C24;
-      color: #fff;
-      border: 2px solid #EC1C24;
-      border-radius: 8px; }
-      .center-2 .popover .add-to-wishlist-button:hover {
-        color: #EC1C24;
-        background: #fff; }
   .center-2 .pager li {
     list-style: none;
     background: #fff;

@@ -18,3 +18,14 @@
     url('fonts/geoslab703-xbd-bt-extra-bold1.otf') format('opentype'), /* Firefox */
     url('fonts/geoslab703-xbd-bt-extra-bold1.svg#GeometricSlab703BT-XtraBold') format('svg'); /* Legacy iOS */
 }
+
+@font-face {
+    font-family: "OpenSans Regular";
+    src: url('fonts/OpenSans-Regular.eot'); /* IE9 Compat Modes */
+    src: url('fonts/OpenSans-Regular?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('fonts/OpenSans-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('fonts/OpenSans-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+    url('fonts/OpenSans-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('fonts/OpenSans-Regular.otf') format('opentype'), /* Firefox */
+    url('fonts/OpenSans-Regular.svg#OpenSans-Regular') format('svg'); /* Legacy iOS */
+}

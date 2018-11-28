@@ -23,19 +23,17 @@
     var addtowishlistlink = Url.RouteUrl("AddProductToCart-Catalog", new { productId = Model.Id, shoppingCartTypeId = (int)ShoppingCartType.Wishlist, quantity = quantity });
     var addtocomparelink = Url.RouteUrl("AddProductToCompare", new { productId = Model.Id });
 }
-<div
-     class="product-item product-@Model.Id"
+<div class="product-item product-@Model.Id"
      id="product-@Model.Id"
      data-productid="@Model.Id"
-     role="button" 
-    data-html="true" 
-    data-toggle="popover"
-    data-trigger="manual"
-    data-placement="auto"
-    data-container=".product-@Model.Id"
-    title="<button type='button' class='close-button hvr-grow'></button><span></span><a class='secondary-button' href='@Url.RouteUrl("Product", new {SeName = Model.SeName})'>View Product</a>" 
-    data-content=""
->
+     role="button"
+     data-html="true"
+     data-toggle="popover"
+     data-trigger="manual"
+     data-placement="auto"
+     data-container=".product-@Model.Id"
+     title="<button type='button' class='close-button hvr-grow'></button><span></span><a class='secondary-button' href='@Url.RouteUrl("Product", new {SeName = Model.SeName})'>View Product</a>"
+     data-content="">
     <div class="picture">
         <a href="@Url.RouteUrl("Product", new { SeName = Model.SeName })" title="@Model.DefaultPictureModel.Title">
             <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" />
@@ -44,7 +42,54 @@
     <h3 class="product-title truncate">
         <a href="@Url.RouteUrl("Product", new {SeName = Model.SeName})">@Model.Name</a>
     </h3>
-    <div class="product-quickview"><span class="price actual-price">@Model.ProductPrice.Price</span><a href="JavaScript:Void(0);">Quick View</a></div>
+    <div class="short-description text-center">@Model.ShortDescription</div>
+    <div class="product-quickview"><span class="price actual-price">@Model.ProductPrice.Price</span><a href="@Url.RouteUrl("Product", new { SeName = Model.SeName })" title="@Model.DefaultPictureModel.Title">View Product</a></div>
+    <div class="buttons mt-2">
+        @*<input type="button" value="@T("Products.Details")" class="button-1 product-box-detail-button" onclick="setLocation('@Url.RouteUrl("Product", new { SeName = Model.SeName })')" />*@
+        @if (!Model.ProductPrice.DisableBuyButton)
+        {
+            var addToCartText = T("ShoppingCart.AddToCart").Text;
+            if (Model.ProductPrice.IsRental)
+            {
+                addToCartText = T("ShoppingCart.Rent").Text;
+            }
+            if (Model.ProductPrice.AvailableForPreOrder)
+            {
+                addToCartText = T("ShoppingCart.PreOrder").Text;
+            }
+            <div class="row no-gutters qty@(Model.Id)-con">
+                <div class="col-4">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn-minus btn-number" data-type="minus" data-field="qty@(Model.Id)">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </span>
+                </div>
+                <div class="col-4">
+                    @Html.TextBox("qty" + Model.Id, "1", new { @class = "input-number", @min = "1", @max = "9999" })
+                </div>
+                <div class="col-4">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="qty@(Model.Id)">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+            <input type="button" value="@(addToCartText)" class="button-2 mt-1 mb-3 product-box-add-to-cart-button" onclick="AjaxCart.addproducttocart_catalog('@addtocartlink', '@Model.Id');return false;" />
+        }
+        @if (!Model.ProductPrice.DisableAddToCompareListButton)
+        {
+            <input type="button" value="@T("ShoppingCart.AddToCompareList")" title="@T("ShoppingCart.AddToCompareList")" class="button-2 add-to-compare-list-button" onclick="AjaxCart.addproducttocomparelist('@addtocomparelink');return false;" />
+        }
+        @if (!Model.ProductPrice.DisableWishlistButton)
+        {
+            <input type="button" value="@T("ShoppingCart.AddToWishlist")" title="@T("ShoppingCart.AddToWishlist")" class="button-2 add-to-wishlist-button" onclick="AjaxCart.addproducttocart_catalog('@addtowishlistlink');return false;" />
+        }
+    </div>
+
+
     <div class="product-popover-html" style="display: none;">
         <div class="details product-popover-@Model.Id">
             <div class="row align-items-center">
@@ -59,15 +104,14 @@
                             @Model.Sku
                         </div>
                     }
-                    <div class="short-description">@Model.ShortDescription</div>
                     <div class="prices">
                         @if (!string.IsNullOrEmpty(Model.ProductPrice.OldPrice))
-                            {
+                        {
                             <span class="price old-price">@Model.ProductPrice.OldPrice</span>
-                            }
+                        }
                         <span class="price actual-price">@Model.ProductPrice.Price</span>
                         @if (Model.ProductPrice.DisplayTaxShippingInfo)
-                         {
+                        {
                             var inclTax = workContext.TaxDisplayType == TaxDisplayType.IncludingTax;
                             //tax info is already included in the price (incl/excl tax). that's why we display only shipping info here
                             //of course, you can modify appropriate locales to include VAT info there
@@ -76,11 +120,11 @@
                             </span>
                         }
                         @if (!string.IsNullOrEmpty(Model.ProductPrice.BasePricePAngV))
-                            {
+                        {
                             <div class="base-price-pangv">
                                 @Model.ProductPrice.BasePricePAngV
                             </div>
-                            }
+                        }
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">

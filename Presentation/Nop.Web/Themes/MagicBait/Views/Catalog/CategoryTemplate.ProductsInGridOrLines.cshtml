@@ -145,10 +145,10 @@
                         @if (Model.Products.Count > 0)
                         {
                             <div class="@(Model.PagingFilteringContext.ViewMode == "list" ? "product-list" : "product-grid")">
-                                <div class="item-grid justify-content-around row">
+                                <div class="item-grid row">
                                     @foreach (var product in Model.Products)
                                     {
-                                        <div class="item-box col-xs-12 col-sm-5 col-lg-5 col-xxl-4 col-xxxl-2 px-3 pb-2 my-3">
+                                        <div class="item-box col-xs-12 col-sm-5 col-lg-5 col-xxl-4 col-xxxl-3 px-3 pb-2 my-3">
                                             @await Html.PartialAsync("_ProductBox", product)
                                         </div>
                                     }
@@ -175,76 +175,40 @@
         //something to do with dynamically inserting the html into the popover
         $('.input-number').val('1');
 
-        // Enables popover
-        $(".product-item").popover({
-            html: true,
-            boundary: 'window',
-            content: function () {
-                return $(this).find('.product-popover-html').html();
-            },
-            fallbackPlacement: 'clockwise',
-            trigger: 'manual'
-        }).on('show.bs.popover', function () {
+        $('.btn-number').click(function (e) {
+            e.preventDefault();
+            fieldName = $(this).data('field');
+            parentCon = $('.' + fieldName + '-con');
+            type = $(this).attr('data-type');
+            input = parentCon.find('#' + fieldName);
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+                if (type == 'minus') {
 
-            //for the close button inside the popover
-            var $popup = $(this);
-
-            //Hide all other popovers
-            $(".product-item").not(this).popover("hide");
-
-            }).on('shown.bs.popover', function () {
-
-                //for the close button inside the popover
-                var $popup = $(this);
-
-
-            $(this).find('.close-button').click(function (e) {
-                $popup.popover('hide');
-            });
-
-            $('html').click(function (e) {
-                //if clicked element is not your element and parents aren't your div
-                if ($(e.target).closest('.popover.show').length === 0 && !$(e.target).is('.product-quickview')) {
-
-                    //do stuff
-                    $popup.popover('toggle');
-                }
-            });
-
-            $('.btn-number').click(function (e) {
-                e.preventDefault();
-                fieldName = $(this).data('field');
-                parentCon = $('.' + fieldName + '-con');
-                type = $(this).attr('data-type');
-                input = parentCon.find('#'+fieldName);
-                var currentVal = parseInt(input.val());
-                if (!isNaN(currentVal)) {
-                    if (type == 'minus') {
-
-                        if (currentVal > input.attr('min')) {
-                            input.val(currentVal - 1).change();
-                        }
-                        if (parseInt(input.val()) == input.attr('min')) {
-                            $(this).attr('disabled', true);
-                        }
-
-                    } else if (type == 'plus') {
-
-                        if (currentVal < input.attr('max')) {
-                            input.val(currentVal + 1).change();
-                        }
-                        if (parseInt(input.val()) == input.attr('max')) {
-                            $(this).attr('disabled', true);
-                        }
-
+                    if (currentVal > input.attr('min')) {
+                        input.val(currentVal - 1).change();
                     }
-                } else {
-                    input.val(0);
+                    if (parseInt(input.val()) == input.attr('min')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                } else if (type == 'plus') {
+
+                    if (currentVal < input.attr('max')) {
+                        input.val(currentVal + 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('max')) {
+                        $(this).attr('disabled', true);
+                    }
+
                 }
-                $(fieldName + '-con .input-number').focusin(function () {
+            } else {
+                input.val(0);
+            }
+            $(fieldName + '-con .input-number').focusin(function () {
                 $(this).data('oldValue', $(this).val());
             });
-                $(fieldName + '-con .input-number').change(function () {
+            $(fieldName + '-con .input-number').change(function () {
 
                 minValue = parseInt($(this).attr('min'));
                 maxValue = parseInt($(this).attr('max'));
@@ -266,7 +230,7 @@
 
 
             });
-                $(fieldName + '-con .input-number').keydown(function (e) {
+            $(fieldName + '-con .input-number').keydown(function (e) {
                 // Allow: backspace, delete, tab, escape, enter and .
                 if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
                     // Allow: Ctrl+A
@@ -280,12 +244,8 @@
                 if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
                     e.preventDefault();
                 }
-                });
             });
-        });
 
-        $('.product-quickview').click(function () {
-            $(this).parent('.product-item').popover('toggle');
         });
 
     });
