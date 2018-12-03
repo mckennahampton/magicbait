@@ -187,6 +187,7 @@
 
                     if (currentVal > input.attr('min')) {
                         input.val(currentVal - 1).change();
+                        $('.btn-number[data-type=plus]').attr('disabled', false);
                     }
                     if (parseInt(input.val()) == input.attr('min')) {
                         $(this).attr('disabled', true);
@@ -196,6 +197,7 @@
 
                     if (currentVal < input.attr('max')) {
                         input.val(currentVal + 1).change();
+                        $('.btn-number[data-type=minus]').attr('disabled', false);
                     }
                     if (parseInt(input.val()) == input.attr('max')) {
                         $(this).attr('disabled', true);

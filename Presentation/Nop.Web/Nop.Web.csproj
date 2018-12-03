@@ -74,6 +74,7 @@
     <None Remove="Themes\MagicBait\Content\scss\forms\_item-quantity.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_base.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_global-page-styles.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\global\_global-shop.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_mixins.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_normalize.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_simplebar.scss" />
@@ -90,6 +91,7 @@
     <None Remove="Themes\MagicBait\Content\scss\sections\_header.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_register.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_shop.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\sections\_single-product-page.scss" />
 
     <None Update="Areas\Admin\sitemap.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -10,6 +10,7 @@
                         @for (var i = 0; i < 1; i++)
                         {
                             var item = Model.Items[i];
+                            
                             <div class="item @(i == 0 ? "first" : null)">
                                 <h4>Recent Item</h4>
                                 @if (Model.ShowProductImages)
@@ -84,8 +85,11 @@
     if (cartPrice === '') {
         cartPrice = '$0.00';
         $('.totals').text(cartPrice).addClass('price');
-        $('#flyout-cart').css('width', '300px');
+        $('#flyout-cart').css({
+            width: '300px'
+        });
         $('.remove-if-empty').css('display', 'none');
-        $('.change-class-if-empty').removeClass('col-sm-7');
+        $('.change-class-if-empty').removeClass('col-sm-7').addClass('mx-auto');
+        $('.count').addClass('my-3 mx-5');
     };
 </script>

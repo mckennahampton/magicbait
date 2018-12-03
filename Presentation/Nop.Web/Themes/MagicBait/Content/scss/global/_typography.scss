@@ -8,6 +8,7 @@ p, div {
     color: #000;
 }
 
-.price {
+.price, .product-price {
     color: $color3;
+    font-weight: bold;
 }
