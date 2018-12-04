@@ -238,6 +238,32 @@
             }
         }
     }
+
+    .block-recently-viewed-products {
+        width: 90%;
+        margin: 0 5%;
+
+        .title {
+            text-align: center;
+        }
+
+        .listbox {
+
+            div {
+                padding: 8px 0px;
+                text-align: center;
+
+                > * {
+                    display: inline-block;
+                }
+            }
+
+            div:not(.last) {
+                border-bottom: 1px solid $color4;
+            }
+
+        }
+    }
 }
 
 .center-2 {
@@ -337,6 +363,7 @@
 
         .product-title {
             height: 2.4em;
+            margin-top: 10px;
         }
 
         a {

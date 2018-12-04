@@ -465,7 +465,8 @@ p, div {
 
 .price, .product-price {
   color: #008B09;
-  font-weight: bold; }
+  font-weight: bold;
+  font-size: 20px; }
 
 /*!
  * Hover.css (http://ianlunn.github.io/Hover/)
@@ -16658,8 +16659,8 @@ body.stop-scrolling {
       text-decoration: none;
       color: #fff; }
     .sidebar-nav li.sidebar-user-link:hover, .sidebar-nav li.sidebar-site-link:hover {
-      background: #fff;
-      text-indent: 50px; }
+      text-indent: 30px;
+      background: #fff; }
       .sidebar-nav li.sidebar-user-link:hover a, .sidebar-nav li.sidebar-site-link:hover a {
         color: #0808AF; }
 
@@ -17165,6 +17166,18 @@ body.stop-scrolling {
           text-indent: 0px; }
           .side-2 .block-category-navigation .list li ul li:hover {
             text-indent: 20px; }
+  .side-2 .block-recently-viewed-products {
+    width: 90%;
+    margin: 0 5%; }
+    .side-2 .block-recently-viewed-products .title {
+      text-align: center; }
+    .side-2 .block-recently-viewed-products .listbox div {
+      padding: 8px 0px;
+      text-align: center; }
+      .side-2 .block-recently-viewed-products .listbox div > * {
+        display: inline-block; }
+    .side-2 .block-recently-viewed-products .listbox div:not(.last) {
+      border-bottom: 1px solid #bbbbbb; }
 
 .center-2 {
   background: #fff; }
@@ -17215,7 +17228,8 @@ body.stop-scrolling {
       display: inline-block;
       max-width: 250px; }
     .center-2 .item-box .product-title {
-      height: 2.4em; }
+      height: 2.4em;
+      margin-top: 10px; }
     .center-2 .item-box a {
       text-align: center;
       display: block; }
@@ -17291,13 +17305,65 @@ body.stop-scrolling {
         text-decoration: none; }
 
 .product-essential {
-  max-width: 1200px;
   margin: 0 auto; }
+  @media (min-width: 1300px) {
+    .product-essential {
+      max-width: 1000px; } }
+  @media (max-width: 1439.98px) {
+    .product-essential {
+      max-width: 800px; } }
   .product-essential .overview {
     text-align: center; }
   .product-essential .add-to-cart {
     max-width: 200px;
     display: inline-block; }
+  .product-essential .product-price {
+    margin-bottom: 15px; }
+  .product-essential .picture a {
+    display: block; }
+  .product-essential .picture img {
+    width: 90%;
+    height: auto;
+    margin: 30px 5%; }
+  .product-essential .single-product-picture-inner-con, .product-essential .single-product-overview-inner-con {
+    margin: 0 auto; }
+  .product-essential .single-product-picture-inner-con {
+    max-width: 400px; }
+  .product-essential .single-product-overview-inner-con {
+    max-width: 400px; }
+
+.related-products-grid {
+  width: 90%;
+  margin: 0 5%; }
+  .related-products-grid .title {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-family: Geoslab;
+    margin: 10px auto; }
+  .related-products-grid .item-box {
+    text-align: center; }
+    .related-products-grid .item-box .product-item {
+      display: inline-block;
+      max-width: 250px; }
+    .related-products-grid .item-box .product-title {
+      height: 2.4em;
+      margin-top: 10px; }
+    .related-products-grid .item-box a {
+      text-align: center;
+      display: block; }
+      .related-products-grid .item-box a img {
+        width: 95%;
+        max-width: 300px;
+        display: inline-block; }
+    .related-products-grid .item-box .product-quickview {
+      text-align: center; }
+      .related-products-grid .item-box .product-quickview > * {
+        display: inline-block; }
+      .related-products-grid .item-box .product-quickview span:after {
+        content: " | ";
+        color: black;
+        padding: 0px 8px; }
 
 .btn-minus, .btn-plus, .input-number {
   font-size: 15px; }

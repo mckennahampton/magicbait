@@ -134,12 +134,13 @@ body.stop-scrolling {
         }
 
         &:hover {
+            text-indent: 30px;
             background: #fff;
-            text-indent: 50px;
 
             a {
                 color: $color2;
             }
+
         }
     }
 

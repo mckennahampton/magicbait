@@ -310,6 +310,12 @@
     <Content Update="Themes\MagicBait\Views\Shared\Components\NewsletterBox\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\RecentlyViewedProductsBlock\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\RelatedProducts\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Shared\Components\SidebarUserLinks - Copy\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

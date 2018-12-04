@@ -1,5 +1,12 @@
 ﻿.product-essential {
-    max-width: 1200px;
+    @include media-breakpoint-up(xl) {
+        max-width: 1000px;
+    }
+
+    @include media-breakpoint-down(xl) {
+        max-width: 800px;
+    }
+
     margin: 0 auto;
 
     .overview {
@@ -9,5 +16,86 @@
     .add-to-cart {
         max-width: 200px;
         display: inline-block;
+    }
+
+    .product-price {
+        margin-bottom: 15px;
+    }
+
+    .picture {
+        a {
+            display: block;
+        }
+        img {
+            width: 90%;
+            height: auto;
+            margin: 30px 5%;
+        }
+    }
+
+    .single-product-picture-inner-con, .single-product-overview-inner-con {
+        margin: 0 auto;
+    }
+
+    .single-product-picture-inner-con {
+        max-width: 400px;
+    }
+
+    .single-product-overview-inner-con {
+        max-width: 400px;
+    }
+}
+
+.related-products-grid {
+    width: 90%;
+    margin: 0 5%;
+
+    .title {
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+        font-family: Geoslab;
+        margin: 10px auto;
+    }
+
+    .item-box {
+        text-align: center;
+
+        .product-item {
+            display: inline-block;
+            max-width: 250px;
+        }
+
+        .product-title {
+            height: 2.4em;
+            margin-top: 10px;
+        }
+
+        a {
+            text-align: center;
+            display: block;
+
+            img {
+                width: 95%;
+                max-width: 300px;
+                display: inline-block;
+            }
+        }
+
+        .product-quickview {
+            text-align: center;
+
+            > * {
+                display: inline-block;
+            }
+
+            span {
+                &:after {
+                    content: " | ";
+                    color: black;
+                    padding: 0px 8px;
+                }
+            }
+        }
     }
 }
