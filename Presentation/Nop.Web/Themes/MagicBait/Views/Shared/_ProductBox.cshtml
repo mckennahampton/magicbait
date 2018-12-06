@@ -60,7 +60,7 @@
             <div class="row no-gutters qty@(Model.Id)-con">
                 <div class="col-4">
                     <span class="input-group-btn">
-                        <button type="button" class="btn-minus btn-number" data-type="minus" data-field="qty@(Model.Id)">
+                        <button type="button" title="Minus" class="btn-minus btn-number" data-type="minus" data-field="qty@(Model.Id)">
                             <i class="fas fa-minus"></i>
                         </button>
                     </span>
@@ -70,14 +70,14 @@
                 </div>
                 <div class="col-4">
                     <span class="input-group-btn">
-                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="qty@(Model.Id)">
+                        <button type="button" title="Plus" class="btn-plus btn-number" data-type="plus" data-field="qty@(Model.Id)">
                             <i class="fas fa-plus"></i>
                         </button>
                     </span>
                 </div>
             </div>
 
-            <input type="button" value="@(addToCartText)" class="button-2 mt-1 mb-3 product-box-add-to-cart-button" onclick="AjaxCart.addproducttocart_catalog('@addtocartlink', '@Model.Id');return false;" />
+            <input type="button" value="@(addToCartText)" class="button-2 mt-1 mb-3 product-box-add-to-cart-button" title="Add @(Model.Name) to Cart" onclick="AjaxCart.addproducttocart_catalog('@addtocartlink', '@Model.Id');return false;" />
         }
         @if (!Model.ProductPrice.DisableAddToCompareListButton)
         {

@@ -37,7 +37,7 @@ body.stop-scrolling {
     top: 0;
     width: 0;
     height: 100%;
-    margin-left: -255px;
+    margin-left: -275px;
     overflow-y: auto;
     border-right: 5px solid black;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#130684+1,0808af+8 */
@@ -53,7 +53,8 @@ body.stop-scrolling {
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 275px;
+    left: 275px;
 }
 
 #page-content-wrapper {
@@ -63,7 +64,7 @@ body.stop-scrolling {
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
-    margin-right: -255px;
+    margin-right: -275px;
 }
 
 

@@ -117,6 +117,9 @@
 
 .center-2 {
 
+    height: 100%;
+
+
     @include media-breakpoint-down(lg) {
         margin-left: 0px;
     }
@@ -124,12 +127,25 @@
     @include media-breakpoint-up(lg) {
         overflow: hidden;
         margin-left: 250px;
+        width: calc(100vw - 250px);
     }
 }
 
 
 .side-2 {
     background: #fff;
+    //hide the recently viewed items
+    @include media-breakpoint-down(lg) {
+        .block-recently-viewed-products {
+            display: none;
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        .block-recently-viewed-products {
+            display: block;
+        }
+    }
 
     .block-category-navigation {
         padding: 0px 20px;
@@ -169,10 +185,16 @@
                         border-bottom: 1px solid $color4;
                     }
 
-                    &:hover, &.active {
-                        border-left: 4px solid $color2;
-                        text-indent: 40px;
+                    &:not(.active):hover {
+                        border-left: 4px solid $color5;
+                        text-indent: 30px;
                         font-weight: bold;
+                    }
+
+                    &.active {
+                        border-left: 4px solid $color1;
+                        font-weight: bold;
+                        text-indent: 20px;
                     }
                 }
 
@@ -217,7 +239,7 @@
                     font-weight: normal;
                 }
 
-                ul {
+                ul.sublist {
 
                     @include media-breakpoint-up(lg) {
                         padding-left: 10px;
@@ -228,10 +250,17 @@
                     }
 
                     li {
-                        text-indent: 0px;
-
+                        text-indent: 0px; 
                         &:hover {
-                            text-indent: 20px;
+                            text-indent: 5px;
+                        }
+
+                        &.active {
+                            text-indent: 0px;
+
+                            &:hover {
+                                text-indent: 0px;
+                            }
                         }
                     }
                 }
@@ -261,7 +290,6 @@
             div:not(.last) {
                 border-bottom: 1px solid $color4;
             }
-
         }
     }
 }

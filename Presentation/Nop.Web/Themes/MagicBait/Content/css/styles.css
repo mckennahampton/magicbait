@@ -16389,7 +16389,7 @@ a:focus, button:focus {
   text-align: right;
   display: table-cell;
   vertical-align: bottom;
-  overflow: auto;
+  overflow: hidden;
   width: auto; }
 
 @media (max-width: 1023.98px) {
@@ -16412,7 +16412,8 @@ a:focus, button:focus {
   border-right: none;
   font: "Verdana", "Geneva", sans-serif;
   font-weight: 100;
-  padding-left: 10px; }
+  padding-left: 10px;
+  height: 28px; }
 
 .search-box .search-box-button {
   border: 1px solid #bbbbbb;
@@ -16575,7 +16576,7 @@ body.stop-scrolling {
   top: 0;
   width: 0;
   height: 100%;
-  margin-left: -255px;
+  margin-left: -275px;
   overflow-y: auto;
   border-right: 5px solid black;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#130684+1,0808af+8 */
@@ -16597,7 +16598,8 @@ body.stop-scrolling {
   transition: all 0.5s ease; }
 
 #wrapper.toggled #sidebar-wrapper {
-  width: 250px; }
+  width: 275px;
+  left: 275px; }
 
 #page-content-wrapper {
   width: 100%;
@@ -16605,7 +16607,7 @@ body.stop-scrolling {
 
 #wrapper.toggled #page-content-wrapper {
   position: absolute;
-  margin-right: -255px; }
+  margin-right: -275px; }
 
 /* Sidebar Styles */
 .sidebar-brand {
@@ -17081,17 +17083,25 @@ body.stop-scrolling {
     .side-2 #categoryNavigationButton {
       display: none; } }
 
-@media (max-width: 1299.98px) {
-  .center-2 {
-    margin-left: 0px; } }
-
-@media (min-width: 1024px) {
-  .center-2 {
-    overflow: hidden;
-    margin-left: 250px; } }
+.center-2 {
+  height: 100%; }
+  @media (max-width: 1299.98px) {
+    .center-2 {
+      margin-left: 0px; } }
+  @media (min-width: 1024px) {
+    .center-2 {
+      overflow: hidden;
+      margin-left: 250px;
+      width: calc(100vw - 250px); } }
 
 .side-2 {
   background: #fff; }
+  @media (max-width: 1299.98px) {
+    .side-2 .block-recently-viewed-products {
+      display: none; } }
+  @media (min-width: 1024px) {
+    .side-2 .block-recently-viewed-products {
+      display: block; } }
   .side-2 .block-category-navigation {
     padding: 0px 20px; }
     .side-2 .block-category-navigation .list {
@@ -17128,10 +17138,14 @@ body.stop-scrolling {
             border: 0px; }
             .side-2 .block-category-navigation .list li:not(:last-child) {
               border-bottom: 1px solid #bbbbbb; }
-            .side-2 .block-category-navigation .list li:hover, .side-2 .block-category-navigation .list li.active {
-              border-left: 4px solid #0808AF;
-              text-indent: 40px;
-              font-weight: bold; } }
+            .side-2 .block-category-navigation .list li:not(.active):hover {
+              border-left: 4px solid #212529;
+              text-indent: 30px;
+              font-weight: bold; }
+            .side-2 .block-category-navigation .list li.active {
+              border-left: 4px solid #EC1C24;
+              font-weight: bold;
+              text-indent: 20px; } }
         @media (max-width: 1023.98px) {
           .side-2 .block-category-navigation .list li {
             text-indent: 0px;
@@ -17157,15 +17171,19 @@ body.stop-scrolling {
         .side-2 .block-category-navigation .list li.inactive {
           font-weight: normal; }
         @media (min-width: 1024px) {
-          .side-2 .block-category-navigation .list li ul {
+          .side-2 .block-category-navigation .list li ul.sublist {
             padding-left: 10px; } }
         @media (max-width: 1299.98px) {
-          .side-2 .block-category-navigation .list li ul {
+          .side-2 .block-category-navigation .list li ul.sublist {
             display: none; } }
-        .side-2 .block-category-navigation .list li ul li {
+        .side-2 .block-category-navigation .list li ul.sublist li {
           text-indent: 0px; }
-          .side-2 .block-category-navigation .list li ul li:hover {
-            text-indent: 20px; }
+          .side-2 .block-category-navigation .list li ul.sublist li:hover {
+            text-indent: 5px; }
+          .side-2 .block-category-navigation .list li ul.sublist li.active {
+            text-indent: 0px; }
+            .side-2 .block-category-navigation .list li ul.sublist li.active:hover {
+              text-indent: 0px; }
   .side-2 .block-recently-viewed-products {
     width: 90%;
     margin: 0 5%; }
@@ -17316,6 +17334,7 @@ body.stop-scrolling {
     text-align: center; }
   .product-essential .add-to-cart {
     max-width: 200px;
+    width: 100%;
     display: inline-block; }
   .product-essential .product-price {
     margin-bottom: 15px; }
@@ -17403,7 +17422,8 @@ body.stop-scrolling {
   border-top: 2px solid #212529;
   border-bottom: 2px solid #212529;
   border-right: 0px;
-  border-left: 0px; }
+  border-left: 0px;
+  height: 30px; }
 
 .product-box-add-to-cart-button, .add-to-wishlist-button {
   width: 100%;

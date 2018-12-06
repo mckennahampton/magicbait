@@ -31,7 +31,7 @@
             <div class="row no-gutters addtocart_@(Model.ProductId)-con">
                 <div class="col-4">
                     <span class="input-group-btn">
-                        <button type="button" class="btn-minus btn-number" data-type="minus" data-field="addtocart_@(Model.ProductId)">
+                        <button type="button" class="btn-minus btn-number" title="Minus" data-type="minus" data-field="addtocart_@(Model.ProductId)">
                             <i class="fas fa-minus"></i>
                         </button>
                     </span>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-4">
                     <span class="input-group-btn">
-                        <button type="button" class="btn-plus btn-number" data-type="plus" data-field="addtocart_@(Model.ProductId)">
+                        <button type="button" class="btn-plus btn-number" title="Plus" data-type="plus" data-field="addtocart_@(Model.ProductId)">
                             <i class="fas fa-plus"></i>
                         </button>
                     </span>
@@ -65,7 +65,7 @@
                         addToCartText = T("ShoppingCart.PreOrder").Text;
                     }
                 }
-                <input type="button" id="add-to-cart-button-@Model.ProductId" class="button-2 mt-1 mb-3 product-box-add-to-cart-button" value="@addToCartText" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new {productId = Model.ProductId, shoppingCartTypeId = (int) ShoppingCartType.ShoppingCart})', '#product-details-form');return false;" />
+                <input type="button" id="add-to-cart-button-@Model.ProductId" title="Add to cart" class="button-2 mt-1 mb-3 product-box-add-to-cart-button" value="@addToCartText" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new {productId = Model.ProductId, shoppingCartTypeId = (int) ShoppingCartType.ShoppingCart})', '#product-details-form');return false;" />
             
 
 
