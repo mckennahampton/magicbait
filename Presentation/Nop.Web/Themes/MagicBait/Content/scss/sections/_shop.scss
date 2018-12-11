@@ -367,7 +367,7 @@
         }
     }
 
-    @include media-breakpoint-between(xxl, xxxl) {
+    @include media-breakpoint-only(xxl) {
 
         .item-box:nth-child(3n+1):nth-last-child(-n+3), .item-box:nth-child(3n+1):nth-last-child(-n+3) ~ .item-box {
             border-bottom: 0px;

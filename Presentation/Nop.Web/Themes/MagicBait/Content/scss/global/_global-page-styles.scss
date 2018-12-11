@@ -10,9 +10,73 @@
     background: #fff;
 }
 
+.required {
+    display: none;
+}
+
 .center-1 {
     background: #fff;
     width: 100%;
+
+
+    .sitemap-page {
+        max-width: 1200px;
+        margin: 30px auto;
+        width: 100%;
+
+        ul {
+            list-style: none;
+
+            li {
+
+                @include shift(all, 0.2s, ease);
+
+                a {
+                    width: 100%;
+                    display: block;
+                    padding-left: 0px;
+                    margin-top: 5px;
+                    @include shift(all, 0.2s, ease);
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                &:hover {
+                    border-left: 2px solid #000;
+
+                    a {
+                        padding-left: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    .topic-page {
+        max-width: 1200px;
+        margin: 30px auto;
+        width: 100%;
+    }
+
+    .contact-page {
+        max-width: 500px;
+        margin: 30px auto;
+        width: 100%;
+
+        .button-1 {
+            width: 100%;
+            background: $color1;
+            color: #fff;
+            margin-top: 15px;
+            text-align: center;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
 }
 
 .delimiter {

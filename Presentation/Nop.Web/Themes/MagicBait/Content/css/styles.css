@@ -16297,9 +16297,54 @@ a:focus, button:focus {
 .home-page {
   background: #fff; }
 
+.required {
+  display: none; }
+
 .center-1 {
   background: #fff;
   width: 100%; }
+  .center-1 .sitemap-page {
+    max-width: 1200px;
+    margin: 30px auto;
+    width: 100%; }
+    .center-1 .sitemap-page ul {
+      list-style: none; }
+      .center-1 .sitemap-page ul li {
+        -webkit-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        transition: all 0.2s ease; }
+        .center-1 .sitemap-page ul li a {
+          width: 100%;
+          display: block;
+          padding-left: 0px;
+          margin-top: 5px;
+          -webkit-transition: all 0.2s ease;
+          -moz-transition: all 0.2s ease;
+          -o-transition: all 0.2s ease;
+          transition: all 0.2s ease; }
+          .center-1 .sitemap-page ul li a:hover {
+            text-decoration: none; }
+        .center-1 .sitemap-page ul li:hover {
+          border-left: 2px solid #000; }
+          .center-1 .sitemap-page ul li:hover a {
+            padding-left: 15px; }
+  .center-1 .topic-page {
+    max-width: 1200px;
+    margin: 30px auto;
+    width: 100%; }
+  .center-1 .contact-page {
+    max-width: 500px;
+    margin: 30px auto;
+    width: 100%; }
+    .center-1 .contact-page .button-1 {
+      width: 100%;
+      background: #EC1C24;
+      color: #fff;
+      margin-top: 15px;
+      text-align: center; }
+      .center-1 .contact-page .button-1:hover {
+        color: #fff; }
 
 .delimiter {
   display: none; }
@@ -17234,7 +17279,7 @@ body.stop-scrolling {
   @media (max-width: 1599.98px) {
     .center-2 .item-box:nth-child(2n+1):nth-last-child(-n+2), .center-2 .item-box:nth-child(2n+1):nth-last-child(-n+2) ~ .item-box {
       border-bottom: 0px; } }
-  @media (min-width: 1440px) {
+  @media (min-width: 1440px) and (max-width: 1599.98px) {
     .center-2 .item-box:nth-child(3n+1):nth-last-child(-n+3), .center-2 .item-box:nth-child(3n+1):nth-last-child(-n+3) ~ .item-box {
       border-bottom: 0px; } }
   @media (min-width: 1600px) {
