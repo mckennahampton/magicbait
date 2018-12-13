@@ -33,57 +33,57 @@
                 <div class="fieldset">
                     <div class="form-fields">
                         <div class="basic-search">
-                            <div class="inputs">
+                            <div class="inputs form-group">
                                 <label asp-for="q">@T("Search.SearchTerm"):</label>
-                                <input asp-for="q" class="search-text" />
+                                <input class="form-control" asp-for="q" class="search-text" />
                             </div>
-                            @await Component.InvokeAsync("Widget", new { widgetZone = "productsearch_page_basic" })
-                            <div class="inputs reversed">
-                                <input asp-for="adv" />
+                            @*<div class="inputs reversed form-group">
+                                <input class="form-control" asp-for="adv" />
                                 <label asp-for="adv">@T("Search.AdvancedSearch")</label>
-                            </div>
+                            </div>*@
                         </div>
-                        <div class="advanced-search" id="advanced-search-block">
+                         @*<div class="advanced-search" id="advanced-search-block">
                             @if (Model.AvailableCategories.Count > 0)
                             {
-                                <div class="inputs">
+                                <div class="inputs form-group">
                                     <label asp-for="cid">@T("Search.Category"):</label>
-                                    <select asp-for="cid" asp-items="Model.AvailableCategories"></select>
+                                    <select class="form-control" asp-for="cid" asp-items="Model.AvailableCategories"></select>
                                 </div>
-                                <div class="inputs reversed">
-                                    <input asp-for="isc" />
+                                <div class="inputs form-group reversed">
+                                    <input class="form-control" asp-for="isc" />
                                     <label asp-for="isc">@T("Search.IncludeSubCategories")</label>
                                 </div>
                             }
                             @if (Model.AvailableManufacturers.Count > 0)
                             {
-                                <div class="inputs">
+                                <div class="inputs form-group">
                                     <label asp-for="mid">@T("Search.Manufacturer"):</label>
-                                    <select asp-for="mid" asp-items="Model.AvailableManufacturers"></select>
+                                    <select class="form-control" asp-for="mid" asp-items="Model.AvailableManufacturers"></select>
                                 </div>
                             }
                             @if (Model.asv && Model.AvailableVendors.Count > 0)
                             {
-                                <div class="inputs">
+                                <div class="inputs form-group">
                                     <label asp-for="vid">@T("Search.Vendor"):</label>
-                                    <select asp-for="vid" asp-items="Model.AvailableVendors"></select>
+                                    <select class="form-control" asp-for="vid" asp-items="Model.AvailableVendors"></select>
                                 </div>
                             }
-                            <div class="inputs">
+                            <div class="inputs form-group">
                                 <label>@T("Search.PriceRange"):</label>
                                 <span class="price-range">
                                     @T("Search.PriceRange.From")
-                                    <input asp-for="pf" class="price-from" />
+                                    <input class="form-control" asp-for="pf" class="price-from" />
                                     @T("Search.PriceRange.To")
-                                    <input asp-for="pt" class="price-to" />
+                                    <input class="form-control" asp-for="pt" class="price-to" />
                                 </span>
                             </div>
-                            <div class="inputs reversed">
-                                <input asp-for="sid" />
+                            <div class="inputs form-group reversed">
+                                <input class="form-control" asp-for="sid" />
                                 <label asp-for="sid">@T("Search.SearchInDescriptions")</label>
                             </div>
                             @await Component.InvokeAsync("Widget", new { widgetZone = "productsearch_page_advanced" })
-                        </div>
+                                
+                        </div> *@
                     </div>
                 </div>
                 <div class="buttons">

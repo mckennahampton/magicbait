@@ -16286,6 +16286,71 @@ a:focus, button:focus {
 .blue-hr {
   border-top: 1px solid #0808AF; }
 
+.search-page .page-title {
+  margin: 10px 0px; }
+
+.search-page .fieldset, .search-page .buttons {
+  display: block;
+  float: left; }
+
+.search-page .buttons {
+  display: inline-block;
+  vertical-align: middle; }
+
+.search-page .search-button {
+  margin: 0px 20px;
+  background: #fff;
+  border: 1px solid #bbbbbb;
+  padding: 5px 10px;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+  .search-page .search-button:hover {
+    background: #EC1C24;
+    color: #fff;
+    cursor: pointer; }
+
+.search-page .basic-search {
+  display: inline-block;
+  text-align: left;
+  width: 100%;
+  white-space: nowrap; }
+  .search-page .basic-search div:first-child {
+    overflow: auto;
+    display: inline-block; }
+    .search-page .basic-search div:first-child label, .search-page .basic-search div:first-child input {
+      display: inline-block;
+      vertical-align: middle; }
+    .search-page .basic-search div:first-child label {
+      margin-bottom: 0; }
+    .search-page .basic-search div:first-child input {
+      max-width: 300px;
+      width: auto; }
+      @media (min-width: 576px) {
+        .search-page .basic-search div:first-child input {
+          margin-left: 30px; } }
+
+.search-page #advanced-search-block div:first-child {
+  margin-right: 10px; }
+
+.search-page #advanced-search-block .form-group {
+  display: inline-block;
+  text-align: left;
+  overflow: auto; }
+  .search-page #advanced-search-block .form-group label, .search-page #advanced-search-block .form-group input, .search-page #advanced-search-block .form-group select {
+    display: inline-block;
+    vertical-align: middle; }
+  .search-page #advanced-search-block .form-group label {
+    margin-bottom: 0; }
+  .search-page #advanced-search-block .form-group label[for="cid"] {
+    margin-right: 10px; }
+  .search-page #advanced-search-block .form-group input, .search-page #advanced-search-block .form-group select {
+    width: auto; }
+  .search-page #advanced-search-block .form-group #cid {
+    width: auto; }
+
 .master-wrapper-content {
   background: url("stripes-light.png"); }
 
@@ -16337,6 +16402,8 @@ a:focus, button:focus {
     max-width: 500px;
     margin: 30px auto;
     width: 100%; }
+    .center-1 .contact-page #recaptcha div {
+      margin: 0 auto; }
     .center-1 .contact-page .button-1 {
       width: 100%;
       background: #EC1C24;

@@ -70,6 +70,7 @@
     <None Remove="Themes\MagicBait\Content\scss\content\_links.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_lists.scss" />
     <None Remove="Themes\MagicBait\Content\scss\content\_product-block.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\content\_search-page.scss" />
     <None Remove="Themes\MagicBait\Content\scss\forms\_checkout.scss" />
     <None Remove="Themes\MagicBait\Content\scss\forms\_item-quantity.scss" />
     <None Remove="Themes\MagicBait\Content\scss\global\_base.scss" />

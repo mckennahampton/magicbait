@@ -1,0 +1,97 @@
+﻿.search-page {
+
+    .page-title {
+        margin: 10px 0px;
+    }
+
+    .fieldset, .buttons {
+        display: block;
+        float: left;
+    }
+
+    .buttons {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .search-button {
+        margin: 0px 20px;
+        background: #fff;
+        border: 1px solid $color4;
+        padding: 5px 10px;
+        border-radius: 5px;
+        @include shift(all, 0.2s, ease);
+
+
+
+        &:hover {
+            background: $color1;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+
+    .basic-search {
+        display: inline-block;
+        text-align: left;
+        width: 100%;
+        white-space: nowrap;
+
+        div:first-child {
+            overflow: auto;
+            display: inline-block;
+
+            label, input {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            label {
+                margin-bottom: 0;
+            }
+
+            input {
+                max-width: 300px;
+                width: auto;
+
+                @include media-breakpoint-up(sm) {
+                    margin-left: 30px;
+                }
+            }
+        }
+    }
+
+    #advanced-search-block {
+
+        div:first-child {
+            margin-right: 10px;
+        }
+
+        .form-group {
+            display: inline-block;
+            text-align: left;
+            overflow: auto;
+
+            label, input, select {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            label {
+                margin-bottom: 0;
+            }
+
+            label[for="cid"] {
+                margin-right: 10px;
+            }
+
+            input, select {
+                width: auto;
+            }
+
+            #cid {
+                width: auto;
+            }
+        }
+    }
+}
