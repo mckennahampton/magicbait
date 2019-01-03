@@ -57,7 +57,7 @@
                 <div class="buttons">
                     @if (Model.DisplayShoppingCartButton)
                     {
-                        <input type="button" value="@T("ShoppingCart.Mini.ViewCart")" class="hvr-grow button-1 desktop-main-button cart-button" onclick="setLocation('@(Url.RouteUrl("ShoppingCart"))')" />
+                        <input type="button" value="@T("ShoppingCart.Mini.ViewCart")" class="hvr-grow button-1 desktop-main-button cart-button" name="Shopping Cart" onclick="setLocation('@(Url.RouteUrl("ShoppingCart"))')" />
 
                     }
                     @if (Model.DisplayCheckoutButton)
@@ -71,7 +71,7 @@
                         {
                             checkoutUrl = Url.RouteUrl("Checkout");
                         }
-                        <input type="button" value="@T("Checkout.Button")" class="hvr-grow button-1 desktop-main-button checkout-button" onclick="setLocation('@checkoutUrl')" />
+                        <input type="button" value="@T("Checkout.Button")" class="hvr-grow button-1 desktop-main-button checkout-button" Name="Checkout" onclick="setLocation('@checkoutUrl')" />
                     }
                 </div>
             </div>

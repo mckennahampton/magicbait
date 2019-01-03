@@ -16587,7 +16587,9 @@ a:focus, button:focus {
         text-decoration: none;
         padding: 10px 12px;
         background: #fff;
-        color: #0808AF; }
+        color: #0808AF;
+        -webkit-box-shadow: 0px 0px 5px 0.5px #0808AF;
+        box-shadow: 0px 0px 5px 0.5px #0808AF; }
       .header-menu .top-menu li .sublist {
         visibility: hidden;
         /* hides sub-menu */
@@ -16596,16 +16598,16 @@ a:focus, button:focus {
         padding: 0px;
         background: #fff;
         border-radius: 0px 0px 8px 8px;
-        -webkit-box-shadow: 0px 5px 8px 1px rgba(0, 0, 0, 0.8);
-        box-shadow: 0px 5px 8px 1px rgba(0, 0, 0, 0.8);
-        border: 2px solid #fff;
+        -webkit-box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.5);
+        border: 4px solid #fff;
         left: 50%;
-        top: 125%;
+        top: 135%;
         width: auto;
         min-width: 100%;
-        -webkit-transform: translate(-50%, -2em);
-        -ms-transform: translate(-50%, -2em);
-        transform: translate(-50%, -2em);
+        -webkit-transform: translate(-50%, 0%);
+        -ms-transform: translate(-50%, 0%);
+        transform: translate(-50%, 0%);
         z-index: -1;
         -webkit-transition: all 0.2s ease-out;
         -moz-transition: all 0.2s ease-out;
@@ -16617,7 +16619,9 @@ a:focus, button:focus {
         .header-menu .top-menu li .sublist li {
           display: inline-block;
           width: 100%;
-          padding: 0px; }
+          padding: 0px;
+          -webkit-box-shadow: none;
+          box-shadow: none; }
           .header-menu .top-menu li .sublist li:not(:last-child) a {
             border-bottom: 1px solid #fff; }
           .header-menu .top-menu li .sublist li:last-child a {
@@ -16628,6 +16632,8 @@ a:focus, button:focus {
             display: block;
             white-space: nowrap;
             border-right: 0px;
+            -webkit-box-shadow: none;
+            box-shadow: none;
             background: #0808AF;
             -webkit-transition: all 0.2s ease-out;
             -moz-transition: all 0.2s ease-out;
@@ -16643,9 +16649,6 @@ a:focus, button:focus {
         opacity: 1;
         z-index: 10000;
         left: 50%;
-        -webkit-transform: translate(-50%, 0%);
-        -ms-transform: translate(-50%, 0%);
-        transform: translate(-50%, 0%);
         -webkit-transition-delay: 0s, 0s, 0.3s;
         -o-transition-delay: 0s, 0s, 0.3s;
         transition-delay: 0s, 0s, 0.3s;
@@ -17566,3 +17569,8 @@ body.stop-scrolling {
   .add-to-wishlist-button:hover {
     color: #EC1C24;
     background: #fff; }
+
+.shopping-cart-page table.cart {
+  width: 100%; }
+  .shopping-cart-page table.cart .table-divider {
+    border-bottom: 1px solid black; }

@@ -88,6 +88,8 @@
     <None Remove="Themes\MagicBait\Content\scss\navigation\_footer.scss" />
     <None Remove="Themes\MagicBait\Content\scss\navigation\_header.scss" />
     <None Remove="Themes\MagicBait\Content\scss\navigation\_mobile-menu.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\sections\_cart-checkout.cs==scss" />
+    <None Remove="Themes\MagicBait\Content\scss\sections\_cart-checkout.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_footer.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_header.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_register.scss" />
@@ -138,6 +140,48 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Catalog\_FilterSpecsBox.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\BillingAddress.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\Completed.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\Confirm.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\OnePageCheckout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\OpcBillingAddress.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\OpcConfirmOrder.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\OpcPaymentInfo.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\OpcPaymentMethods.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\OpcShippingAddress.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\OpcShippingMethods.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\PaymentInfo.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\PaymentMethod.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\ShippingAddress.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Checkout\ShippingMethod.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Common\ContactUs.cshtml">
@@ -326,6 +370,9 @@
     <Content Update="Themes\MagicBait\Views\Shared\Components\NewsletterBox\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\OrderSummary\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Shared\Components\RecentlyViewedProductsBlock\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -365,7 +412,13 @@
     <Content Update="Themes\MagicBait\Views\Shared\_CategoryLine.TopMenu.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\_ColumnsOne.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Shared\_ColumnsTwo.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\_OrderReviewData.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Shared\_ProductBox.cshtml">
