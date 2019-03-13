@@ -102,12 +102,6 @@
                                    @await Html.PartialAsync("_DeliveryInfo", Model)
                                    <!--sample download-->
                                    @await Html.PartialAsync("_DownloadSample", Model)
-                                   <!--attributes-->
-                                   @{
-                                       var dataDictAttributes = new ViewDataDictionary(ViewData);
-                                       dataDictAttributes.TemplateInfo.HtmlFieldPrefix = $"attributes_{Model.Id}";
-                                       @await Html.PartialAsync("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
-                                   }
                                    <!--gift card-->
                                    @{
                                        var dataDictGiftCard = new ViewDataDictionary(ViewData);
@@ -136,6 +130,14 @@
                                    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewBottom, additionalData = Model })
                                </div>
                           </div>
+                    </div><!--
+                    --><div class="col-xs-12">
+                     <!--attributes-->
+                    @{
+                        var dataDictAttributes = new ViewDataDictionary(ViewData);
+                        dataDictAttributes.TemplateInfo.HtmlFieldPrefix = $"attributes_{Model.Id}";
+                        @await Html.PartialAsync("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
+                    }
                     </div>
                     @if (!string.IsNullOrEmpty(Model.FullDescription))
                     {
