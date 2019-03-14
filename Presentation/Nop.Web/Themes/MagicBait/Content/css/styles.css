@@ -17467,10 +17467,19 @@ body.stop-scrolling {
     max-width: 400px; }
   .product-essential .picture-thumbs {
     display: none; }
+  .product-essential ul {
+    margin-left: 0px;
+    padding-left: 0px; }
+  .product-essential [id^="product_attribute_label_"] {
+    text-align: center;
+    font-family: Geoslab;
+    font-size: 20px;
+    font-weight: bold; }
   .product-essential .option-list {
     list-style: none; }
     .product-essential .option-list .tooltip-container {
-      display: none; }
+      margin-top: 10px;
+      text-align: center; }
     .product-essential .option-list input[type=radio] {
       display: none; }
     .product-essential .option-list .attribute-square-container {
@@ -17479,9 +17488,26 @@ body.stop-scrolling {
       width: 95%;
       margin: 0 2.5%;
       height: auto; }
-    .product-essential .option-list li.selected-value img {
-      -webkit-box-shadow: 0px 0px 5px 1px #70a6ff;
-      box-shadow: 0px 0px 5px 1px #70a6ff; }
+    .product-essential .option-list li {
+      width: 200px;
+      margin: 10px; }
+      .product-essential .option-list li label {
+        text-align: center;
+        border: 1px solid #bbbbbb;
+        padding: 15px 0px; }
+        .product-essential .option-list li label:hover {
+          cursor: pointer; }
+        .product-essential .option-list li label img {
+          width: 100%;
+          height: auto;
+          margin-bottom: 15px; }
+        .product-essential .option-list li label span {
+          display: inline-block;
+          font-family: Geoslab;
+          font-size: 16px; }
+      .product-essential .option-list li.selected-value label {
+        -webkit-box-shadow: 0px 0px 8px 2px #70a6ff;
+        box-shadow: 0px 0px 8px 2px #70a6ff; }
 
 .related-products-grid {
   width: 90%;

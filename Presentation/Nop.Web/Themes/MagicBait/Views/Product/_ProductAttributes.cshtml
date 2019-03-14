@@ -291,7 +291,7 @@
                             break;
                         case AttributeControlType.ImageSquares:
                             {
-                                <ul class="option-list attribute-squares image-squares" id="image-squares-@(attribute.Id)">
+                                <ul class="option-list attribute-squares d-flex justify-content-around flex-wrap image-squares" id="image-squares-@(attribute.Id)">
                                     @foreach (var attributeValue in attribute.Values)
                                     {
                                         var attributeName = string.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
@@ -300,14 +300,28 @@
                                         <li @(attributeValue.IsPreSelected ? @Html.Raw(" class=\"selected-value\"") : null)>
                                             <label for="@(controlId)_@(attributeValue.Id)">
                                                 <img src="@(attributeValue.ImageSquaresPictureModel.FullSizeImageUrl)">
+                                                <input type="hidden" name="variationName" value="@attributeName" />
                                                 <input id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected"
                                                        @(attribute.Values.Any(value => value.CustomerEntersQty) ? Html.Raw($"onclick=\"showHideRadioQuantity('{controlId}', true)\"") : null) />
+                                                <span>@attributeName</span>
                                             </label>
-                                            <div class="tooltip-container">
+                                            @*<div class="tooltip-container">
                                                 <div class="tooltip-header">@attributeName</div>
                                                 <div class="tooltip-body"><img src="@(attributeValue.ImageSquaresPictureModel.FullSizeImageUrl)" alt="@attributeName" /></div>
-                                            </div>
+                                            </div>*@
                                         </li>
+
+                                        <script asp-location="Footer">
+                                            $(document).ready(function () {
+
+                                                isPreselected = "@(attributeValue.IsPreSelected ? @attributeName : "no")";
+                                                if (isPreselected !== "no") {
+                                                    $('#variation-name').html('@(attributeValue.IsPreSelected ? @attributeName : null)');
+                                                    console.log('@(attributeValue.IsPreSelected ? @attributeName : null)');
+                                                }
+                                            });
+                                        </script>
+
                                     }
                                 </ul>
                                 foreach (var attributeValue in attribute.Values.Where(value => value.CustomerEntersQty))
@@ -318,10 +332,13 @@
                                     </div>
                                 }
                                 <script asp-location="Footer">
-                                    $(document).ready(function() {
-                                        $('.attributes #image-squares-@(attribute.Id)').on('click', 'input', function(event) {
+                                    $(document).ready(function () {
+
+                                        $('.attributes #image-squares-@(attribute.Id) li').on('click', 'input', function(event) {
                                             $('.attributes #image-squares-@(attribute.Id)').find('li').removeClass('selected-value');
                                             $(this).closest('li').addClass('selected-value');
+                                            selectedProduct = $(this).siblings('input[name="variationName"]').attr('value');
+                                            $('#variation-name').html(selectedProduct);
                                         });
                                         showHideRadioQuantity("@controlId", true);
                                     });
@@ -408,7 +425,7 @@
 
         //render scripts
         //almost the same implementation is used in the \Views\Product\_RentalInfo.cshtml file
-        <script asp-location="Footer">
+    <script asp-location="Footer">
             function @(attributeChangeHandlerFuncName)() {
                 $.ajax({
                     cache: false,
@@ -471,6 +488,6 @@
                 @(attributeChangeHandlerFuncName)();
                 @Html.Raw(attributeChangeScriptsBuilder.ToString())
             });
-        </script>
+    </script>
     }
 }
