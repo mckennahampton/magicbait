@@ -65,7 +65,7 @@
                         addToCartText = T("ShoppingCart.PreOrder").Text;
                     }
                 }
-                <input type="button" id="add-to-cart-button-@Model.ProductId" title="Add to cart" class="button-2 mt-1 mb-3 product-box-add-to-cart-button" value="@addToCartText" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new {productId = Model.ProductId, shoppingCartTypeId = (int) ShoppingCartType.ShoppingCart})', '#product-details-form');return false;" />
+                <input type="button" id="add-to-cart-button-@Model.ProductId" title="Add to cart" class="button-2 mt-1 mb-3 product-box-add-to-cart-button" value="@addToCartText" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new {productId = Model.ProductId, shoppingCartTypeId = (int) ShoppingCartType.ShoppingCart})', '#product-details-form');$('.loading').css('display', 'block');$('.input-number').val('1');return false;" />
             
 
 

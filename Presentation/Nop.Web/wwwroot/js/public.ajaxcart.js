@@ -94,10 +94,20 @@ var AjaxCart = {
                 //success
                 if (AjaxCart.usepopupnotifications == true) {
                     displayPopupNotification(response.message, 'success', true);
+                    $('.loading').css('display', 'none');
                 }
                 else {
                     //specify timeout for success messages
                     displayBarNotification(response.message, 'success', 3500);
+                    $('.add-to-cart-success').css('display', 'block');
+                    function overlayFade() {
+                        $('.loading').fadeOut();
+                    }
+                    setTimeout(overlayFade, 2000);
+                    function successFade() {
+                        $('.add-to-cart-success').fadeOut();
+                    }
+                    setTimeout(successFade, 2500);
                 }
             }
             else {

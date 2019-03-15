@@ -1,0 +1,33 @@
+Path to file: C:\Users\Hampton\source\repos\mckennahampton\magicbait\Presentation\Nop.Web\Controllers\CatalogController.cs
+Line of change: 132-134
+Change: added th following code:
+
+	//Link to product if category only contains single product
+            if (model.Products.Count == 1)
+                return Redirect("/" + model.Products[0].SeName );
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Path to file: C:\Users\Hampton\source\repos\mckennahampton\magicbait\Presentation\Nop.Web\wwwroot\js\public.ajaxcart.js
+Line of change: 97, 102
+Change: added th following code:
+
+	$('.loading').css('display', 'none');
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Path to file: C:\Users\Hampton\source\repos\mckennahampton\magicbait\Presentation\Nop.Web\wwwroot\js\public.ajaxcart.js
+Line of change: 102-110
+Change: added th following code:
+
+	            $('.add-to-cart-success').css('display', 'block');
+                    function overlayFade() {
+                        $('.loading').fadeOut();
+                    }
+                    setTimeout(overlayFade, 2000);
+                    function successFade() {
+                        $('.add-to-cart-success').fadeOut();
+                    }
+                    setTimeout(successFade, 2500);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

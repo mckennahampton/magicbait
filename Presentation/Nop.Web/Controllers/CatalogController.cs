@@ -129,9 +129,14 @@ namespace Nop.Web.Controllers
             //model
             var model = _catalogModelFactory.PrepareCategoryModel(category, command);
 
+            //Link to product if category only contains single product
+            if (model.Products.Count == 1)
+                return Redirect("/" + model.Products[0].SeName );
+
             //template
             var templateViewPath = _catalogModelFactory.PrepareCategoryTemplateViewPath(category.CategoryTemplateId);
             return View(templateViewPath, model);
+
         }
 
         #endregion

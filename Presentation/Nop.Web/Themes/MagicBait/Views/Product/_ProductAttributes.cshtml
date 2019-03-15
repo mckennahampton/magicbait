@@ -339,6 +339,7 @@
                                             $(this).closest('li').addClass('selected-value');
                                             selectedProduct = $(this).siblings('input[name="variationName"]').attr('value');
                                             $('#variation-name').html(selectedProduct);
+                                            $('.input-number').val('1');
                                         });
                                         showHideRadioQuantity("@controlId", true);
                                     });
