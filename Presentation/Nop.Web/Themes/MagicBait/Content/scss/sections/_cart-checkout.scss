@@ -1,11 +1,86 @@
-﻿.shopping-cart-page {
+﻿.cart-master-con {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 2.5%;
+}
 
-    table.cart {
-        width: 100%;
+.shopping-cart-page {
 
-        .table-divider {
-            border-bottom: 1px solid black;
+    .table-wrapper {
+        margin: 30px 0px;
+    }
+
+    .td-title {
+        &:hover {
+            cursor: pointer;
         }
     }
 
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .product {
+        width: 200px;
+
+        .edit-item {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid $color4;
+
+            a {
+                margin-right: 20px;
+                padding-right: 20px;
+                border-right: 1px solid $color4;
+            }
+        }
+    }
+
+    .li-details {
+        width: 280px;
+
+        .unit-price,
+        .quantity,
+        .subtotal {
+            padding: 0px 10px;
+
+            .form-group > *:not(input) {
+                border: none;
+            }
+        }
+
+        .unit-price {
+            .product-unit-price {
+                color: $color3;
+            }
+        }
+
+        .unit-price,
+        .quantity {
+            border-right: 1px solid $color4;
+        }
+
+        .quantity {
+            input {
+                width: 75px;
+                border: solid;
+                border-right: none;
+                border-left: none;
+                border-top: 1px solid $color4;
+                border-bottom: none;
+                border-radius: 0px;
+            }
+        }
+
+        .subtotal {
+            .product-subtotal {
+                color: $color3;
+            }
+        }
+    }
+
+    .checkout-divider {
+        border-bottom: 1px solid $color4;
+        margin: 15px 0px;
+    }
 }

@@ -418,6 +418,9 @@
     <Content Update="Themes\MagicBait\Views\Shared\_ColumnsTwo.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\_DiscountBox.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Shared\_Notifications.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

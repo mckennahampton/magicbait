@@ -16417,6 +16417,9 @@ a:focus, button:focus {
 .delimiter {
   display: none; }
 
+.page-title {
+  padding: 15px; }
+
 .breadcrumb {
   background: #fff;
   background: #fff;
@@ -17767,7 +17770,57 @@ body.stop-scrolling {
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-.shopping-cart-page table.cart {
-  width: 100%; }
-  .shopping-cart-page table.cart .table-divider {
-    border-bottom: 1px solid black; }
+.cart-master-con {
+  max-width: 800px;
+  width: 90%;
+  margin: 0 2.5%; }
+
+.shopping-cart-page .table-wrapper {
+  margin: 30px 0px; }
+
+.shopping-cart-page .td-title:hover {
+  cursor: pointer; }
+
+.shopping-cart-page .form-group {
+  margin-bottom: 0; }
+
+.shopping-cart-page .product {
+  width: 200px; }
+  .shopping-cart-page .product .edit-item {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #bbbbbb; }
+    .shopping-cart-page .product .edit-item a {
+      margin-right: 20px;
+      padding-right: 20px;
+      border-right: 1px solid #bbbbbb; }
+
+.shopping-cart-page .li-details {
+  width: 280px; }
+  .shopping-cart-page .li-details .unit-price,
+  .shopping-cart-page .li-details .quantity,
+  .shopping-cart-page .li-details .subtotal {
+    padding: 0px 10px; }
+    .shopping-cart-page .li-details .unit-price .form-group > *:not(input),
+    .shopping-cart-page .li-details .quantity .form-group > *:not(input),
+    .shopping-cart-page .li-details .subtotal .form-group > *:not(input) {
+      border: none; }
+  .shopping-cart-page .li-details .unit-price .product-unit-price {
+    color: #008B09; }
+  .shopping-cart-page .li-details .unit-price,
+  .shopping-cart-page .li-details .quantity {
+    border-right: 1px solid #bbbbbb; }
+  .shopping-cart-page .li-details .quantity input {
+    width: 75px;
+    border: solid;
+    border-right: none;
+    border-left: none;
+    border-top: 1px solid #bbbbbb;
+    border-bottom: none;
+    border-radius: 0px; }
+  .shopping-cart-page .li-details .subtotal .product-subtotal {
+    color: #008B09; }
+
+.shopping-cart-page .checkout-divider {
+  border-bottom: 1px solid #bbbbbb;
+  margin: 15px 0px; }

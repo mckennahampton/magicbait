@@ -6,9 +6,9 @@
             <strong>@T("ShoppingCart.GiftCardCouponCode")</strong>
         </div>
         <div class="hint">@T("ShoppingCart.GiftCardCouponCode.Tooltip")</div>
-        <div class="coupon-code">
-            <input name="giftcardcouponcode" id="giftcardcouponcode" type="text" class="gift-card-coupon-code" aria-label="@T("ShoppingCart.GiftCardCouponCode.Label")"/>
-            <input type="submit" name="applygiftcardcouponcode" id="applygiftcardcouponcode" 
+        <div class="coupon-code form-group">
+            <input name="giftcardcouponcode" id="giftcardcouponcode" type="text" class="gift-card-coupon-code form-control" aria-label="@T("ShoppingCart.GiftCardCouponCode.Label")"/>
+            <input type="submit" name="applygiftcardcouponcode" id="applygiftcardcouponcode" class="secondary-button"
                    value="@T("ShoppingCart.GiftCardCouponCode.Button")" class="button-2 apply-gift-card-coupon-code-button" />
         </div>
         @if (!string.IsNullOrEmpty(Model.Message))
