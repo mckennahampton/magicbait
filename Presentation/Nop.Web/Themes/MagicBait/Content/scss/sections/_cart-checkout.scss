@@ -1,7 +1,7 @@
 ﻿.cart-master-con {
     max-width: 800px;
     width: 90%;
-    margin: 0 2.5%;
+    margin: 30px 2.5%;
 }
 
 .shopping-cart-page {
@@ -82,5 +82,35 @@
     .checkout-divider {
         border-bottom: 1px solid $color4;
         margin: 15px 0px;
+    }
+
+    .cart-order-details-box {
+        max-width: 450px;
+    }
+        
+    .total-info {
+        max-width: 300px;
+        width: 100%;
+
+        .cart-total > div {
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $color4;
+            }
+
+            > div {
+
+                &:first-child {
+                }
+
+                &:last-child {
+                }
+            }
+        }
+
+        .value-summary {
+            color: $color3;
+            font-weight: bold;
+        }
     }
 }

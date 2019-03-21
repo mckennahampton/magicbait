@@ -16287,6 +16287,12 @@ a:focus, button:focus {
 .blue-hr {
   border-top: 1px solid #0808AF; }
 
+.hint {
+  margin: 15px 0px; }
+
+label:not(.form-check-label) {
+  margin: 10px 0px; }
+
 .search-page .page-title {
   margin: 10px 0px; }
 
@@ -17773,7 +17779,7 @@ body.stop-scrolling {
 .cart-master-con {
   max-width: 800px;
   width: 90%;
-  margin: 0 2.5%; }
+  margin: 30px 2.5%; }
 
 .shopping-cart-page .table-wrapper {
   margin: 30px 0px; }
@@ -17824,3 +17830,15 @@ body.stop-scrolling {
 .shopping-cart-page .checkout-divider {
   border-bottom: 1px solid #bbbbbb;
   margin: 15px 0px; }
+
+.shopping-cart-page .cart-order-details-box {
+  max-width: 450px; }
+
+.shopping-cart-page .total-info {
+  max-width: 300px;
+  width: 100%; }
+  .shopping-cart-page .total-info .cart-total > div:not(:last-child) {
+    border-bottom: 1px solid #bbbbbb; }
+  .shopping-cart-page .total-info .value-summary {
+    color: #008B09;
+    font-weight: bold; }

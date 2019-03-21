@@ -1,0 +1,158 @@
+﻿@model OrderTotalsModel
+<div class="total-info my-4">
+    <div class="cart-total">
+        <div class="order-subtotal d-flex justify-content-between align-items-center">
+            <div class="cart-total-left">
+                <label>@T("ShoppingCart.Totals.SubTotal"):</label>
+            </div>
+            <div class="cart-total-right">
+                <span class="value-summary">@Model.SubTotal</span>
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.SubTotalDiscount))
+        {
+            <div class="order-subtotal-discount d-flex justify-content-between align-items-center">
+                <div class="cart-total-left">
+                    <label>@T("ShoppingCart.Totals.SubTotalDiscount"):</label>
+                </div>
+                <div class="cart-total-right">
+                    <span class="value-summary">@Model.SubTotalDiscount</span>
+                </div>
+            </div>
+        }
+        @if (!Model.HideShippingTotal)
+        {
+            <div class="shipping-cost d-flex justify-content-between align-items-center">
+                <div class="cart-total-left">
+                    <label>@T("ShoppingCart.Totals.Shipping"):</label>
+                    @if (Model.RequiresShipping && !string.IsNullOrEmpty(Model.SelectedShippingMethod))
+                    {
+                        <span class="selected-shipping-method">@T("ShoppingCart.Totals.Shipping.Method", Model.SelectedShippingMethod)</span>
+                    }
+                </div>
+                <div class="cart-total-right">
+                    @if (Model.RequiresShipping)
+                    {
+                        if (!string.IsNullOrEmpty(Model.Shipping))
+                        {
+                        <span class="value-summary">@Model.Shipping</span>
+                        }
+                        else
+                        {
+                        <span>@T("ShoppingCart.Totals.CalculatedDuringCheckout")</span>
+                        }
+                    }
+                    else
+                    {
+                        <span>@T("ShoppingCart.Totals.Shipping.NotRequired")</span>
+                    }
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.PaymentMethodAdditionalFee))
+        {
+            <div class="additional-fees d-flex justify-content-between align-items-center">
+                <div class="cart-total-left">
+                    <label>@T("ShoppingCart.Totals.PaymentMethodAdditionalFee"):</label>
+                </div>
+                <div class="cart-total-right">
+                    <span class="value-summary">@Model.PaymentMethodAdditionalFee</span>
+                </div>
+            </div>
+        }
+        @if (Model.DisplayTaxRates && Model.TaxRates.Count > 0)
+        {
+            foreach (var taxRate in Model.TaxRates)
+            {
+            <div class="tax-rate d-flex justify-content-between align-items-center">
+                <div class="cart-total-left">
+                    <label>@string.Format(T("ShoppingCart.Totals.TaxRateLine").Text, taxRate.Rate):</label>
+                </div>
+                <div class="cart-total-right">
+                    <span>@taxRate.Value</span>
+                </div>
+            </div>
+            }
+        }
+        @if (Model.DisplayTax)
+        {
+            <div class="tax-value d-flex justify-content-between align-items-center">
+                <div class="cart-total-left">
+                    <label>@T("ShoppingCart.Totals.Tax"):</label>
+                </div>
+                <div class="cart-total-right">
+                    <span class="value-summary">@Model.Tax</span>
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.OrderTotalDiscount))
+        {
+            <div class="discount-total d-flex justify-content-between align-items-center">
+                <div class="cart-total-left">
+                    <label>@T("ShoppingCart.Totals.OrderTotalDiscount"):</label>
+                </div>
+                <div class="cart-total-right">
+                    <span class="value-summary">@Model.OrderTotalDiscount</span>
+                </div>
+            </div>
+        }
+        @if (Model.GiftCards.Count > 0)
+        {
+            foreach (var gc in Model.GiftCards)
+            {
+            <div class="giftcard-summary d-flex justify-content-between align-items-center">
+                <div class="cart-total-left">
+                    <label>@T("ShoppingCart.Totals.GiftCardInfo"):</label>
+                    <span>@T("ShoppingCart.Totals.GiftCardInfo.Code", gc.CouponCode)</span>
+                    @if (Model.IsEditable)
+                    {
+                        //little hack here with empty "value" element
+                        <input type="submit" name="removegiftcard-@gc.Id" value=" " title="@T("Common.Remove")" class="remove-gift-card-button" />
+                    }
+                    <span class="giftcard-remaining">@string.Format(T("ShoppingCart.Totals.GiftCardInfo.Remaining").Text, gc.Remaining)</span>
+                </div>
+                <div class="cart-total-right">
+                    <span class="value-summary">@gc.Amount</span>
+                </div>
+            </div>
+            }
+        }
+        @if (Model.RedeemedRewardPoints > 0)
+        {
+            <div class="reward-points d-flex justify-content-between align-items-center">
+                <div class="cart-total-left">
+                    <label>@string.Format(T("ShoppingCart.Totals.RewardPoints").Text, Model.RedeemedRewardPoints):</label>
+                </div>
+                <div class="cart-total-right">
+                    <span class="value-summary">@Model.RedeemedRewardPointsAmount</span>
+                </div>
+            </div>
+        }
+        <div class="order-total d-flex justify-content-between align-items-center">
+            <div class="cart-total-left">
+                <label>@T("ShoppingCart.Totals.OrderTotal"):</label>
+            </div>
+            <div class="cart-total-right">
+                @if (!string.IsNullOrEmpty(Model.OrderTotal))
+                {
+                    <span class="value-summary"><strong>@Model.OrderTotal</strong></span>
+                }
+                else
+                {
+                    <span>@T("ShoppingCart.Totals.CalculatedDuringCheckout")</span>
+                }
+            </div>
+        </div>
+        @if (Model.WillEarnRewardPoints > 0)
+        {
+            <div class="earn-reward-points d-flex justify-content-between align-items-center">
+                <div class="cart-total-left">
+                    <label>@T("ShoppingCart.Totals.RewardPoints.WillEarn"):</label>
+                </div>
+                <div class="cart-total-right">
+                    <span class="value-summary">@string.Format(T("ShoppingCart.Totals.RewardPoints.WillEarn.Point").Text, Model.WillEarnRewardPoints)</span>
+                </div>
+            </div>
+         }
+    </div>
+</div>

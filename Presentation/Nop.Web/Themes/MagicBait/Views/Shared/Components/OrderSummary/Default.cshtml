@@ -24,7 +24,7 @@
         }
         @*we add enctype = "multipart/form-data" because "File upload" attribute control type requires it*@
         <form asp-route="ShoppingCart" method="post" enctype="multipart/form-data" id="shopping-cart-form">
-            <div class="table-wrapper">
+            <div class="table-wrapper row">
              
                     <div class="cart container-fluid">
                             @foreach (var item in Model.Items)
@@ -68,11 +68,11 @@
                                         {
                                             var editCartItemUrl = Url.RouteUrl("Product", new { SeName = item.ProductSeName }, webHelper.CurrentRequestProtocol);
                                             editCartItemUrl = webHelper.ModifyQueryString(editCartItemUrl, "updatecartitemid", item.Id.ToString());
-                                            <div class="edit-item d-flex justify-content-md-start justify-content-center">
+                                            <div class="edit-item d-flex justify-content-md-start align-items-center justify-content-center">
                                                 <a class="button" href="@editCartItemUrl">@T("Common.Edit")</a>
                                                 @if (Model.IsEditable)
                                                 {
-                                                    <div class="remove-from-cart d-flex">
+                                                    <div class="remove-from-cart d-flex align-items-center">
                                                         @if (item.DisableRemoval)
                                                         {
                                                             <text>&nbsp;</text>
@@ -169,85 +169,98 @@
                             }
                     </div>
             </div>
-            @if (Model.IsEditable && Model.Items.Count > 0 && Model.DisplayTaxShippingInfo)
-            {
-                var inclTax = workContext.TaxDisplayType == TaxDisplayType.IncludingTax;
-                //tax info is already included in the price (incl/excl tax). that's why we display only shipping info here
-                //of course, you can modify appropriate locales to include VAT info there
-                <div class="tax-shipping-info">
-                    @T(inclTax ? "ShoppingCart.TaxShipping.InclTax" : "ShoppingCart.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") })).
-                </div>
-            }
-            <div class="cart-options">
-                @if (Model.IsEditable)
-                {
-                    <div class="common-buttons">
-                        <input type="submit" name="updatecart" value="@T("ShoppingCart.UpdateCart")" class="m-2 update-cart-button secondary-button" />
-                        <input type="submit" name="continueshopping" value="@T("ShoppingCart.ContinueShopping")" class="m-2 secondary-button continue-shopping-button" />
-                    </div>
-                }
-                @if (Model.IsEditable)
-                {
-                    @await Html.PartialAsync("_CheckoutAttributes", Model)
-                }
-                @await Component.InvokeAsync("SelectedCheckoutAttributes")
-            </div>
-            <div class="cart-footer">
-                @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OrderSummaryCartFooter })
-                @if (Model.IsEditable)
-                {
-                    <div class="cart-collaterals">
-                        <div class="deals">
-                            @await Html.PartialAsync("_DiscountBox", Model.DiscountBox)
-                            @await Html.PartialAsync("_GiftCardBox", Model.GiftCardBox)
-                            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OrderSummaryContentDeals })
+            <div class="row justify-content-end">
+                <div class="cart-order-details-box">
+                    @*if (Model.IsEditable && Model.Items.Count > 0 && Model.DisplayTaxShippingInfo)
+                    {
+                        var inclTax = workContext.TaxDisplayType == TaxDisplayType.IncludingTax;
+                        //tax info is already included in the price (incl/excl tax). that's why we display only shipping info here
+                        //of course, you can modify appropriate locales to include VAT info there
+                        <div class="tax-shipping-info">
+                            @T(inclTax ? "ShoppingCart.TaxShipping.InclTax" : "ShoppingCart.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") })).
                         </div>
-                        @await Component.InvokeAsync("EstimateShipping")
+                    }*@
+                    <div class="cart-options">
+                        @if (Model.IsEditable)
+                        {
+                            <div class="light-hr mt-3"></div>
+                            <div class="common-buttons d-flex flex-wrap justify-content-around align-items-center">
+                                <input type="submit" name="updatecart" value="@T("ShoppingCart.UpdateCart")" class="m-2 update-cart-button secondary-button" />
+                                <input type="submit" name="continueshopping" value="@T("ShoppingCart.ContinueShopping")" class="m-2 secondary-button continue-shopping-button" />
+                            </div>
+                            <div class="light-hr mb-3"></div>
+                        }
+                        @if (Model.IsEditable)
+                        {
+                            @await Html.PartialAsync("_CheckoutAttributes", Model)
+                        }
+                        @await Component.InvokeAsync("SelectedCheckoutAttributes")
                     </div>
-                }
-                <div class="totals">
-                    @await Component.InvokeAsync("OrderTotals", new { isEditable = Model.IsEditable })
-                    @if (Model.IsEditable)
-                    {
-                        if (!string.IsNullOrEmpty(Model.MinOrderSubtotalWarning))
+                    <div class="cart-footer">
+                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OrderSummaryCartFooter })
+                        @if (Model.IsEditable)
                         {
-                            <div class="min-amount-warning">
-                                @Model.MinOrderSubtotalWarning
+                            <div class="cart-collaterals">
+                                <div class="deals">
+                                    @await Html.PartialAsync("_DiscountBox", Model.DiscountBox)
+                                    @await Html.PartialAsync("_GiftCardBox", Model.GiftCardBox)
+                                    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OrderSummaryContentDeals })
+                                </div>
+                                @await Component.InvokeAsync("EstimateShipping")
                             </div>
                         }
-                    }
-                    @if (Model.IsEditable)
-                    {
-                        if (Model.TermsOfServiceOnShoppingCartPage)
-                        {
-                            <div id="terms-of-service-warning-box" title="@T("Checkout.TermsOfService")" style="display: none;">
-                                <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
-                            </div>
-                            <div class="terms-of-service">
-                                <input id="termsofservice" type="checkbox" name="termsofservice" />
-                                <label for="termsofservice">@T("Checkout.TermsOfService.IAccept")</label>
-                                @if (Model.TermsOfServicePopup)
+                        <div class="totals d-flex justify-content-center align-items-center flex-column">
+                            @await Component.InvokeAsync("OrderTotals", new { isEditable = Model.IsEditable })
+                            @if (Model.IsEditable)
+                            {
+                                if (!string.IsNullOrEmpty(Model.MinOrderSubtotalWarning))
                                 {
-                                    <a class="read" id="read-terms">@T("Checkout.TermsOfService.Read")</a>
-                                    <script asp-location="Footer">
-                                        $(document).ready(function() {
-                                            $('#read-terms').on('click',
-                                                function(e) {
-                                                    e.preventDefault();
-                                                    displayPopupContentFromUrl(
-                                                        '@Url.RouteUrl("TopicPopup", new {SystemName = "conditionsofuse"})',
-                                                        '@T("Checkout.TermsOfService")');
+                                    <div class="min-amount-warning">
+                                        @Model.MinOrderSubtotalWarning
+                                    </div>
+                                }
+                            }
+                            @if (Model.IsEditable)
+                            {
+                                if (Model.TermsOfServiceOnShoppingCartPage)
+                                {
+                                    <div id="terms-of-service-warning-box" title="@T("Checkout.TermsOfService")" style="display: none;">
+                                        <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
+                                    </div>
+                                    <div class="terms-of-service">
+                                        <input id="termsofservice" type="checkbox" name="termsofservice" />
+                                        <label for="termsofservice">@T("Checkout.TermsOfService.IAccept")</label>
+                                        @if (Model.TermsOfServicePopup)
+                                        {
+                                            <a class="read" id="read-terms">@T("Checkout.TermsOfService.Read")</a>
+                                            <script asp-location="Footer">
+                                                $(document).ready(function() {
+                                                    $('#read-terms').on('click',
+                                                        function(e) {
+                                                            e.preventDefault();
+                                                            displayPopupContentFromUrl(
+                                                                '@Url.RouteUrl("TopicPopup", new {SystemName = "conditionsofuse"})',
+                                                                '@T("Checkout.TermsOfService")');
+                                                        });
                                                 });
-                                        });
-                                    </script>
+                                            </script>
+                                        }
+                                        else
+                                        {
+                                            <a class="read" id="read-terms" href="@Url.RouteUrl("Topic", new {SeName = Html.GetTopicSeName("conditions-of-use") })">@T("Checkout.TermsOfService.Read")</a>
+                                        }
+                                    </div>
                                 }
-                                else
-                                {
-                                    <a class="read" id="read-terms" href="@Url.RouteUrl("Topic", new {SeName = Html.GetTopicSeName("conditionsofuse") })">@T("Checkout.TermsOfService.Read")</a>
-                                }
-                            </div>
-                        }
-                        <div class="checkout-buttons">
+                                <div class="addon-buttons">
+                                    @*Payment method buttons (e.g. GoogleCheckoutButton, Paypal Express)*@
+                                    @foreach (var pm in Model.ButtonPaymentMethodViewComponentNames)
+                                    {
+                                        @await Component.InvokeAsync(pm)
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <div class="checkout-buttons d-flex justify-content-center align-items-center">
                             @if (string.IsNullOrEmpty(Model.MinOrderSubtotalWarning) && !Model.HideCheckoutButton)
                             {
                                 <script asp-location="Footer">
@@ -276,20 +289,13 @@
                                 }
                                 else
                                 {
-                                    <button type="submit" id="checkout" name="checkout" value="checkout" class="button-1 checkout-button">
+                                    <button type="submit" id="checkout" name="checkout" value="checkout" class="hvr-grow button-1 desktop-main-button checkout-button">
                                         @T("Checkout.Button")
                                     </button>
                                 }
                             }
                         </div>
-                        <div class="addon-buttons">
-                            @*Payment method buttons (e.g. GoogleCheckoutButton, Paypal Express)*@
-                            @foreach (var pm in Model.ButtonPaymentMethodViewComponentNames)
-                            {
-                                @await Component.InvokeAsync(pm)
-                            }
-                        </div>
-                    }
+                    </div>
                 </div>
             </div>
             @if (Model.IsEditable)

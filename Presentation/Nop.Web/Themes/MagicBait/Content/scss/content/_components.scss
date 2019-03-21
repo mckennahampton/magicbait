@@ -24,3 +24,11 @@
 .blue-hr {
     border-top: 1px solid $color2;
 }
+
+.hint {
+    margin: 15px 0px;
+}
+
+label:not(.form-check-label) {
+    margin: 10px 0px;
+}
