@@ -21,6 +21,7 @@ Line of change: 102-110
 Change: added th following code:
 
 	            $('.add-to-cart-success').css('display', 'block');
+		    $('.input-number').val('1');
                     function overlayFade() {
                         $('.loading').fadeOut();
                     }

@@ -100,6 +100,7 @@ var AjaxCart = {
                     //specify timeout for success messages
                     displayBarNotification(response.message, 'success', 3500);
                     $('.add-to-cart-success').css('display', 'block');
+                    $('.input-number').val('1');
                     function overlayFade() {
                         $('.loading').fadeOut();
                     }
