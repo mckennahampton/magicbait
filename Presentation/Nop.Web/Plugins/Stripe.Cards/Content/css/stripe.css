@@ -1,0 +1,46 @@
+﻿.group .field {
+    border: 1px solid #ddd;
+    padding: 8px;
+    vertical-align: middle;
+    color: #32315E;
+    line-height: 48px;
+    font-weight: 400;
+    height: 48px;
+}
+
+.group .brand {
+    border: 1px solid #ddd;
+    padding: 15px;
+    vertical-align: middle;
+    color: #32315E;
+    line-height: 48px;
+    font-weight: 400;
+    height: 48px;
+}
+
+.group .card-number {
+    width: 85%;
+    float: left;
+}
+
+.group .field::-webkit-input-placeholder {
+    color: #CFD7DF;
+}
+
+.group .field::-moz-placeholder {
+    color: #CFD7DF;
+}
+
+.payment-errors {
+    font-size: 13px;
+}
+
+.payment-errors {
+    color: #E4584C;
+}
+
+@media all and (max-width: 498px) {
+    .group .card-number {
+        width: 72%;
+    }
+}

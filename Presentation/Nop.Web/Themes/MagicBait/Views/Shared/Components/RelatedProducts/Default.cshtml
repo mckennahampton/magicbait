@@ -7,9 +7,17 @@
         </div>
         <div class="light-hr"></div>
         <div class="item-grid row justify-content-center">
+            @{ 
+                var limit = 4;
+                var index = 1;
+            }
             @foreach (var item in Model)
             {
-                <div class="item-box col-xs-12 col-sm-5 col-lg-5 col-xxl-4 col-xxxl-3 px-3 pb-2 my-3">@await Html.PartialAsync("_ProductBox", item)</div>
+                if (limit >= index)
+                {
+                    <div class="item-box col-xs-12 col-sm-5 col-lg-5 col-xxl-4 col-xxxl-3 px-3 pb-2 my-3">@await Html.PartialAsync("_ProductBox", item)</div>
+                }
+                index++;
             }
         </div>
     </div>

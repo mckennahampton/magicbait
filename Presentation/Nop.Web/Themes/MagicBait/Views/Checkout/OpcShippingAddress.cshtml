@@ -189,10 +189,9 @@
             @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OpCheckoutShippingAddressTop })
             @if (Model.ExistingAddresses.Count > 0)
             {
-                <div class="section select-shipping-address">
+                <div class="section select-shipping-address form-group">
                     <label for="shipping-address-select">@T("Checkout.SelectShippingAddressOrEnterNewOne")</label>
-                    <div>
-                        <select name="shipping_address_id" id="shipping-address-select" class="address-select"
+                        <select name="shipping_address_id" id="shipping-address-select" class="address-select form-control"
                                 title="" onchange="Shipping.newAddress(!this.value)">
                             @foreach (var address in Model.ExistingAddresses)
                             {
@@ -229,7 +228,6 @@
                             <option value="" selected="@Model.NewAddressPreselected">@T("Checkout.NewAddress")</option>
                         </select>
                     </div>
-                </div>
             }
             @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OpCheckoutShippingAddressMiddle })
             <div class="section new-shipping-address" id="shipping-new-address-form">

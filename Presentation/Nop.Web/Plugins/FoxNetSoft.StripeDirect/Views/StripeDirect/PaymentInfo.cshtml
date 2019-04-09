@@ -1,0 +1,181 @@
+﻿@model FoxNetSoft.Plugin.Payments.StripeDirect.Models.PaymentInfoModel
+@{
+    Layout = "";
+}
+<style>
+       /**
+    * The CSS shown here will not be introduced in the Quickstart guide, but shows
+    * how you can use CSS to style your Element's container.
+    */
+       .form-sprite-payment {
+           max-width: 450px;
+           margin-left: auto;
+           margin-right: auto;
+       }
+
+       .form-sprite-payment-button {
+           text-align: center;
+       }
+
+       .StripeElement {
+           background-color: white;
+           height: 40px;
+           padding: 10px 12px;
+           border-radius: 4px;
+           border: 1px solid transparent;
+           box-shadow: 0 1px 3px 0 #e6ebf1;
+           -webkit-transition: box-shadow 150ms ease;
+           transition: box-shadow 150ms ease;
+           max-width: 450px;
+       }
+
+       .StripeElement--focus {
+           box-shadow: 0 1px 3px 0 #cfd7df;
+       }
+
+       .StripeElement--invalid {
+           border-color: #fa755a;
+       }
+
+       .StripeElement--webkit-autofill {
+           background-color: #fefde5 !important;
+       }
+
+       .payment-stripe-next-step-button {
+           margin-top: 10px;
+       }
+
+       .card-errors {
+           color: red;
+       }
+</style>
+<div id="stripe-payment-was-sent" style="display:none;">
+    @T("FoxNetSoft.Plugin.Payments.StripeDirect.PaymentWasSent")
+</div>
+<div id="stripe-payment-form">
+    <input type="hidden" asp-for="StripeToken">
+    <input type="hidden" asp-for="StripeErrors">
+    <div class="form-sprite-payment">
+        <label for="stripe-card-element">
+            @T("FoxNetSoft.Plugin.Payments.StripeDirect.Caption.Card")
+        </label>
+        <div id="stripe-card-element">
+            <!-- A Stripe Element will be inserted here. -->
+        </div>
+        <!-- Used to display Element errors. -->
+        <div id="stripe-card-errors" role="alert"></div>
+    </div>
+    <div class="form-sprite-payment-button">
+        <input id="stripe-payment-pay-button" type="button" class="button-1 payment-stripe-next-step-button" onclick="stripeCreateToken();" value="@T("FoxNetSoft.Plugin.Payments.StripeDirect.Caption.SubmitButton")" />
+    </div>
+</div>
+<script>
+    var stripecard;
+    var paymentRequest;
+    var stripedirectcardtoken = stripedirectcardtoken || "";
+    var stripe = stripe || Stripe('@Model.PublishableKey');
+    var elements = stripe.elements();
+   $(document).ready(function () {
+       if (stripedirectcardtoken.length == 0) {
+           $('.payment-info-next-step-button, .confirm-order-button').hide();
+           paymentRequest = stripe.paymentRequest({
+               country: 'US',
+               currency: '@Model.Currency',
+               total: {
+                   label: '@Model.Description',
+                   amount: @Model.Amount,
+               },
+               requestPayerName: true,
+               requestPayerEmail: true,
+           });
+
+           // Custom styling can be passed to options when creating an Element.
+           var style = {
+               base: {
+                   color: '#32325d',
+                   lineHeight: '18px',
+                   fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                   fontSmoothing: 'antialiased',
+                   fontSize: '16px',
+                   '::placeholder': {
+                       color: '#aab7c4'
+                   }
+               },
+               invalid: {
+                   color: '#fa755a',
+                   iconColor: '#fa755a'
+               }
+           };
+
+           // Create an instance of the card Element.
+           stripecard = elements.create('card', { hidePostalCode: true, style: style });
+           //stripecard = elements.create('card', { postalCode: '@Model.ZipPostalCode', style: style });
+
+           // Add an instance of the card Element into the `card-element` <div>.
+           stripecard.mount('#stripe-card-element');
+
+           stripecard.addEventListener('change', function (event) {
+               var displayError = document.getElementById('stripe-card-errors');
+               if (event.error) {
+                   displayError.textContent = event.error.message;
+                   $('#@Html.IdFor(model => model.StripeErrors)').val(event.error.message);
+               } else {
+                   displayError.textContent = '';
+                   $('#@Html.IdFor(model => model.StripeErrors)').val("");
+               }
+           });
+       }
+       else
+       {
+           $('#@Html.IdFor(model => model.StripeToken)').val(stripedirectcardtoken);
+           $("#stripe-payment-form").hide();
+           $("#stripe-payment-was-sent").show();
+           $('.confirm-order-button').show();
+       }
+    });
+
+    function stripeCreateToken() {
+        $("#stripe-payment-pay-button").attr('disabled', 'disabled');
+        //terms of service
+            var termOfServiceOk = true;
+            if ($('#termsofservice').length > 0) {
+                //terms of service element exists
+                if (!$('#termsofservice').is(':checked')) {
+                    $("#terms-of-service-warning-box").dialog();
+                    termOfServiceOk = false;
+                } else {
+                    termOfServiceOk = true;
+                }
+            }
+            if (!termOfServiceOk) {
+                $("#stripe-payment-pay-button").removeAttr('disabled');
+                return false;
+                }
+
+        stripe.createToken(stripecard).then(function (result) {
+            if (result.error) {
+                // Inform the customer that there was an error.
+                var errorElement = document.getElementById('stripe-card-errors');
+                errorElement.textContent = result.error.message;
+                $('#@Html.IdFor(model => model.StripeErrors)').val(result.error.message);
+                $("#stripe-payment-pay-button").removeAttr('disabled');
+            } else {
+                // Send the token to your server.
+                $('#@Html.IdFor(model => model.StripeToken)').val(result.token.id);
+                stripedirectcardtoken = result.token.id;
+                //$('.payment-info-next-step-button, .confirm-order-button').show();
+                //stripeTokenHandler(result.token);
+                $("#stripe-payment-form").hide();
+                $("#stripe-payment-was-sent").show();
+                $('.payment-info-next-step-button, .confirm-order-button').show();
+                $('.payment-info-next-step-button, .confirm-order-button').click();
+            }
+        });
+    }
+
+    $(document).on('accordion_section_opened', function (data) {
+        if (data && (data.currentSectionId == 'opcpayment_methodbilling' || data.previousSectionId == 'opc-payment_info')) {
+            $('.payment-info-next-step-button, .confirm-order-button').show();
+        }
+    });
+</script>

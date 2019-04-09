@@ -1,0 +1,33 @@
+﻿@model FoxNetSoft.Plugin.Payments.StripeDirect.Models.ErrorMessageModel
+@{
+    Layout = "_ColumnsOne";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.Checkout").Text);
+    //page class
+    Html.AppendPageCssClassParts("html-checkout-page");
+    Html.AppendPageCssClassParts("html-order-completed-page");
+}
+@using Nop.Web.Framework.UI
+<div class="page checkout-page order-completed-page">
+    <div class="page-title">
+        <h1>@T("FoxNetSoft.Plugin.Payments.StripeDirect.Title")</h1>
+    </div>
+    <div class="page-body checkout-data">
+        <div class="section order-completed">
+            <div class="details">
+                <div class="message-error">
+                    <ul>
+                        @foreach (var warning in Model.Warnings)
+                        {
+                            <li>@warning</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="buttons">
+                <input type="button" value="@T("ShoppingCart.Mini.ViewCart")" class="button-1 order-completed-continue-button" onclick="setLocation('@Url.RouteUrl("ShoppingCart")')" />
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Stripe Direct Payment",
+  "SystemName": "FoxNetSoft.StripeDirect",
+  "Version": "1.02",
+  "SupportedVersions": [ "4.10" ],
+  "Author": "FoxNetSoft",
+  "DisplayOrder": 1,
+  "FileName": "FoxNetSoft.Plugin.Payments.StripeDirect.dll",
+  "Description": "This plugin allows paying with Stripe payment."
+}

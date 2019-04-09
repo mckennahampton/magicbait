@@ -1,0 +1,183 @@
+﻿@{
+    Layout = "";
+}
+@model PaymentInfoModel
+<table width="100%" cellspacing="2" cellpadding="1" border="0" class="group">
+    <tr>
+        <td>
+            <label>
+                <span>@T("Payment.CardholderName"):</span>
+            </label>
+        </td>
+        <td>
+            <input asp-for="CardholderName" style="width:165px;" autocomplete="off" class="field" placeholder="Jane Doe" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <span>@T("Payment.CardNumber"):</span>
+            </label>
+        </td>
+        <td>
+            <div id="card-number-element" class="field card-number"></div>
+            <span class="brand"><i class="pf pf-credit-card" id="brand-icon"></i></span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <span>@T("Payment.ExpirationDate"):</span>
+            </label>
+        </td>
+        <td>
+            <div id="card-expiry-element" class="field"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <span>@T("Payment.CardCode"):</span>
+            </label>
+        </td>
+        <td>
+            <div id="card-cvc-element" class="field"></div>
+        </td>
+    </tr>
+</table>
+<input style="display:none;" type="hidden" name="paymenttoken" id="paymenttoken" />
+<input style="display:none;" type="hidden" name="nextstep" value="Next" id="nextstep" />
+<div class="payment-errors"></div>
+<script type="text/javascript">
+    var paymentInfoObject = {};
+    var countries = JSON.parse('@Html.Raw(Json.Serialize(ViewBag.Countries))');
+    var provinces = JSON.parse('@Html.Raw(Json.Serialize(ViewBag.Provinces))');
+
+    function getCountryTwoLetterIsoCode() {
+        var selectedCountryId = parseInt($('#billingCountry').val());
+        var selectedCountry = countries.filter(function (country) {
+            return country.Id == selectedCountryId;
+        })[0];
+
+        return selectedCountry.TwoLeterIsoCode;
+    }
+
+    function getStateProvinceAbbreviation() {
+        var selectedStateProvinceId = parseInt($('#billingStateProvince').val());
+        if (selectedStateProvinceId == 0)
+            return null;
+
+        var selectedProvince = provinces.filter(function (province) {
+            return province.Id == selectedStateProvinceId;
+        })[0];
+
+        return selectedProvince.Abbreviation;
+    }
+    function externalValidation(errorMessages, submitFormCallback) {
+        paymentInfoObject.errorMessages = errorMessages;
+        paymentInfoObject.submitFormCallback = submitFormCallback;
+        if ($(".payment-errors").text().length > 0) {
+            paymentInfoObject.submitFormCallback($(".payment-errors").text());
+            return true;
+        }
+
+        // Some other payment method has been selected, so the element won't be in the mark-up.
+        if ($("#paymenttoken").length == 0) {
+            paymentInfoObject.submitFormCallback(paymentInfoObject.errorMessages);
+            return false;
+        }
+        var options = {
+            name: $('#CardholderName').val(),
+            address_line1: $('#billingAddress1').val(),
+            address_line2: $('#billingAddress2').val(),
+            address_city: $('#billingCity').val(),
+            address_zip: $('#billingZipPostalCode').val(),
+            address_state: getStateProvinceAbbreviation(),
+            address_country: getCountryTwoLetterIsoCode()
+        };
+        paymentInfoObject.stripe.createToken(paymentInfoObject.cardNumberElement, options).then(setOutcome);
+    }
+    function setOutcome(result) {
+
+        if (result.token) {
+            // response contains id and card, which contains additional card details
+            $(".payment-errors").text("");
+            $("#paymenttoken").val(result.token.id);
+            paymentInfoObject.submitFormCallback(paymentInfoObject.errorMessages);
+        } else if (result.error) {
+            // Show the errors on the form
+            $(".payment-errors").text(result.error.message);
+        }
+        else {
+            $(".payment-errors").text("");
+        }
+    }
+    $(document).ready(function () {
+        $.getScript("https://js.stripe.com/v3", function (data, textStatus, jqxhr) {
+            var stripe = Stripe('@ViewBag.PublicKey');
+            paymentInfoObject.stripe = stripe;
+            var elements = stripe.elements();
+            var style = {
+                base: {
+                    iconColor: '#F99A52',
+                    color: '#32315E',
+                    lineHeight: '32px',
+                    fontWeight: 400,
+                    fontSize: '14px',
+
+                    '::placeholder': {
+                        color: '#CFD7E0',
+                    },
+                },
+            };
+            var cardNumberElement = elements.create('cardNumber', {
+                style: style
+            });
+            cardNumberElement.mount('#card-number-element');
+            var cardExpiryElement = elements.create('cardExpiry', {
+                style: style
+            });
+            cardExpiryElement.mount('#card-expiry-element');
+            var cardCvcElement = elements.create('cardCvc', {
+                style: style
+            });
+            cardCvcElement.mount('#card-cvc-element');
+
+            paymentInfoObject.cardNumberElement = cardNumberElement;
+
+            var cardBrandToPfClass = {
+                'visa': 'pf-visa',
+                'mastercard': 'pf-mastercard',
+                'amex': 'pf-american-express',
+                'discover': 'pf-discover',
+                'diners': 'pf-diners',
+                'jcb': 'pf-jcb',
+                'unionpay': 'pf-unionpay',
+                'unknown': 'pf-credit-card',
+            }
+
+            function setBrandIcon(brand) {
+                var brandIconElement = document.getElementById('brand-icon');
+                var pfClass = 'pf-credit-card';
+                if (brand in cardBrandToPfClass) {
+                    pfClass = cardBrandToPfClass[brand];
+                }
+                for (var i = brandIconElement.classList.length - 1; i >= 0; i--) {
+                    brandIconElement.classList.remove(brandIconElement.classList[i]);
+                }
+                brandIconElement.classList.add('pf');
+                brandIconElement.classList.add(pfClass);
+            }
+
+            cardNumberElement.on('change', function (event) {
+                // Switch brand logo
+                if (event.brand) {
+                    setBrandIcon(event.brand);
+                }
+                setOutcome(event);
+            });
+
+        });
+    });
+
+</script>

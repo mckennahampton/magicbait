@@ -1,0 +1,53 @@
+﻿@model ConfigurationModel
+@using Nop.Core.Infrastructure;
+@using Nop.Web.Framework;
+@using Nop.Web.Framework.UI;
+@using System.Web;
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@if (ViewBag.Warning != null)
+{
+    <div class="CofigurationWarning">
+        <center>
+            <b style="color:red;">@ViewBag.Warning</b>
+        </center>
+
+    </div>
+
+}
+<form asp-controller="PaymentStripeCards" asp-action="LicenseKey" method="post">
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Plugin.Stripe.Cards.Fields.Title")
+        </h1>
+        <div class="pull-right">
+            <button type="submit" name="save" class="btn bg-blue" value="save">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.Save")
+            </button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="form-horizontal">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <nop-label asp-for="LicenseKey" />
+                        </div>
+                        <div class="col-md-9">
+                            <nop-editor asp-for="LicenseKey" />
+                            <span asp-validation-for="LicenseKey"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

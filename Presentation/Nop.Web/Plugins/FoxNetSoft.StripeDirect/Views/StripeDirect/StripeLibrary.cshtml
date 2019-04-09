@@ -1,0 +1,8 @@
+﻿@using Nop.Web.Framework.UI
+@using FoxNetSoft.Plugin.Payments.StripeDirect
+@{
+    Layout = "";
+    Html.AddScriptParts(ResourceLocation.Footer, StripeDirectDefaults.PaymentScriptPath, "", true, true);
+    //Html.AddScriptParts(ResourceLocation.Header, "https://js.stripe.com/v3/", "", true, true);
+    //<script src="@StripeDirectDefaults.PaymentScriptPath"></script>
+}

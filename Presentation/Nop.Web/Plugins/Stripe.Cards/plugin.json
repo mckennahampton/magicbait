@@ -1,0 +1,15 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "Stripe Cards",
+  "SystemName": "Stripe.Cards",
+  "Version": "2.00",
+  "SupportedVersions": [
+    "4.10"
+  ],
+  "Author": "nopCommercePlus(Forefront Infotech)",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Stripe.Cards.dll",
+  "Description": "This plugin allows paying with Payments Stripe",
+  "LimitedToStores": [],
+  "LimitedToCustomerRoles": []
+}

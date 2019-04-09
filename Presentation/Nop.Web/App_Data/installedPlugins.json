@@ -12,5 +12,8 @@
   "Shipping.UPS",
   "Tax.FixedOrByCountryStateZip",
   "Widgets.GoogleAnalytics",
-  "Widgets.NivoSlider"
+  "Widgets.NivoSlider",
+  "Payments.PayPalExpressCheckout",
+  "Stripe.Cards",
+  "FoxNetSoft.StripeDirect"
 ]

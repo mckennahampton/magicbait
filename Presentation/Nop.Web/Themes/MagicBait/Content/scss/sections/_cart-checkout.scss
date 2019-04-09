@@ -138,6 +138,12 @@
 
 .checkout-data {
 
+    label {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
     input {
         -webkit-transition: all 0.30s ease-in-out;
         -moz-transition: all 0.30s ease-in-out;
@@ -158,5 +164,19 @@
 
     ul {
         list-style: none;
+    }
+
+    #checkout-steps {
+        
+        .step-title {
+            .number {
+                width: 100%;
+                display: flex;
+                border-bottom: 1px solid $color4;
+                padding-bottom: 3px;
+                color: $color4;
+                margin-bottom: 10px;
+            }
+        }
     }
 }

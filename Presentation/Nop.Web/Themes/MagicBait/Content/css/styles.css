@@ -16249,7 +16249,7 @@ a:focus, button:focus {
   .close-button:focus {
     outline: 0; }
 
-.secondary-button {
+.secondary-button, #stripe-payment-pay-button {
   background: #fff;
   border-radius: 8px;
   border: 1px solid #0808AF;
@@ -16261,7 +16261,7 @@ a:focus, button:focus {
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease; }
-  .secondary-button:hover {
+  .secondary-button:hover, #stripe-payment-pay-button:hover {
     color: #fff;
     background: #0808AF;
     cursor: pointer; }
@@ -17844,6 +17844,9 @@ body.stop-scrolling {
       color: #008B09;
       font-weight: bold; }
 
+.checkout-data label:hover {
+  cursor: pointer; }
+
 .checkout-data input {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
@@ -17862,3 +17865,13 @@ body.stop-scrolling {
 
 .checkout-data ul {
   list-style: none; }
+
+.checkout-data #checkout-steps .step-title .number {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #bbbbbb;
+  padding-bottom: 3px;
+  color: #bbbbbb;
+  margin-bottom: 10px; }

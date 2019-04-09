@@ -1,0 +1,166 @@
+﻿
+
+@{
+    Layout = "";
+}
+@model PaymentInfoModel
+<table width="100%" cellspacing="2" cellpadding="1" border="0" class="group">
+    <tr>
+        <td>
+            <label>
+                <span>@T("Payment.CardholderName"):</span>
+            </label>
+        </td>
+        <td>
+            <input asp-for="CardholderName" style="width:165px;" autocomplete="off" class="field" placeholder="Jane Doe" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <span>@T("Payment.CardNumber"):</span>
+            </label>
+        </td>
+        <td>
+            <div id="card-number-element" class="field card-number"></div>
+            <span class="brand"><i class="pf pf-credit-card" id="brand-icon"></i></span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <span>@T("Payment.ExpirationDate"):</span>
+            </label>
+        </td>
+        <td>
+            <div id="card-expiry-element" class="field"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+                <span>@T("Payment.CardCode"):</span>
+            </label>
+        </td>
+        <td>
+            <div id="card-cvc-element" class="field"></div>
+        </td>
+    </tr>
+</table>
+<input style="display:none;" type="hidden" name="paymenttoken" id="paymenttoken" />
+<input style="display:none;" type="hidden" name="nextstep" value="Next" id="nextstep" />
+<div class="payment-errors"></div>
+<script type="text/javascript">
+
+var onClickAttr = null;
+$(document).ready(function () {
+    onClickAttr = $(".payment-info-next-step-button").attr("onClick");
+    $.getScript("https://js.stripe.com/v3", function (data, textStatus, jqxhr) {
+        GetScriptCallback();
+    });
+});
+
+function GetScriptCallback() {
+    var stripe = Stripe('@ViewBag.PublicKey');
+    var elements = stripe.elements();
+    var style = {
+        base: {
+            iconColor: '#F99A52',
+            color: '#32315E',
+            lineHeight: '32px',
+            fontWeight: 400,
+            fontSize: '14px',
+
+            '::placeholder': {
+                color: '#CFD7E0',
+            },
+        },
+    };
+    var cardNumberElement = elements.create('cardNumber', {
+        style: style
+    });
+    cardNumberElement.mount('#card-number-element');
+    var cardExpiryElement = elements.create('cardExpiry', {
+        style: style
+    });
+    cardExpiryElement.mount('#card-expiry-element');
+    var cardCvcElement = elements.create('cardCvc', {
+        style: style
+    });
+    cardCvcElement.mount('#card-cvc-element');
+
+    function setOutcome(result) {
+        if (result.token) {
+            // response contains id and card, which contains additional card details
+            var token = result.token.id;
+            $(".payment-errors").text("");
+            var form = $(".payment-info-next-step-button").closest('form');
+            $("#paymenttoken").val(token);
+            //Is onepagecheckout or not
+            if (document.location.href.indexOf('onepagecheckout') > -1) {
+                PaymentInfo.save();
+            }
+            else {
+                form.submit();
+            }
+        } else if (result.error) {
+            // Show the errors on the form
+            $(".payment-errors").text(result.error.message);
+        }
+        $(".payment-info-next-step-button").removeAttr("disabled");
+    }
+
+    var cardBrandToPfClass = {
+        'visa': 'pf-visa',
+        'mastercard': 'pf-mastercard',
+        'amex': 'pf-american-express',
+        'discover': 'pf-discover',
+        'diners': 'pf-diners',
+        'jcb': 'pf-jcb',
+        'unionpay': 'pf-unionpay',
+        'unknown': 'pf-credit-card',
+    }
+
+    function setBrandIcon(brand) {
+        var brandIconElement = document.getElementById('brand-icon');
+        var pfClass = 'pf-credit-card';
+        if (brand in cardBrandToPfClass) {
+            pfClass = cardBrandToPfClass[brand];
+        }
+        for (var i = brandIconElement.classList.length - 1; i >= 0; i--) {
+            brandIconElement.classList.remove(brandIconElement.classList[i]);
+        }
+        brandIconElement.classList.add('pf');
+        brandIconElement.classList.add(pfClass);
+    }
+
+    cardNumberElement.on('change', function (event) {
+        // Switch brand logo
+        if (event.brand) {
+            setBrandIcon(event.brand);
+        }
+        setOutcome(event);
+    });
+
+    $("input[name='paymentmethod']").unbind().click(function () {
+        $(".payment-info-next-step-button").attr("onClick", onClickAttr);
+    });
+    $(".payment-info-next-step-button").removeAttr("onClick");
+
+    $(".payment-info-next-step-button").unbind().click(function (event) {
+        $('.submit-button').attr("disabled", "disabled");
+        var options = {
+            name: $('#CardholderName').val(),
+            address_line1: '@ViewBag.BillingAddress.Address1',
+            address_line2: '@ViewBag.BillingAddress.Address2',
+            address_city: '@ViewBag.BillingAddress.City',
+            address_state: '@ViewBag.StateProvinceAbbreviation',
+            address_zip: '@ViewBag.BillingAddress.ZipPostalCode',
+            address_country: '@ViewBag.CountryTwoLetterIsoCode'
+        };
+        stripe.createToken(cardNumberElement, options).then(setOutcome);
+        return false;
+    });
+};
+
+</script>

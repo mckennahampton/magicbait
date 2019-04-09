@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "PayPal Express Checkout",
+  "SystemName": "Payments.PayPalExpressCheckout",
+  "Version": "1.31",
+  "SupportedVersions": [ "4.10" ],
+  "Author": "nopCommerce team",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.PayPalExpressCheckout.dll",
+  "Description": "This plugin allows paying with PayPal Express Checkout"
+}
