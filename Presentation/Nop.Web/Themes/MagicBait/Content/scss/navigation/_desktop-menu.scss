@@ -159,16 +159,15 @@
                 }
             }
 
-            &:focus,
-            &:focus-within,
-            &:hover {
+            &:hover,
+            &:focus {
 
                 ul {
-                    visibility: visible; /* shows sub-menu */
-                    opacity: 1;
-                    z-index: 10000;
-                    left: 50%;
-                    transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+                    visibility: visible !important; /* shows sub-menu */
+                    opacity: 1 !important;
+                    z-index: 10000 !important;
+                    left: 50% !important;
+                    transition-delay: 0s, 0s, 0.3s !important; /* this removes the transition delay so the menu will be visible while the other styles transition */
                 }
             }
         }

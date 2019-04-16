@@ -16293,6 +16293,9 @@ a:focus, button:focus {
 label:not(.form-check-label) {
   margin: 10px 0px; }
 
+.max-width-block {
+  max-width: 1000px; }
+
 .search-page .page-title {
   margin: 10px 0px; }
 
@@ -16653,15 +16656,15 @@ label:not(.form-check-label) {
             background: #fff;
             color: #0808AF;
             text-decoration: none; }
-      .header-menu .top-menu li:focus ul, .header-menu .top-menu li:focus-within ul, .header-menu .top-menu li:hover ul {
-        visibility: visible;
+      .header-menu .top-menu li:hover ul, .header-menu .top-menu li:focus ul {
+        visibility: visible !important;
         /* shows sub-menu */
-        opacity: 1;
-        z-index: 10000;
-        left: 50%;
-        -webkit-transition-delay: 0s, 0s, 0.3s;
-        -o-transition-delay: 0s, 0s, 0.3s;
-        transition-delay: 0s, 0s, 0.3s;
+        opacity: 1 !important;
+        z-index: 10000 !important;
+        left: 50% !important;
+        -webkit-transition-delay: 0s, 0s, 0.3s !important;
+        -o-transition-delay: 0s, 0s, 0.3s !important;
+        transition-delay: 0s, 0s, 0.3s !important;
         /* this removes the transition delay so the menu will be visible while the other styles transition */ }
 
 body {
@@ -17451,7 +17454,7 @@ body.stop-scrolling {
   margin: 0 auto; }
   @media (min-width: 1300px) {
     .product-essential {
-      max-width: 2000px; } }
+      max-width: 1200px; } }
   @media (max-width: 1439.98px) {
     .product-essential {
       max-width: 800px; } }
@@ -17843,6 +17846,10 @@ body.stop-scrolling {
     .shopping-cart-page .total-info .value-summary {
       color: #008B09;
       font-weight: bold; }
+
+/* Keeps the spinners visible on number inputs */
+.spinner-always::-webkit-inner-spin-button {
+  opacity: 1; }
 
 .checkout-data label:hover {
   cursor: pointer; }

@@ -135,6 +135,13 @@
     }
 }
 
+/* Keeps the spinners visible on number inputs */
+.spinner-always {
+    &::-webkit-inner-spin-button {
+        opacity: 1; // magic!
+    }
+}
+
 
 .checkout-data {
 

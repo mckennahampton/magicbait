@@ -188,7 +188,7 @@
                             <p class="back-link">
                                 <a href="#" onclick="Checkout.back(); return false;"><small>&laquo; </small>@T("Common.Back")</a>
                             </p>
-                            <input type="button" class="secondary-button confirm-order-next-step-button" onclick="ConfirmOrder.save()" value="@T("Common.Confirm")" />
+                            <input type="button" id="checkout" class="confirm-order-next-step-button hvr-grow button-1 desktop-main-button checkout-button" onclick="ConfirmOrder.save()" value="@T("Checkout.Button")" />
                             <span class="please-wait" id="confirm-order-please-wait" style="display: none;">@T("Checkout.SubmittingOrder")</span>
                         </div>
                     </div>

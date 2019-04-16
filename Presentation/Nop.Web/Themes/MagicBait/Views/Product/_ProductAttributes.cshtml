@@ -297,9 +297,9 @@
                                         var attributeName = string.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
                                             attributeValue.Name :
                                             T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment, string.Empty).Text;
-                                        <li @(attributeValue.IsPreSelected ? @Html.Raw(" class=\"selected-value\"") : null)>
-                                            <label for="@(controlId)_@(attributeValue.Id)">
-                                                <img src="@(attributeValue.ImageSquaresPictureModel.FullSizeImageUrl)">
+                                        <li @(attributeValue.IsPreSelected ? @Html.Raw(" class=\"selected-value\"") : null) id="@(controlId)_@(attributeValue.Id)_li">
+                                            <label style="display: inline-block;" for="@(controlId)_@(attributeValue.Id)">
+                                                <img style="pointer-events: none;" class="attr-image" src="@(attributeValue.ImageSquaresPictureModel.FullSizeImageUrl)">
                                                 <input type="hidden" name="variationName" value="@attributeName" />
                                                 <input id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected"
                                                        @(attribute.Values.Any(value => value.CustomerEntersQty) ? Html.Raw($"onclick=\"showHideRadioQuantity('{controlId}', true)\"") : null) />
@@ -334,10 +334,11 @@
                                 <script asp-location="Footer">
                                     $(document).ready(function () {
 
-                                        $('.attributes #image-squares-@(attribute.Id) li').on('click', 'input', function(event) {
+
+                                        $('.attributes #image-squares-@(attribute.Id) li').click(function(event) {
                                             $('.attributes #image-squares-@(attribute.Id)').find('li').removeClass('selected-value');
                                             $(this).closest('li').addClass('selected-value');
-                                            selectedProduct = $(this).siblings('input[name="variationName"]').attr('value');
+                                            selectedProduct = $(this).find('input[name="variationName"]').attr('value');
                                             $('#variation-name').html(selectedProduct);
                                             $('.input-number').val('1');
                                         });
@@ -392,7 +393,7 @@
             {
                 case AttributeControlType.DropdownList:
                     {
-                        attributeChangeScriptsBuilder.AppendFormat("$('#{0}').on('change', function(){{{1}();}});\n", controlId, attributeChangeHandlerFuncName);
+                        attributeChangeScriptsBuilder.AppendFormat("$('#{0}').change(function(){{{1}();}});\n", controlId, attributeChangeHandlerFuncName);
                     }
                     break;
                 case AttributeControlType.RadioList:
@@ -410,7 +411,7 @@
                     {
                         foreach (var attributeValue in attribute.Values)
                         {
-                            attributeChangeScriptsBuilder.AppendFormat("$('#{0}_{1}').on('click', function(){{{2}();}});\n", controlId, attributeValue.Id, attributeChangeHandlerFuncName);
+                            attributeChangeScriptsBuilder.AppendFormat("$('#{0}_{1}').click(function(){{{2}();}});\n", controlId, attributeValue.Id, attributeChangeHandlerFuncName);
                         }
                     }
                     break;
@@ -420,7 +421,7 @@
 
             foreach (var attributeValue in attribute.Values.Where(value => value.CustomerEntersQty))
             {
-                attributeChangeScriptsBuilder.AppendFormat("$('#{0}_{1}_qty').on('input propertychange paste', function(){{{2}();}});\n", controlId, attributeValue.Id, attributeChangeHandlerFuncName);
+                attributeChangeScriptsBuilder.AppendFormat("$('#{0}_{1}_qty').click(function(){{{2}();}});\n", controlId, attributeValue.Id, attributeChangeHandlerFuncName);
             }
         }
 
@@ -433,9 +434,11 @@
                     url: '@Html.Raw(Url.Action("productdetails_attributechange", "shoppingcart", new {productId = productId, validateAttributeConditions = attributesHaveConditions, loadPicture = attributesHaveAssociatedPictures }))',
                     data: $('#product-details-form').serialize(),
                     type: 'post',
-                    success: function(data) {
+                    success: function (data) {
+                        console.log('test');
                         if (data.price) {
                             $('.price-value-@productId').text(data.price);
+                            console.log('price');
                         }
                         if (data.basepricepangv) {
                             $('#base-price-pangv-@productId').text(data.basepricepangv);
@@ -444,6 +447,7 @@
                         }
                         if (data.sku) {
                             $('#sku-@productId').text(data.sku).parent(".sku").show();
+
                         } else {
                             $('#sku-@productId').parent(".sku").hide();
                         }
@@ -473,16 +477,20 @@
                             }
                         }
                         if (data.pictureDefaultSizeUrl) {
-                            $('#main-product-img-@productId').attr("src", data.pictureDefaultSizeUrl);
+                            var imageBox = document.getElementById("main-product-img-@productId");
+                            imageBox.src = data.pictureDefaultSizeUrl
+                            //$('#main-product-img-@productId').attr("src", data.pictureDefaultSizeUrl);
+                            console.log(data.pictureDefaultSizeUrl);
                         }
                         if (data.pictureFullSizeUrl) {
+                            console.log(data.pictureFullSizeUrl);
                             $('#main-product-img-lightbox-anchor-@productId').attr("href", data.pictureFullSizeUrl);
                         }
                         if (data.message) {
                             alert(data.message);
                         }
                         $(document).trigger({ type: "product_attributes_changed", changedData: data });
-                    }
+                    }, error: function(e) {console.log(e)}
                 });
             }
             $(document).ready(function() {

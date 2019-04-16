@@ -1,6 +1,6 @@
 ﻿.product-essential {
     @include media-breakpoint-up(xl) {
-        max-width: 2000px;
+        max-width: 1200px;
     }
 
     @include media-breakpoint-down(xl) {
