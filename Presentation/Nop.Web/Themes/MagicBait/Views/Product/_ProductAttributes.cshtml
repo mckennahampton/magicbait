@@ -340,6 +340,7 @@
                                             $(this).closest('li').addClass('selected-value');
                                             selectedProduct = $(this).find('input[name="variationName"]').attr('value');
                                             $('#variation-name').html(selectedProduct);
+
                                             $('.input-number').val('1');
                                         });
                                         showHideRadioQuantity("@controlId", true);
@@ -427,6 +428,7 @@
 
         //render scripts
         //almost the same implementation is used in the \Views\Product\_RentalInfo.cshtml file
+
     <script asp-location="Footer">
             function @(attributeChangeHandlerFuncName)() {
                 $.ajax({
@@ -480,16 +482,20 @@
                             var imageBox = document.getElementById("main-product-img-@productId");
                             imageBox.src = data.pictureDefaultSizeUrl
                             //$('#main-product-img-@productId').attr("src", data.pictureDefaultSizeUrl);
-                            console.log(data.pictureDefaultSizeUrl);
                         }
                         if (data.pictureFullSizeUrl) {
-                            console.log(data.pictureFullSizeUrl);
                             $('#main-product-img-lightbox-anchor-@productId').attr("href", data.pictureFullSizeUrl);
                         }
                         if (data.message) {
                             alert(data.message);
                         }
                         $(document).trigger({ type: "product_attributes_changed", changedData: data });
+
+                        // after the selection change, grab the current selected value and update the achor and img alt & title tags
+                        selectedProduct = $(".selected-value").find('input[name="variationName"]').attr('value');
+                        $('.main-product-img').prop("alt", selectedProduct).prop("title", selectedProduct);
+                        $('.main-product-img-anchor').prop("title", selectedProduct);
+
                     }, error: function(e) {console.log(e)}
                 });
             }

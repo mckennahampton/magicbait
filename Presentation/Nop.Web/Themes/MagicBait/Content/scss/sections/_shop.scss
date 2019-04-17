@@ -1,4 +1,11 @@
-﻿.shop-parent-category {
+﻿.stick-to-this {
+
+    @include media-breakpoint-down(md) {
+        width: 100%;
+    }
+}
+
+.shop-parent-category {
     padding: 0px !important;
     border-radius: 5px;
     box-shadow: 0px 0px 5px 0.5px rgba(0,0,0,0.3);
@@ -148,13 +155,15 @@
     }
 
     .block-category-navigation {
-        padding: 0px 20px;
+        padding: 0px 10px;
 
         .list {
             padding-left: 0px;
             margin-left: 0px;
             width: 100%;
             margin: 0 auto;
+            padding-bottom: 30px;
+            border-bottom: 1px solid $color4;
 
             @include media-breakpoint-up(lg) {
                 max-width: 200px;
@@ -175,10 +184,11 @@
                 list-style: none;
                 border-left: 0px;
                 padding: 5px 10px;
+                width: 150px;
                 @include shift(all, 0.2s, ease);
 
                 @include media-breakpoint-up(lg) {
-                    text-indent: 20px;
+                    text-indent: 0px;
                     border: 0px;
 
                     &:not(:last-child) {
@@ -187,14 +197,14 @@
 
                     &:not(.active):hover {
                         border-left: 4px solid $color5;
-                        text-indent: 30px;
+                        text-indent: 5px;
                         font-weight: bold;
                     }
 
                     &.active {
                         border-left: 4px solid $color1;
                         font-weight: bold;
-                        text-indent: 20px;
+                        text-indent: 5px;
                     }
                 }
 
@@ -360,14 +370,14 @@
         }
     }
 
-    @include media-breakpoint-between(xs, xxl) {
+    @include media-breakpoint-between(xs, sm) {
 
         .item-box:nth-child(2n+1):nth-last-child(-n+2), .item-box:nth-child(2n+1):nth-last-child(-n+2) ~ .item-box {
             border-bottom: 0px;
         }
     }
 
-    @include media-breakpoint-only(xxl) {
+    @include media-breakpoint-between(md, xxxl) {
 
         .item-box:nth-child(3n+1):nth-last-child(-n+3), .item-box:nth-child(3n+1):nth-last-child(-n+3) ~ .item-box {
             border-bottom: 0px;
@@ -383,10 +393,10 @@
 
     .item-box {
         text-align: center;
+        max-width: 250px;
 
         .product-item {
             display: inline-block;
-            max-width: 250px;
         }
 
         .product-title {

@@ -145,10 +145,10 @@
                         @if (Model.Products.Count > 0)
                         {
                             <div class="@(Model.PagingFilteringContext.ViewMode == "list" ? "product-list" : "product-grid")">
-                                <div class="item-grid row">
+                                <div class="item-grid row justify-content-around align-items-end">
                                     @foreach (var product in Model.Products)
                                     {
-                                        <div class="item-box col-xs-12 col-sm-6 col-lg-6 col-xxl-4 col-xxxl-3 px-3 pb-2 my-3">
+                                        <div class="item-box col-xs-12 col-sm-6 col-lg-6 col-xxl-4 col-xxxl-3 px-3 pb-2 my-3 mx-2">
                                             @await Html.PartialAsync("_ProductBox", product)
                                         </div>
                                     }
