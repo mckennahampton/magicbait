@@ -1,15 +1,17 @@
 ﻿.shopping-cart-page {
+    .title {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.shopping-cart-page, .checkout-page {
     width: 95%;
     margin: 0 2.5% 30px;
 
     .cart-master-con {
         width: 100%;
         max-width: 1200px;
-    }
-
-    .title {
-        width: 100%;
-        text-align: center;
     }
 
     .cross-sells {
@@ -224,4 +226,9 @@
             }
         }
     }
+}
+
+.terms-of-service {
+    width: 600px;
+    margin: 0 auto;
 }

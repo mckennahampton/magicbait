@@ -13,10 +13,10 @@
 }
 <div class="page shopping-cart-page row justify-content-center">
     <div class="cart-master-con">
-        <div class="page-title">
+        <div class="page-title text-center">
             <h1>@T("ShoppingCart")</h1>
         </div>
-        <div class="page-body">
+        <div class="page-body d-flex flex-column justify-content-center align-items-center">
             @await Component.InvokeAsync("OrderSummary", new { overriddenModel = Model })
         </div>
     </div>

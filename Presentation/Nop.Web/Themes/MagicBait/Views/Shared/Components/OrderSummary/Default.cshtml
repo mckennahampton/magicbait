@@ -6,6 +6,8 @@
 @inject IWorkContext workContext
 @inject OrderSettings orderSettings
 @using Nop.Web.Framework.Infrastructure
+@using Microsoft.AspNetCore.Http
+
 <div class="order-summary-content">
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OrderSummaryContentBefore })
     @await Html.PartialAsync("_OrderReviewData", Model.OrderReviewData)
@@ -181,14 +183,14 @@
             <div class="row justify-content-center d-flex">
                 <div class="cart-order-details-box col-xs-12 col-sm-6">
                     @*if (Model.IsEditable && Model.Items.Count > 0 && Model.DisplayTaxShippingInfo)
-                    {
-                        var inclTax = workContext.TaxDisplayType == TaxDisplayType.IncludingTax;
-                        //tax info is already included in the price (incl/excl tax). that's why we display only shipping info here
-                        //of course, you can modify appropriate locales to include VAT info there
-                        <div class="tax-shipping-info">
-                            @T(inclTax ? "ShoppingCart.TaxShipping.InclTax" : "ShoppingCart.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") })).
-                        </div>
-                    }*@
+                        {
+                            var inclTax = workContext.TaxDisplayType == TaxDisplayType.IncludingTax;
+                            //tax info is already included in the price (incl/excl tax). that's why we display only shipping info here
+                            //of course, you can modify appropriate locales to include VAT info there
+                            <div class="tax-shipping-info">
+                                @T(inclTax ? "ShoppingCart.TaxShipping.InclTax" : "ShoppingCart.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") })).
+                            </div>
+                        }*@
                     <div class="cart-options">
                         @if (Model.IsEditable)
                         {
@@ -281,7 +283,7 @@
                                         });
                                     });
                                 </script>
-                                 if (orderSettings.CheckoutDisabled)
+                                if (orderSettings.CheckoutDisabled)
                                 {
                                     <div class="checkout-disabled">
                                         @T("Checkout.Disabled")
@@ -289,9 +291,25 @@
                                 }
                                 else
                                 {
-                                    <button type="submit" id="checkout" name="checkout" value="checkout" class="hvr-grow button-1 desktop-main-button checkout-button">
-                                        @T("Checkout.Button")
-                                    </button>
+                                    @*  Nopcommerce was built with a weird thing where it loaded
+                                        this module for both the cart page and the checkout page,
+                                        resulting in there being two seperate "Checkout" buttons
+                                        on the actual checkout page. Here we check the page name,
+                                        and only if it's the "cart" page do we place a "Continue"
+                                        button.
+                                    *@
+                                    string pageName = Context.Request.Path;
+                                    if (pageName == "/cart")
+                                    {
+
+                                        <button type="submit" id="checkout" name="checkout" value="checkout" class="hvr-grow button-1 desktop-main-button checkout-button">
+                                            Continue
+                                        </button>
+                                    }
+                                    else
+                                    {
+
+                                    }
                                 }
                             }
                         </div>
