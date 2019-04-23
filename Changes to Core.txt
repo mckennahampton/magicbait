@@ -32,3 +32,18 @@ Change: added th following code:
                     setTimeout(successFade, 2500);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Path to file: C:\Users\Hampton\source\repos\mckennahampton\magicbait\Presentation\Nop.Web\wwwroot\js\public.common.js
+Line of change: 74
+Change: specified the position of the popup modal for terms and conditions
+
+    $('<div></div>').load(url)
+        .dialog({
+            position: { my: "center", at: "top", of: window }, <-- This line was added
+            modal: isModal,
+            width: targetWidth,
+            maxHeight: maxHeight,
+            title: title,
+            close: function(event, ui) {
+                $(this).dialog('destroy').remove();
+            }
+        });

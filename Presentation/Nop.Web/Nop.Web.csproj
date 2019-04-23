@@ -90,6 +90,7 @@
     <None Remove="Themes\MagicBait\Content\scss\navigation\_mobile-menu.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_cart-checkout.cs==scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_cart-checkout.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\sections\_customer.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_footer.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_header.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_register.scss" />

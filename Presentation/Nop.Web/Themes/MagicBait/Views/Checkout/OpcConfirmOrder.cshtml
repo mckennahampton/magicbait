@@ -33,9 +33,9 @@
         <div id="terms-of-service-warning-box" title="@T("Checkout.TermsOfService")" style="display:none;">
             <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
         </div>
-        <div class="terms-of-service">
-            <input id="termsofservice" type="checkbox" name="termsofservice" />
-            <label for="termsofservice">@T("Checkout.TermsOfService.IAccept")</label>
+        <div class="terms-of-service m-3 justify-content-center align-items-center d-flex">
+            <input class="mx-3" id="termsofservice" type="checkbox" name="termsofservice" />
+            <label for="termsofservice">@T("Checkout.TermsOfService.IAccept")
             @if (Model.TermsOfServicePopup)
             {
                 <a class="read" id="read-terms">@T("Checkout.TermsOfService.Read")</a>
@@ -43,15 +43,16 @@
                     $(document).ready(function() {
                         $('#read-terms').on('click', function(e) {
                             e.preventDefault();
-                            displayPopupContentFromUrl('@Url.RouteUrl("TopicPopup", new {SystemName = "conditionsofuse"})', '@T("Checkout.TermsOfService")');
+                            displayPopupContentFromUrl('@Url.RouteUrl("TopicPopup", new {SystemName = "TermsAndConditions" })', '@T("Checkout.TermsOfService")');
                         });
                     });
                 </script>
             }
             else
             {
-                <a class="read" id="read-terms" href="@Url.RouteUrl("Topic", new {SeName = Html.GetTopicSeName("conditionsofuse") })">@T("Checkout.TermsOfService.Read")</a>
+                <a class="read" id="read-terms" href="@Url.RouteUrl("Topic", new {SeName = Html.GetTopicSeName("TermsAndConditions") })">@T("Checkout.TermsOfService.Read")</a>
             }
+            </label>
         </div>
     }
 </div>

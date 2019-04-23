@@ -5,6 +5,10 @@
     }
 }
 
+.checkout-page {
+    max-width: 500px;
+}
+
 .shopping-cart-page, .checkout-page {
     width: 95%;
     margin: 0 2.5% 30px;
@@ -229,6 +233,20 @@
 }
 
 .terms-of-service {
-    width: 600px;
     margin: 0 auto;
+}
+
+.ui-dialog-titlebar-close {
+    &:after {
+        content: "X";
+        color: #000;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
 }

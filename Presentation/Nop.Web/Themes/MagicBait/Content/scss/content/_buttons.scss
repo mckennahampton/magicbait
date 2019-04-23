@@ -53,6 +53,13 @@
     }
 }
 
+.cart-button {
+    &:hover {
+        text-decoration: none;
+        color: #fff;
+    }
+}
+
 .shop-button, .sub-cat-button, .sub-cat-close-button {
     padding: 5px 10px;
     box-shadow: 4px 4px 5px 0.5px rgba(0,0,0,0.3);
@@ -103,4 +110,17 @@
         background: $color2;
         cursor: pointer;
     }
+}
+
+.terms-of-service {
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .read {
+        text-decoration: underline!important;
+        color: #0000EE!important;
+    }
+
 }

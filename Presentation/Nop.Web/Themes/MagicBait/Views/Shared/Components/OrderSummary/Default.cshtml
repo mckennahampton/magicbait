@@ -11,6 +11,7 @@
 <div class="order-summary-content">
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OrderSummaryContentBefore })
     @await Html.PartialAsync("_OrderReviewData", Model.OrderReviewData)
+    @{ string pageName = Context.Request.Path; }
     @if (Model.Items.Count > 0)
     {
         if (Model.Warnings.Count > 0)
@@ -31,26 +32,46 @@
                 <div class="cart container-fluid">
                     @foreach (var item in Model.Items)
                     {
+                        string classString;
+                        if (pageName == "/cart")
+                        { classString = "flex-md-row"; }
+                        else
+                        { classString = ""; }
 
-                        <div class="row align-items-center justify-content-between flex-column flex-md-row">
-                            @if (Model.ShowSku)
-                            {
-                                <div class="sku">
-                                    <label class="td-title">@T("ShoppingCart.SKU"):</label>
-                                    <span class="sku-number">@item.Sku</span>
-                                </div>
-                            }
-                            @if (Model.ShowProductImages)
-                            {
-                                <div class="product-picture d-flex m-md-0 m-2">
-                                    <a href="@Url.RouteUrl("Product", new {SeName = item.ProductSeName})"><img alt="@item.Picture.AlternateText" src="@item.Picture.ImageUrl" title="@item.Picture.Title" /></a>
-                                </div>
-                            }
-                            <div class="product d-flex flex-column m-md-0 m-2 my-4 justify-content-center justify-content-md-start">
-                                <a href="@Url.RouteUrl("Product", new {SeName = item.ProductSeName})" class="product-name text-md-left text-center">@item.ProductName</a>
+                    <div class="row align-items-center justify-content-between flex-column @(classString)">
+                        @if (Model.ShowSku)
+                        {
+                            <div class="sku">
+                                <label class="td-title">@T("ShoppingCart.SKU"):</label>
+                                <span class="sku-number">@item.Sku</span>
+                            </div>
+                        }
+                        @if (Model.ShowProductImages)
+                        {
+                            if (pageName == "/cart")
+                            { classString = "m-md-0"; }
+                            else
+                            { classString = ""; }
+
+                            <div class="product-picture d-flex @(classString) m-2">
+                                <a href="@Url.RouteUrl("Product", new { SeName = item.ProductSeName })"><img alt="@item.Picture.AlternateText" src="@item.Picture.ImageUrl" title="@item.Picture.Title" /></a>
+                            </div>
+                        }
+
+                        @{string classString2;}
+                        @if (pageName == "/cart")
+                        { classString2 = "justify-content-md-start"; }
+                        else
+                        { classString2 = ""; }
+                            <div class="product d-flex flex-column @(classString) m-2 my-4 justify-content-center @(classString2)">
+                                @if (pageName == "/cart")
+                                { classString2 = "text-md-left"; }
+                                else
+                                { classString2 = ""; }
+                                <a href="@Url.RouteUrl("Product", new {SeName = item.ProductSeName})" class="product-name @(classString) text-center">@item.ProductName</a>
                                 @if (!string.IsNullOrEmpty(item.AttributeInfo))
                                 {
-                                    <div class="attributes text-md-left text-center">
+                                    <div class="attributes @(classString) text-center">
                                         @Html.Raw(item.AttributeInfo)
                                     </div>
                                 }
@@ -102,65 +123,65 @@
                                     </div>
                                 }
                             </div>
-                            @if (Model.ShowVendorName)
-                            {
-                                <div class="vendor d-flex">
-                                    <label class="td-title">@T("ShoppingCart.VendorName"):</label>
-                                    <span class="vendor-name">@item.VendorName</span>
+                        @if (Model.ShowVendorName)
+                        {
+                            <div class="vendor d-flex">
+                                <label class="td-title">@T("ShoppingCart.VendorName"):</label>
+                                <span class="vendor-name">@item.VendorName</span>
+                            </div>
+                        }
+                        <div class="d-flex li-details justify-content-between align-items-center m-md-0 m-2">
+                            <div class="unit-price d-flex">
+                                <div class="form-group text-center">
+                                    <label class="form-control td-title">@T("ShoppingCart.UnitPrice")</label>
+                                    <span class="form-control product-unit-price">@item.UnitPrice</span>
                                 </div>
-                            }
-                            <div class="d-flex li-details justify-content-between align-items-center m-md-0 m-2">
-                                <div class="unit-price d-flex">
-                                    <div class="form-group text-center">
-                                        <label class="form-control td-title">@T("ShoppingCart.UnitPrice")</label>
-                                        <span class="form-control product-unit-price">@item.UnitPrice</span>
-                                    </div>
-                                </div>
-                                <div class="quantity d-flex">
-                                    <div class="form-group text-center">
-                                        <label class="td-title form-control" for="itemquantity@(item.Id)">@T("ShoppingCart.Quantity")</label>
-                                        @if (Model.IsEditable)
+                            </div>
+                            <div class="quantity d-flex">
+                                <div class="form-group text-center">
+                                    <label class="td-title form-control" for="itemquantity@(item.Id)">@T("ShoppingCart.Quantity")</label>
+                                    @if (Model.IsEditable)
+                                    {
+                                        if (item.AllowedQuantities.Count > 0)
                                         {
-                                            if (item.AllowedQuantities.Count > 0)
-                                            {
-                                                <select name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" class="form-control qty-dropdown">
-                                                    @foreach (var qty in item.AllowedQuantities)
-                                                    {
-                                                        <option selected="@qty.Selected" value="@qty.Value">@qty.Value</option>
-                                                    }
-                                                </select>
-                                            }
-                                            else
-                                            {
-                                                <input name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" type="number" value="@(item.Quantity)" class="form-control qty-input text-center spinner-always" />
-                                            }
+                                            <select name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" class="form-control qty-dropdown">
+                                                @foreach (var qty in item.AllowedQuantities)
+                                                {
+                                                    <option selected="@qty.Selected" value="@qty.Value">@qty.Value</option>
+                                                }
+                                            </select>
                                         }
                                         else
                                         {
-                                            <span class="product-quantity">@item.Quantity</span>
+                                            <input name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" type="number" value="@(item.Quantity)" class="form-control qty-input text-center spinner-always" />
                                         }
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="product-quantity">@item.Quantity</span>
+                                    }
                                 </div>
-                                <div class="subtotal d-flex">
-                                    <div class="form-group text-center">
-                                        <label class="form-control td-title">@T("ShoppingCart.ItemTotal")</label>
-                                        <span class="form-control product-subtotal">@item.SubTotal</span>
-                                        @if (!string.IsNullOrEmpty(item.Discount))
+                            </div>
+                            <div class="subtotal d-flex">
+                                <div class="form-group text-center">
+                                    <label class="form-control td-title">@T("ShoppingCart.ItemTotal")</label>
+                                    <span class="form-control product-subtotal">@item.SubTotal</span>
+                                    @if (!string.IsNullOrEmpty(item.Discount))
+                                    {
+                                        <div class="discount">
+                                            @T("ShoppingCart.ItemYouSave", item.Discount)
+                                        </div>
+                                        if (item.MaximumDiscountedQty.HasValue)
                                         {
-                                            <div class="discount">
-                                                @T("ShoppingCart.ItemYouSave", item.Discount)
+                                            <div class="discount-additional-info">
+                                                @T("ShoppingCart.MaximumDiscountedQty", item.MaximumDiscountedQty.Value)
                                             </div>
-                                            if (item.MaximumDiscountedQty.HasValue)
-                                            {
-                                                <div class="discount-additional-info">
-                                                    @T("ShoppingCart.MaximumDiscountedQty", item.MaximumDiscountedQty.Value)
-                                                </div>
-                                            }
                                         }
-                                    </div>
+                                    }
                                 </div>
                             </div>
                         </div>
+                    </div>
                         <div class="row checkout-divider"></div>
                     }
                 </div>
@@ -298,12 +319,11 @@
                                         and only if it's the "cart" page do we place a "Continue"
                                         button.
                                     *@
-                                    string pageName = Context.Request.Path;
                                     if (pageName == "/cart")
                                     {
 
                                         <button type="submit" id="checkout" name="checkout" value="checkout" class="hvr-grow button-1 desktop-main-button checkout-button">
-                                            Continue
+                                            Continue To Checkout
                                         </button>
                                     }
                                     else
@@ -320,8 +340,10 @@
     }
     else
     {
-        <div class="no-data">
+        <div class="no-data my-5 justify-content-center d-flex align-items-center flex-column">
             @T("ShoppingCart.CartIsEmpty")
+            <br>
+            <a href="/all-products" class="hvr-grow button-1 my-5 desktop-main-button cart-button text-center">Shop</a>
         </div>
     }
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OrderSummaryContentAfter })

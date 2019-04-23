@@ -291,7 +291,7 @@
                             break;
                         case AttributeControlType.ImageSquares:
                             {
-                                <ul class="option-list attribute-squares d-flex justify-content-around flex-wrap image-squares" id="image-squares-@(attribute.Id)">
+                                <ul class="option-list attribute-squares d-flex justify-content-center flex-wrap image-squares" id="image-squares-@(attribute.Id)">
                                     @foreach (var attributeValue in attribute.Values)
                                     {
                                         var attributeName = string.IsNullOrEmpty(attributeValue.PriceAdjustment) ?

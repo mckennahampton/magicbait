@@ -19,16 +19,15 @@
 }
 <div class="page login-page">
     @await Html.PartialAsync("_ExternalAuthentication.Errors")
-    <div class="row py-5 px-3 justify-content-center">
-        <div class="col-xs-12 max-width-block-medium mx-3 text-left">
+    <div class="py-5 px-3 container">
             <div class="page-body">
                 <div class="page-title text-center">
                     <h1>@T("Account.Login.Welcome")</h1>
                 </div>
-                <div class="customer-blocks my-5">
+                <div class="customer-blocks my-5 row mx-0 mx-md-2 w-100 justify-content-around align-items-center">
                     @if (Model.CheckoutAsGuest)
                     {
-                        <div class="new-wrapper checkout-as-guest-or-register-block">
+                        <div class="new-wrapper my-2 checkout-as-guest-or-register-block col-xs-12 col-md-5">
                             <div class="title mb-3 text-center">
                                 <strong>@T("Account.Login.CheckoutAsGuestOrRegister")</strong>
                             </div>
@@ -43,7 +42,7 @@
                     }
                     else
                     {
-                        <div class="new-wrapper register-block">
+                        <div class="new-wrapper register-block col-xs-12 col-md-5">
                             <div class="title text-center">
                                 <strong>@T("Account.Login.NewCustomer")</strong>
                             </div>
@@ -55,67 +54,67 @@
                             </div>
                         </div>
                     }
-                    <div class="light-hr my-3"></div>
-                    <div class="returning-wrapper fieldset">
-                        <form asp-route="Login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post">
-                            <div asp-validation-summary="ModelOnly" class="message-error">@T("Account.Login.Unsuccessful")</div>
-                            <div class="title text-center">
-                                <strong>@T("Account.Login.ReturningCustomer")</strong>
-                            </div>
-                            <div class="form-fields">
-                                @if (Model.UsernamesEnabled)
-                                {
+
+                        <div class="returning-wrapper fieldset col-xs-12 col-md-5">
+                            <div class="light-hr my-3 d-md-none"></div>
+                            <form asp-route="Login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post">
+                                <div asp-validation-summary="ModelOnly" class="message-error">@T("Account.Login.Unsuccessful")</div>
+                                <div class="title text-center">
+                                    <strong>@T("Account.Login.ReturningCustomer")</strong>
+                                </div>
+                                <div class="form-fields">
+                                    @if (Model.UsernamesEnabled)
+                                    {
+                                        <div class="inputs">
+                                            <div class="form-group">
+                                                <label asp-for="Username" asp-postfix=":"></label>
+                                                <input class="form-control" asp-for="Username" class="username" autofocus="autofocus" />
+                                                <span asp-validation-for="Username"></span>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="inputs">
+                                            <div class="form-group">
+                                                <label asp-for="Email" asp-postfix=":"></label>
+                                                <input class="form-control" asp-for="Email" class="email" autofocus="autofocus" />
+                                                <span asp-validation-for="Email"></span>
+                                            </div>
+                                        </div>
+                                    }
                                     <div class="inputs">
                                         <div class="form-group">
-                                            <label asp-for="Username" asp-postfix=":"></label>
-                                            <input class="form-control" asp-for="Username" class="username" autofocus="autofocus" />
-                                            <span asp-validation-for="Username"></span>
+                                            <label asp-for="Password" asp-postfix=":"></label>
+                                            <input class="form-control" asp-for="Password" class="password" />
+                                            <span asp-validation-for="Password"></span>
                                         </div>
                                     </div>
-                                }
-                                else
-                                {
-                                    <div class="inputs">
-                                        <div class="form-group">
-                                            <label asp-for="Email" asp-postfix=":"></label>
-                                            <input class="form-control" asp-for="Email" class="email" autofocus="autofocus" />
-                                            <span asp-validation-for="Email"></span>
+                                    <div class="inputs reversed">
+                                        <div class="form-check">
+                                            <input class="form-check-input" asp-for="RememberMe" />
+                                            <label class="form-check-label" asp-for="RememberMe"></label>
+                                            <span class="forgot-password">
+                                                <a asp-route="PasswordRecovery">@T("Account.Login.ForgotPassword")</a>
+                                            </span>
                                         </div>
+                                        @if (Model.DisplayCaptcha)
+                                        {
+                                            <div class="captcha-box">
+                                                <nop-captcha />
+                                            </div>
+                                        }
                                     </div>
-                                }
-                                <div class="inputs">
-                                    <div class="form-group">
-                                        <label asp-for="Password" asp-postfix=":"></label>
-                                        <input class="form-control" asp-for="Password" class="password" />
-                                        <span asp-validation-for="Password"></span>
+                                    <div class="buttons">
+                                        <input class="button-1 mx-auto my-5 d-block secondary-button login-button" type="submit" value="@T("Account.Login.LoginButton")" />
                                     </div>
-                                </div>
-                                <div class="inputs reversed">
-                                    <div class="form-check">
-                                    <input class="form-check-input" asp-for="RememberMe" />
-                                    <label class="form-check-label" asp-for="RememberMe"></label>
-                                    <span class="forgot-password">
-                                        <a asp-route="PasswordRecovery">@T("Account.Login.ForgotPassword")</a>
-                                    </span>
-                                </div>
-                                @if (Model.DisplayCaptcha)
-                                {
-                                    <div class="captcha-box">
-                                        <nop-captcha />
-                                    </div>
-                                }
-                            </div>
-                            <div class="buttons">
-                                <input class="button-1 mx-auto my-5 d-block secondary-button login-button" type="submit" value="@T("Account.Login.LoginButton")" />
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
                 </div>
                 <div class="external-authentication">
                     @await Component.InvokeAsync("ExternalMethods", "ExternalAuthentication")
                 </div>
                 @* await Component.InvokeAsync("TopicBlock", new { systemName = "LoginRegistrationInfo" }) *@
             </div>
-        </div>
     </div>
 </div>

@@ -1,0 +1,9 @@
+﻿.checkout-as-guest-or-register-block {
+    @include media-breakpoint-down(md) {
+        border-right: 0px;
+    }
+
+    @include media-breakpoint-up(md) {
+        border-right: 1px solid $color4;
+    }
+}
