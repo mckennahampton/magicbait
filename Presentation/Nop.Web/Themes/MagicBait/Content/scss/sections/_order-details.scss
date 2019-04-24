@@ -1,0 +1,101 @@
+﻿.order-details-page {
+
+    width: 95%;
+    margin: 0px 2.5%;
+
+    ul {
+        margin-left: 0px;
+        padding-left: 0px;
+        list-style: none;
+
+        li {
+            padding: 5px 0px;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid #ccc;
+            }
+        }
+    }
+
+    .order-overview, .order-details-area {
+        max-width: 300px;
+    }
+
+    .order-total strong {
+        color: $color3;
+    }
+
+    .section.products {
+        margin-top: 50px;
+    }
+
+    .data-table {
+
+        tr {
+            width: 280px;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid $color4;
+            }
+        }
+
+        td {
+            padding: 20px 0px;
+        }
+
+        .unit-price,
+        .quantity,
+        .total {
+            padding: 0px 10px;
+
+            .form-group > *:not(input) {
+                border: none;
+            }
+        }
+
+        .unit-price {
+            .product-unit-price {
+                color: $color3;
+            }
+        }
+
+        .quantity {
+            input {
+                width: 75px;
+                border: solid;
+                border-right: none;
+                border-left: none;
+                border-top: 1px solid $color4;
+                border-bottom: none;
+                border-radius: 0px;
+            }
+        }
+
+        .total {
+            .product-subtotal {
+                color: $color3;
+            }
+        }
+    }
+
+    .final-total-section {
+        max-width: 300px;
+        width: 100%;
+
+        .cart-total {
+            width: 100%;
+        }
+
+        tr:not(:last-child) {
+            border-bottom: 1px solid $color4;
+        }
+
+        td:last-child {
+            text-align: right;
+        }
+
+        .cart-total-right {
+            color: $color3;
+        }
+    }
+}

@@ -93,6 +93,7 @@
     <None Remove="Themes\MagicBait\Content\scss\sections\_customer.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_footer.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_header.scss" />
+    <None Remove="Themes\MagicBait\Content\scss\sections\_order-details.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_register.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_shop.scss" />
     <None Remove="Themes\MagicBait\Content\scss\sections\_single-product-page.scss" />
@@ -261,6 +262,18 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Home\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Order\CustomerOrders.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Order\CustomerRewardPoints.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Order\Details.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Order\ShipmentDetails.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Product\CompareProducts.cshtml">

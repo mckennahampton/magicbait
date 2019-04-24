@@ -76,3 +76,15 @@ GetPaymentInfo StripeToken=tok_1ESDXgLOcRUwpE1J6zOaV6eY
 GetPaymentInfo StripeToken=tok_1ESDauLOcRUwpE1J7SnpPEGA
 2019.04.22 20:40:28:3103*******
 GetPaymentInfo StripeToken=tok_1ESDcWLOcRUwpE1Jd7EUNu9H
+2019.04.23 17:57:15:3767*******
+GetPaymentInfo StripeToken=tok_1ESXY6LOcRUwpE1JDjvPr5Pt
+2019.04.23 17:57:34:5318*******
+ProcessPayment stripeToken=tok_1ESXY6LOcRUwpE1JDjvPr5Pt
+2019.04.23 17:57:35:6030*******
+ProcessPayment token=tok_1ESXY6LOcRUwpE1JDjvPr5Pt, charge: Id=ch_1ESXYQLOcRUwpE1JKEC6f7Hc, Status=succeeded
+2019.04.23 19:28:23:5051*******
+GetPaymentInfo StripeToken=tok_1ESYyILOcRUwpE1JtAJTr9qh
+2019.04.23 19:28:45:7965*******
+ProcessPayment stripeToken=tok_1ESYyILOcRUwpE1JtAJTr9qh
+2019.04.23 19:28:47:5302*******
+ProcessPayment token=tok_1ESYyILOcRUwpE1JtAJTr9qh, charge: Id=ch_1ESYygLOcRUwpE1JGd9swKxF, Status=succeeded

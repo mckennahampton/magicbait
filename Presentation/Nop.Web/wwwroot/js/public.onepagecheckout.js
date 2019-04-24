@@ -138,7 +138,7 @@ var Billing = {
         if (Checkout.loadWaiting != false) return;
 
         Checkout.setLoadWaiting('billing');
-        
+        $('.loading').css('display', 'block');
         $.ajax({
             cache: false,
             url: this.saveUrl,
@@ -157,6 +157,7 @@ var Billing = {
     nextStep: function (response) {
         //ensure that response.wrong_billing_address is set
         //if not set, "true" is the default value
+        $('.loading').css('display', 'none');
         if (typeof response.wrong_billing_address == 'undefined') {
             response.wrong_billing_address = false;
         }
@@ -227,7 +228,7 @@ var Shipping = {
         if (Checkout.loadWaiting != false) return;
 
         Checkout.setLoadWaiting('shipping');
-
+        $('.loading').css('display', 'block');
         $.ajax({
             cache: false,
             url: this.saveUrl,
@@ -244,6 +245,7 @@ var Shipping = {
     },
 
     nextStep: function (response) {
+        $('.loading').css('display', 'none');
         if (response.error) {
             if ((typeof response.message) == 'string') {
                 alert(response.message);
@@ -290,7 +292,7 @@ var ShippingMethod = {
         
         if (this.validate()) {
             Checkout.setLoadWaiting('shipping-method');
-        
+            $('.loading').css('display', 'block'); 
             $.ajax({
                 cache: false,
                 url: this.saveUrl,
@@ -308,6 +310,7 @@ var ShippingMethod = {
     },
 
     nextStep: function (response) {
+        $('.loading').css('display', 'none');
         if (response.error) {
             if ((typeof response.message) == 'string') {
                 alert(response.message);
@@ -360,7 +363,7 @@ var PaymentMethod = {
     
     save: function () {
         if (Checkout.loadWaiting != false) return;
-        
+        $('.loading').css('display', 'block');
         if (this.validate()) {
             Checkout.setLoadWaiting('payment-method');
             $.ajax({
@@ -380,6 +383,7 @@ var PaymentMethod = {
     },
 
     nextStep: function (response) {
+        $('.loading').css('display', 'none');
         if (response.error) {
             if ((typeof response.message) == 'string') {
                 alert(response.message);
@@ -407,7 +411,7 @@ var PaymentInfo = {
 
     save: function () {
         if (Checkout.loadWaiting != false) return;
-        
+        $('.loading').css('display', 'block');
         Checkout.setLoadWaiting('payment-info');
         $.ajax({
             cache: false,
@@ -425,6 +429,7 @@ var PaymentInfo = {
     },
 
     nextStep: function (response) {
+        $('.loading').css('display', 'none');
         if (response.error) {
             if ((typeof response.message) == 'string') {
                 alert(response.message);
@@ -453,7 +458,7 @@ var ConfirmOrder = {
 
     save: function () {
         if (Checkout.loadWaiting != false) return;
-        
+        $('.loading').css('display', 'block');
         //terms of service
         var termOfServiceOk = true;
         if ($('#termsofservice').length > 0) {
@@ -485,6 +490,7 @@ var ConfirmOrder = {
     },
 
     nextStep: function (response) {
+        $('.loading').css('display', 'none');
         if (response.error) {
             if ((typeof response.message) == 'string') {
                 alert(response.message);

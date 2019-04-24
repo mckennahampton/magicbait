@@ -16378,6 +16378,9 @@ label:not(.form-check-label) {
 .master-wrapper-content {
   background: url("stripes-light.png"); }
 
+.master-wrapper-page {
+  min-width: 100vw; }
+
 .master-column-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17959,3 +17962,58 @@ body.stop-scrolling {
 @media (min-width: 768px) {
   .checkout-as-guest-or-register-block {
     border-right: 1px solid #bbbbbb; } }
+
+.order-details-page {
+  width: 95%;
+  margin: 0px 2.5%; }
+  .order-details-page ul {
+    margin-left: 0px;
+    padding-left: 0px;
+    list-style: none; }
+    .order-details-page ul li {
+      padding: 5px 0px; }
+      .order-details-page ul li:not(:last-child) {
+        border-bottom: 1px solid #ccc; }
+  .order-details-page .order-overview, .order-details-page .order-details-area {
+    max-width: 300px; }
+  .order-details-page .order-total strong {
+    color: #008B09; }
+  .order-details-page .section.products {
+    margin-top: 50px; }
+  .order-details-page .data-table tr {
+    width: 280px; }
+    .order-details-page .data-table tr:not(:last-child) {
+      border-bottom: 1px solid #bbbbbb; }
+  .order-details-page .data-table td {
+    padding: 20px 0px; }
+  .order-details-page .data-table .unit-price,
+  .order-details-page .data-table .quantity,
+  .order-details-page .data-table .total {
+    padding: 0px 10px; }
+    .order-details-page .data-table .unit-price .form-group > *:not(input),
+    .order-details-page .data-table .quantity .form-group > *:not(input),
+    .order-details-page .data-table .total .form-group > *:not(input) {
+      border: none; }
+  .order-details-page .data-table .unit-price .product-unit-price {
+    color: #008B09; }
+  .order-details-page .data-table .quantity input {
+    width: 75px;
+    border: solid;
+    border-right: none;
+    border-left: none;
+    border-top: 1px solid #bbbbbb;
+    border-bottom: none;
+    border-radius: 0px; }
+  .order-details-page .data-table .total .product-subtotal {
+    color: #008B09; }
+  .order-details-page .final-total-section {
+    max-width: 300px;
+    width: 100%; }
+    .order-details-page .final-total-section .cart-total {
+      width: 100%; }
+    .order-details-page .final-total-section tr:not(:last-child) {
+      border-bottom: 1px solid #bbbbbb; }
+    .order-details-page .final-total-section td:last-child {
+      text-align: right; }
+    .order-details-page .final-total-section .cart-total-right {
+      color: #008B09; }

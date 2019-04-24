@@ -47,3 +47,171 @@ Change: specified the position of the popup modal for terms and conditions
                 $(this).dialog('destroy').remove();
             }
         });
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Path to file: C:\Users\Hampton\source\repos\mckennahampton\magicbait\Presentation\Nop.Web\wwwroot\js\public.onepagecheckout.js
+Many changes:
+
+        Checkout.setLoadWaiting('billing');
+        $('.loading').css('display', 'block'); <-- added this, line 141
+        $.ajax({
+            cache: false,
+            url: this.saveUrl,
+            data: $(this.form).serialize(),
+            type: 'post',
+            success: this.nextStep,
+            complete: this.resetLoadWaiting,
+            error: Checkout.ajaxFailure
+        });
+    },
+
+/////////////////
+
+    nextStep: function (response) {
+        //ensure that response.wrong_billing_address is set
+        //if not set, "true" is the default value
+        $('.loading').css('display', 'none'); <-- added this, line 160
+        if (typeof response.wrong_billing_address == 'undefined') {
+            response.wrong_billing_address = false;
+        }
+        if (Billing.disableBillingAddressCheckoutStep) {
+            if (response.wrong_billing_address) {
+                Accordion.showSection('#opc-billing');
+            } else {
+                Accordion.hideSection('#opc-billing');
+            }
+        }
+
+//////////////
+
+        Checkout.setLoadWaiting('shipping');
+        $('.loading').css('display', 'block');  <-- added this, line 231
+        $.ajax({
+            cache: false,
+            url: this.saveUrl,
+            data: $(this.form).serialize(),
+            type: 'post',
+            success: this.nextStep,
+            complete: this.resetLoadWaiting,
+            error: Checkout.ajaxFailure
+        });
+    },
+
+///////////////
+
+    nextStep: function (response) {
+        $('.loading').css('display', 'none'); <-- added this, line 248
+        if (response.error) {
+            if ((typeof response.message) == 'string') {
+                alert(response.message);
+            } else {
+                alert(response.message.join("\n"));
+            }
+
+            return false;
+        }
+
+///////////////
+        if (this.validate()) {
+            Checkout.setLoadWaiting('shipping-method');
+            $('.loading').css('display', 'block'); <-- added this, line 295
+            $.ajax({
+                cache: false,
+                url: this.saveUrl,
+                data: $(this.form).serialize(),
+                type: 'post',
+                success: this.nextStep,
+                complete: this.resetLoadWaiting,
+                error: Checkout.ajaxFailure
+            });
+        }
+
+/////////////////
+        if (Checkout.loadWaiting != false) return;
+        $('.loading').css('display', 'block'); <-- added this, line 366
+        if (this.validate()) {
+            Checkout.setLoadWaiting('payment-method');
+            $.ajax({
+                cache: false,
+                url: this.saveUrl,
+                data: $(this.form).serialize(),
+                type: 'post',
+                success: this.nextStep,
+                complete: this.resetLoadWaiting,
+                error: Checkout.ajaxFailure
+            });
+        }
+    },
+
+//////////////////
+    nextStep: function (response) {
+        $('.loading').css('display', 'none'); <-- added this, line 386
+        if (response.error) {
+            if ((typeof response.message) == 'string') {
+                alert(response.message);
+            } else {
+                alert(response.message.join("\n"));
+            }
+
+            return false;
+        }
+
+        Checkout.setStepResponse(response);
+    }
+
+/////////////////
+    save: function () {
+        if (Checkout.loadWaiting != false) return;
+        $('.loading').css('display', 'block'); <-- added this, line 414
+        Checkout.setLoadWaiting('payment-info');
+        $.ajax({
+            cache: false,
+            url: this.saveUrl,
+            data: $(this.form).serialize(),
+            type: 'post',
+            success: this.nextStep,
+            complete: this.resetLoadWaiting,
+            error: Checkout.ajaxFailure
+        });
+    },
+
+////////////////
+
+    nextStep: function (response) {
+        $('.loading').css('display', 'none'); <-- added this, line 432
+        if (response.error) {
+            if ((typeof response.message) == 'string') {
+                alert(response.message);
+            } else {
+                alert(response.message.join("\n"));
+            }
+
+            return false;
+        }
+
+///////////////
+        if (Checkout.loadWaiting != false) return;
+        $('.loading').css('display', 'block'); <-- added this, line 461
+        //terms of service
+        var termOfServiceOk = true;
+        if ($('#termsofservice').length > 0) {
+            //terms of service element exists
+            if (!$('#termsofservice').is(':checked')) {
+                $("#terms-of-service-warning-box").dialog();
+                termOfServiceOk = false;
+            } else {
+                termOfServiceOk = true;
+            }
+
+///////////////
+    nextStep: function (response) {
+        $('.loading').css('display', 'none'); <-- added this, line 493
+        if (response.error) {
+            if ((typeof response.message) == 'string') {
+                alert(response.message);
+            } else {
+                alert(response.message.join("\n"));
+            }
+
+            return false;
+        }
