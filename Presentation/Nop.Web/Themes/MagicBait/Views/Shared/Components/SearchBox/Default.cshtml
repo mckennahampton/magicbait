@@ -2,7 +2,8 @@
 @using System.Text.Encodings.Web
 @using Nop.Web.Framework.Infrastructure
 <form asp-route="ProductSearch" method="get" id="small-search-box-form">
-    <input type="text" class="search-box-text" id="small-searchterms" autocomplete="off" name="q" placeholder="@T("Search.SearchBox.Tooltip")" aria-label="@T("Search.SearchBox.Text.Label")" /><!--
+
+    <input type="text" class="search-box-text" id="small-searchterms" autocomplete="off" name="q" placeholder="@T("Search.SearchBox.Text.Label")" aria-label="@T("Search.SearchBox.Text.Label")" /><!--
     --><input type="submit" class="button-1 search-box-button" value="@T("Search.Button")" />
     @if (Model.SearchTermMinimumLength > 0)
     {
@@ -55,4 +56,6 @@
         </script>
     }
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.SearchBox })
+    <input style="display: none;" type="checkbox" checked="checked" data-val="true" data-val-required="The Search In product descriptions field is required." id="sid" name="sid" value="true">
+   <input style="display: none;" type="checkbox" checked="checked" data-val="true" data-val-required="The Advanced search field is required." id="adv" name="adv" value="true">
 </form>

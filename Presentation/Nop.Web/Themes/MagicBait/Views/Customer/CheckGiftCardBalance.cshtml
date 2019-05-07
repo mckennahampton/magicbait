@@ -26,57 +26,61 @@
 
 
 <div class="page account-page check-gift-card-balance-page">
-    <div class="page-title">
-        @if (isRegisterCustomer)
-        {
-            <h1>@T("Account.MyAccount") - @T("PageTitle.CheckGiftCardBalance")</h1>
-        }
-        else
-        {
-            <h1>@T("PageTitle.CheckGiftCardBalance")</h1>
-        }
-    </div>
-    <div class="page-body">
-        @if (!string.IsNullOrEmpty(Model.Message))
-        {
-            <div class="message-error">
-                @Model.Message
+    <div class="customer-blocks my-5 row mx-0 mx-md-2 w-100 justify-content-around align-items-center">
+        <div class="new-wrapper my-2 col-xs-12 col-md-5">
+            <div class="page-title text-center">
+                @if (isRegisterCustomer)
+                {
+                    <h1>@T("Account.MyAccount") - @T("PageTitle.CheckGiftCardBalance")</h1>
+                }
+                else
+                {
+                    <h1>@T("PageTitle.CheckGiftCardBalance")</h1>
+                }
             </div>
-        }
-        @if (!string.IsNullOrEmpty(Model.Result))
-        {
-            <div class="result">
-                @string.Format(T("ShoppingCart.Totals.GiftCardInfo.Remaining").Text, @Model.Result)
-            </div>
-        }
-        <form asp-controller="Customer" asp-action="CheckGiftCardBalance" method="post">
-            <div asp-validation-summary="ModelOnly" class="message-error"></div>
-            <div class="fieldset">
-                <div class="form-fields">
-                    <div class="inputs">
-                        <label asp-for="GiftCardCode" asp-postfix=":"></label>
-                        <input asp-for="GiftCardCode" placeholder="@T("ShoppingCart.GiftCardCouponCode.Tooltip")" class="fullname" />
-                        <nop-required />
-                        <span asp-validation-for="GiftCardCode"></span>
+            <div class="page-body">
+                @if (!string.IsNullOrEmpty(Model.Message))
+                {
+                    <div class="message-error">
+                        @Model.Message
                     </div>
-                    <div class="captcha-box">
-                        <nop-captcha />
+                }
+                @if (!string.IsNullOrEmpty(Model.Result))
+                {
+                    <div class="result">
+                        @string.Format(T("ShoppingCart.Totals.GiftCardInfo.Remaining").Text, @Model.Result)
                     </div>
-                </div>
-                <div class="buttons">
-                    <input type="submit" name="checkbalancegiftcard" id="checkbalancegiftcard" class="button-1 check-gift-card-balance-button" value="@T("CheckGiftCard.GiftCardCouponCode.Button")" />
-                    <script asp-location="Footer">
-                        $(document).ready(function () {
-                            $('#giftcardcouponcode').keydown(function (event) {
-                                if (event.keyCode == 13) {
-                                    $('#checkbalancegiftcard').click();
-                                    return false;
-                                }
-                            });
-                        });
-                    </script>
-                </div>
+                }
+                <form asp-controller="Customer" asp-action="CheckGiftCardBalance" method="post">
+                    <div asp-validation-summary="ModelOnly" class="message-error"></div>
+                    <div class="fieldset">
+                        <div class="form-fields">
+                            <div class="inputs form-group d-flex flex-column justify-content-center align-items-center">
+                                <label class="my-2" asp-for="GiftCardCode" asp-postfix=":"></label>
+                                <input class="form-control" asp-for="GiftCardCode" placeholder="@T("ShoppingCart.GiftCardCouponCode.Tooltip")" class="fullname" />
+                                <nop-required />
+                                <span asp-validation-for="GiftCardCode"></span>
+                            </div>
+                            <div class="captcha-box d-flex align-itmes-center justify-content-center">
+                                <nop-captcha />
+                            </div>
+                        </div>
+                        <div class="buttons d-flex justify-content-center">
+                            <input type="submit" name="checkbalancegiftcard" id="checkbalancegiftcard" class="secondary-button check-gift-card-balance-button" value="@T("CheckGiftCard.GiftCardCouponCode.Button")" />
+                            <script asp-location="Footer">
+                                $(document).ready(function () {
+                                    $('#giftcardcouponcode').keydown(function (event) {
+                                        if (event.keyCode == 13) {
+                                            $('#checkbalancegiftcard').click();
+                                            return false;
+                                        }
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </div>

@@ -264,6 +264,12 @@
     <Content Update="Themes\MagicBait\Views\Home\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Themes\MagicBait\Views\News\List.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\News\NewsItem.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Order\CustomerOrders.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -375,6 +381,9 @@
     <Content Update="Themes\MagicBait\Views\Shared\Components\CrossSellProducts\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\CustomerNavigation\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Themes\MagicBait\Views\Shared\Components\EstimateShipping\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -385,6 +394,9 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Shared\Components\Footer\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Themes\MagicBait\Views\Shared\Components\HomepageNews\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Themes\MagicBait\Views\Shared\Components\NewsletterBox\Default.cshtml">

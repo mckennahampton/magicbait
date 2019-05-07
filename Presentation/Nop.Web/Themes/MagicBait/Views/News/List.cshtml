@@ -1,0 +1,50 @@
+﻿@model NewsItemListModel
+@using Nop.Web.Framework.Infrastructure
+@{
+    Layout = "_ColumnsTwo";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.NewsArchive").Text);
+    //page class
+    Html.AppendPageCssClassParts("html-news-list-page");
+}
+<div class="page news-list-page">
+    <div class="page-title">
+        <h1>@T("News")</h1>
+        <br />
+        <a href="@Url.RouteUrl("NewsRSS", new { languageId = Model.WorkingLanguageId })" class="link-rss secondary-button" title="@T("News.RSS.Hint")">@T("News.RSS")</a>
+    </div>
+    <div class="page-body">
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.NewsListPageBeforeItems })
+        <div class="news-items row justify-content-center align-items-center">
+            @foreach (var item in Model.NewsItems)
+            {
+                <div class="news-item card p-3 m-3">
+                    <div class="news-head">
+                        <a class="card-link" href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })">@item.Title</a>
+                        <br />
+                        <span class="news-date"> - @item.CreatedOn.ToString("D")</span>
+                    </div>
+                    <div class="light-hr"></div>
+                    <div class="news-body mb-3">
+                        @Html.Raw(item.Short)
+                    </div>
+                    <div class="buttons">
+                        <a href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })" class="read-more secondary-button">@T("News.MoreInfo")</a>
+                    </div>
+                    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.NewsListPageInsideItem, additionalData = item })
+                </div>
+            }
+        </div>
+        @{
+            var pager = Html.Pager(Model.PagingFilteringContext).QueryParam("pagenumber");
+        }
+        @if (!pager.IsEmpty())
+        {
+            <div class="pager">
+                @pager
+            </div>
+        }
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.NewsListPageAfterItems })
+    </div>
+</div>

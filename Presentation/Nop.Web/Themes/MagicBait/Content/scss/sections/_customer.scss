@@ -7,3 +7,32 @@
         border-right: 1px solid $color4;
     }
 }
+
+.block-account-navigation {
+    margin-top: 15px;
+
+    li {
+        width: 190px!important;
+    }
+
+    .list {
+        border-bottom: none!important;
+    }
+}
+
+
+.address-item {
+
+    max-width: 400px;
+
+    .card-body {
+
+        label {
+            font-weight: bold;
+        }
+
+        span {
+            text-align: right;
+        }
+    }
+}

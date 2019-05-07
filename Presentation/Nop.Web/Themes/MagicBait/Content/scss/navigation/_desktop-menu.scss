@@ -20,6 +20,15 @@
         font-weight: 100;
         padding-left: 10px;
         height: 28px;
+        @include shift(all,0.3s,ease-out);
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 5px #80BDFF;
+            border-top: 1px solid #80BDFF;
+            border-bottom: 1px solid #80BDFF;
+            border-left: 1px solid #80BDFF;
+        }
     }
 
     .search-box-button {

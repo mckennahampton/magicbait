@@ -1324,7 +1324,7 @@ namespace Nop.Web.Factories
                     }
 
                     //var searchInProductTags = false;
-                    var searchInProductTags = searchInDescriptions;
+                    var searchInProductTags = true;
 
                     //products
                     products = _productService.SearchProducts(

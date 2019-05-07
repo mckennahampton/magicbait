@@ -28,74 +28,81 @@
         <h1>@T("Search")</h1>
     </div>
     <div class="page-body">
-        <div class="search-input">
-            <form asp-route="ProductSearch" method="get">
-                <div class="fieldset">
-                    <div class="form-fields">
-                        <div class="basic-search">
-                            <div class="inputs form-group">
-                                <label asp-for="q">@T("Search.SearchTerm"):</label>
-                                <input class="form-control" asp-for="q" class="search-text" />
+        <div class="row">
+            <div class="search-input">
+                <form asp-route="ProductSearch" method="get" class="d-flex flex-column flex-md-row justify-content-center justify-content-lg-start align-items-center">
+                    <div class="fieldset">
+                        <div class="form-fields">
+                            <div class="basic-search">
+                                <div class="inputs form-group my-2 d-flex flex-column flex-md-row justify-content-center align-items-center">
+                                    <label asp-for="q">@T("Search.SearchTerm"):</label>
+                                    <input class="form-control" asp-for="q" class="search-text" />
+                                    <input style="display: none;" type="checkbox" checked="checked" data-val="true" data-val-required="The Search In product descriptions field is required." id="sid" name="sid" value="true">
+                                    <input style="display: none;" type="checkbox" checked="checked" data-val="true" data-val-required="The Advanced search field is required." id="adv" name="adv" value="true">
+                                </div>
+                                @*<div class="inputs reversed form-group">
+                                    <input class="form-control" asp-for="adv" />
+                                    <label asp-for="adv">@T("Search.AdvancedSearch")</label>
+                                </div>*@
                             </div>
-                            @*<div class="inputs reversed form-group">
-                                <input class="form-control" asp-for="adv" />
-                                <label asp-for="adv">@T("Search.AdvancedSearch")</label>
-                            </div>*@
-                        </div>
-                         @*<div class="advanced-search" id="advanced-search-block">
-                            @if (Model.AvailableCategories.Count > 0)
-                            {
+                             @*<div class="advanced-search" id="advanced-search-block">
+                                @if (Model.AvailableCategories.Count > 0)
+                                {
+                                    <div class="inputs form-group">
+                                        <label asp-for="cid">@T("Search.Category"):</label>
+                                        <select class="form-control" asp-for="cid" asp-items="Model.AvailableCategories"></select>
+                                    </div>
+                                    <div class="inputs form-group reversed">
+                                        <input class="form-control" asp-for="isc" />
+                                        <label asp-for="isc">@T("Search.IncludeSubCategories")</label>
+                                    </div>
+                                }
+                                @if (Model.AvailableManufacturers.Count > 0)
+                                {
+                                    <div class="inputs form-group">
+                                        <label asp-for="mid">@T("Search.Manufacturer"):</label>
+                                        <select class="form-control" asp-for="mid" asp-items="Model.AvailableManufacturers"></select>
+                                    </div>
+                                }
+                                @if (Model.asv && Model.AvailableVendors.Count > 0)
+                                {
+                                    <div class="inputs form-group">
+                                        <label asp-for="vid">@T("Search.Vendor"):</label>
+                                        <select class="form-control" asp-for="vid" asp-items="Model.AvailableVendors"></select>
+                                    </div>
+                                }
                                 <div class="inputs form-group">
-                                    <label asp-for="cid">@T("Search.Category"):</label>
-                                    <select class="form-control" asp-for="cid" asp-items="Model.AvailableCategories"></select>
+                                    <label>@T("Search.PriceRange"):</label>
+                                    <span class="price-range">
+                                        @T("Search.PriceRange.From")
+                                        <input class="form-control" asp-for="pf" class="price-from" />
+                                        @T("Search.PriceRange.To")
+                                        <input class="form-control" asp-for="pt" class="price-to" />
+                                    </span>
                                 </div>
                                 <div class="inputs form-group reversed">
-                                    <input class="form-control" asp-for="isc" />
-                                    <label asp-for="isc">@T("Search.IncludeSubCategories")</label>
+                                    <input class="form-control" asp-for="sid" />
+                                    <label asp-for="sid">@T("Search.SearchInDescriptions")</label>
                                 </div>
-                            }
-                            @if (Model.AvailableManufacturers.Count > 0)
-                            {
-                                <div class="inputs form-group">
-                                    <label asp-for="mid">@T("Search.Manufacturer"):</label>
-                                    <select class="form-control" asp-for="mid" asp-items="Model.AvailableManufacturers"></select>
-                                </div>
-                            }
-                            @if (Model.asv && Model.AvailableVendors.Count > 0)
-                            {
-                                <div class="inputs form-group">
-                                    <label asp-for="vid">@T("Search.Vendor"):</label>
-                                    <select class="form-control" asp-for="vid" asp-items="Model.AvailableVendors"></select>
-                                </div>
-                            }
-                            <div class="inputs form-group">
-                                <label>@T("Search.PriceRange"):</label>
-                                <span class="price-range">
-                                    @T("Search.PriceRange.From")
-                                    <input class="form-control" asp-for="pf" class="price-from" />
-                                    @T("Search.PriceRange.To")
-                                    <input class="form-control" asp-for="pt" class="price-to" />
-                                </span>
-                            </div>
-                            <div class="inputs form-group reversed">
-                                <input class="form-control" asp-for="sid" />
-                                <label asp-for="sid">@T("Search.SearchInDescriptions")</label>
-                            </div>
-                            @await Component.InvokeAsync("Widget", new { widgetZone = "productsearch_page_advanced" })
+                                @await Component.InvokeAsync("Widget", new { widgetZone = "productsearch_page_advanced" })
                                 
-                        </div> *@
+                            </div> *@
+                        </div>
                     </div>
-                </div>
-                <div class="buttons">
-                    <input type="submit" class="button-1 search-button" value="@T("Search.Button")" />
-                </div>
-            </form>
+                    <div class="buttons my-2">
+                        <input type="submit" class="button-1 search-button" value="@T("Search.Button")" />
+                    </div>
+                </form>
+            </div>
         </div>
+        <div class="light-hr"></div>
+        <div class="row justify-content-center justify-content-lg-start">
         @if (Model.Products.Count > 0)
         {
             @await Html.PartialAsync("_CatalogSelectors", Model.PagingFilteringContext)
         }
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductSearchPageBeforeResults })
+        </div>
         <div class="search-results">
             @if (!string.IsNullOrEmpty(Model.Warning))
             {
@@ -113,12 +120,12 @@
             @if (Model.Products.Count > 0)
             {
                 <div class="@(Model.PagingFilteringContext.ViewMode == "list" ? "product-list" : "product-grid")">
-                    <div class="item-grid">
+                    <div class="item-grid row justify-content-around justify-content-xxxl-start align-items-end">
                         @foreach (var product in Model.Products)
                         {
-                            <div class="item-box">
-                                @await Html.PartialAsync("_ProductBox", product)
-                            </div>
+                        <div class="item-box col-xs-12 col-sm-6 col-lg-6 col-xxl-4 col-xxxl-3 px-3 pb-2 my-3 mx-2">
+                            @await Html.PartialAsync("_ProductBox", product)
+                        </div>
                         }
                     </div>
                 </div>
@@ -136,3 +143,88 @@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductSearchPageAfterResults })
     </div>
 </div>
+<script asp-location="Footer">
+    $(document).ready(function () {
+
+        //Initially set the value for the add to cart wuantity inputs.
+        //This is necessary due to a bug that remembers the previous page's input value,
+        //something to do with dynamically inserting the html into the popover
+        $('.input-number').val('1');
+
+        $('.btn-number').click(function (e) {
+            e.preventDefault();
+            fieldName = $(this).data('field');
+            parentCon = $('.' + fieldName + '-con');
+            type = $(this).attr('data-type');
+            input = parentCon.find('#' + fieldName);
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+                if (type == 'minus') {
+
+                    if (currentVal > input.attr('min')) {
+                        input.val(currentVal - 1).change();
+                        $('.btn-number[data-type=plus]').attr('disabled', false);
+                    }
+                    if (parseInt(input.val()) == input.attr('min')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                } else if (type == 'plus') {
+
+                    if (currentVal < input.attr('max')) {
+                        input.val(currentVal + 1).change();
+                        $('.btn-number[data-type=minus]').attr('disabled', false);
+                    }
+                    if (parseInt(input.val()) == input.attr('max')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                }
+            } else {
+                input.val(0);
+            }
+            $(fieldName + '-con .input-number').focusin(function () {
+                $(this).data('oldValue', $(this).val());
+            });
+            $(fieldName + '-con .input-number').change(function () {
+
+                minValue = parseInt($(this).attr('min'));
+                maxValue = parseInt($(this).attr('max'));
+                valueCurrent = parseInt($(this).val());
+
+                name = $(this).attr('name');
+                if (valueCurrent >= minValue) {
+                    $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+                } else {
+                    alert('Sorry, the minimum value was reached');
+                    $(this).val($(this).data('oldValue'));
+                }
+                if (valueCurrent <= maxValue) {
+                    $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+                } else {
+                    alert('Sorry, the maximum value was reached');
+                    $(this).val($(this).data('oldValue'));
+                }
+
+
+            });
+            $(fieldName + '-con .input-number').keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right
+                    (e.keyCode >= 35 && e.keyCode <= 39)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+
+        });
+
+    });
+</script>
