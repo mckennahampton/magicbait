@@ -10,6 +10,7 @@
     <PackageLicenseUrl>http://www.nopcommerce.com/licensev3.aspx</PackageLicenseUrl>
     <PackageProjectUrl>http://www.nopcommerce.com/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nopSolutions/nopCommerce</RepositoryUrl>
+	<ServerGarbageCollection>false</ServerGarbageCollection>
     <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 

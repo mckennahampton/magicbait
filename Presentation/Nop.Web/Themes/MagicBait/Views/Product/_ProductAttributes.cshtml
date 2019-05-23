@@ -262,7 +262,7 @@
                                             T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment, string.Empty).Text;
                                         <li @(attributeValue.IsPreSelected ? @Html.Raw(" class=\"selected-value\"") : null)>
                                             <label for="@(controlId)_@(attributeValue.Id)">
-                                                <span class="attribute-square-container" title="@attributeName">
+                                                <span class="attribute-square-container">
                                                     <span class="attribute-square" style="background-color:@(attributeValue.ColorSquaresRgb);">&nbsp;</span>
                                                 </span>
                                                 <input id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected"
@@ -297,7 +297,7 @@
                                         var attributeName = string.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
                                             attributeValue.Name :
                                             T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment, string.Empty).Text;
-                                        <li @(attributeValue.IsPreSelected ? @Html.Raw(" class=\"selected-value\"") : null) id="@(controlId)_@(attributeValue.Id)_li">
+                                        <li @(attributeValue.IsPreSelected ? @Html.Raw(" class=\"selected-value\"") : null) title="@attributeName" id="@(controlId)_@(attributeValue.Id)_li">
                                             <label style="display: inline-block;" for="@(controlId)_@(attributeValue.Id)">
                                                 <img style="pointer-events: none;" class="attr-image" src="@(attributeValue.ImageSquaresPictureModel.FullSizeImageUrl)">
                                                 <input type="hidden" name="variationName" value="@attributeName" />

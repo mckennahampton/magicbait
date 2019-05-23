@@ -17599,7 +17599,7 @@ body.stop-scrolling {
 
 .related-products-grid {
   width: 90%;
-  margin: 0 5%; }
+  margin: 200px 5% 0px; }
   .related-products-grid .title {
     width: 100%;
     text-align: center;
@@ -17625,10 +17625,6 @@ body.stop-scrolling {
       text-align: center; }
       .related-products-grid .item-box .product-quickview > * {
         display: inline-block; }
-      .related-products-grid .item-box .product-quickview span:after {
-        content: " | ";
-        color: black;
-        padding: 0px 8px; }
 
 .btn-minus, .btn-plus, .input-number {
   font-size: 15px; }
